@@ -1,0 +1,19 @@
+schema_version: 1
+excavator {
+  base_mass_kg: 24000
+  engine_force_n: 100000
+  brake_force_n: 180000
+  max_forward_speed_cm_s: 500
+  max_reverse_speed_cm_s: 350
+  cargo_capacity_kg: 5000
+  work_rate_kg_s: 2500
+}
+mining_truck {
+  base_mass_kg: 30000
+  engine_force_n: 140000
+  brake_force_n: 240000
+  max_forward_speed_cm_s: 1300
+  max_reverse_speed_cm_s: 450
+  cargo_capacity_kg: 60000
+  work_rate_kg_s: 6000
+}

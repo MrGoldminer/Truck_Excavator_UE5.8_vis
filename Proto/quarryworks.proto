@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package quarryworks.v1;
+
+enum MaterialType {
+  MATERIAL_TYPE_UNSPECIFIED = 0;
+  MATERIAL_TYPE_SAND = 1;
+  MATERIAL_TYPE_GRAVEL = 2;
+  MATERIAL_TYPE_ORE = 3;
+}
+
+message VehicleConfig {
+  double base_mass_kg = 1;
+  double engine_force_n = 2;
+  double brake_force_n = 3;
+  double max_forward_speed_cm_s = 4;
+  double max_reverse_speed_cm_s = 5;
+  double cargo_capacity_kg = 6;
+  double work_rate_kg_s = 7;
+}
+
+message QuarryConfig {
+  uint32 schema_version = 1;
+  VehicleConfig excavator = 2;
+  VehicleConfig mining_truck = 3;
+}
+
+message VehicleCommand {
+  string vehicle_id = 1;
+  double throttle = 2;
+  double steering = 3;
+  double service_brake = 4;
+  bool parking_brake = 5;
+}
+
+message Vector3 {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
+
+message CargoTelemetry {
+  MaterialType material = 1;
+  double current_mass_kg = 2;
+  double capacity_kg = 3;
+}
+
+message VehicleTelemetry {
+  string vehicle_id = 1;
+  Vector3 location_cm = 2;
+  double speed_kmh = 3;
+  bool parking_brake = 4;
+  CargoTelemetry cargo = 5;
+}
+
+message QuarryTelemetry {
+  uint64 sequence = 1;
+  double delivered_mass_kg = 2;
+  repeated VehicleTelemetry vehicles = 3;
+}
