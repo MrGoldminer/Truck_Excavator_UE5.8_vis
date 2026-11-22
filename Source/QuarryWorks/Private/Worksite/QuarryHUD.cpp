@@ -11,6 +11,8 @@
 #include "Vehicles/QuarryVehicleMovementComponent.h"
 #include "Worksite/QuarryWorksiteSubsystem.h"
 
+// HUD 绘制：左侧状态面板（速度/挡位/转速/轮况/货量/交付）+
+// 底部操作提示 + 世界标记（DIG SITE / UNLOADING BAY）
 void AQuarryHUD::DrawHUD()
 {
 	Super::DrawHUD();
@@ -27,6 +29,7 @@ void AQuarryHUD::DrawHUD()
 		Vehicle->VehicleMovement->GetSpeedKmh(),
 		*Vehicle->VehicleMovement->GetGearLabel(),
 		Vehicle->VehicleMovement->GetEngineRPM()), 62.0f);
+	// 打滑指示：红色高亮——摩擦圆饱和的实时可视化
 	const bool bSlipping = Vehicle->VehicleMovement->IsAnyWheelSlipping();
 	DrawPanelLine(FString::Printf(TEXT("Wheels: %d/%d grounded   %s"),
 		Vehicle->VehicleMovement->GetGroundedWheelCount(),

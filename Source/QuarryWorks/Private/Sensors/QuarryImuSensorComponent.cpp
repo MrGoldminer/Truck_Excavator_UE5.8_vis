@@ -64,6 +64,7 @@ float UQuarryImuSensorComponent::GetCompassRadians() const
 	return FMath::Frac((Heading + 2.0f * PI) / (2.0f * PI)) * 2.0f * PI;
 }
 
+// IMU 采样（固定频率）：比力/角速度/世界加速度三路输出
 void UQuarryImuSensorComponent::SampleImu(float DeltaTime)
 {
 	if (!TrackedBody)
@@ -78,15 +79,16 @@ void UQuarryImuSensorComponent::SampleImu(float DeltaTime)
 		bHasVelocitySample = true;
 	}
 
-	// World-space acceleration, converted to m/s^2.
+	// 世界加速度 = Δv/Δt（cm/s² → m/s²）——差分法（对帧率敏感，故固定采样率）
 	const FVector WorldAccelMps2 = (WorldVelocityCmS - LastWorldVelocityCmS) / FMath::Max(DeltaTime, 1e-4f) * CmPerSecondSquaredToMps2;
 	LastWorldVelocityCmS = WorldVelocityCmS;
 	WorldAccelerationMps2 = WorldAccelMps2;
 
-	// Specific force: accelerometer measures reaction to gravity, f = R^T * (a - g).
+	// 比力 = 加速度 − 重力（加速度计物理定义：静止时读 +1g 向上）
 	const FVector GravityWorldMps2(0.0f, 0.0f, -GravityMps2);
 	const FVector SpecificForceWorld = WorldAccelMps2 - GravityWorldMps2;
 	const FTransform BodyTransform = TrackedBody->GetComponentTransform();
+	// 世界系 → 车体系（IMU 装在车上，输出沿车轴的分量）
 	const FVector SpecificForceBody = BodyTransform.InverseTransformVectorNoScale(SpecificForceWorld);
 
 	// Gyroscope: world angular velocity expressed in the body frame.

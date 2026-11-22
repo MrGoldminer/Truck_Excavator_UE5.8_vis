@@ -5,6 +5,12 @@
 #include "QuarryCollisionChannels.h"
 #include "Vehicles/QuarryBlockoutComponent.h"
 
+// ============================================================================
+// AQuarryDigSite —— 可变形沙堆料场
+// 实现：ProceduralMeshComponent 高度场网格（33×33 顶点）
+// 挖掘：ExtractAt 扣料 → ApplyHeightDelta 让地面同步下陷
+// 堆料：DepositAt 反向隆起（卸料区堆积可见）
+// ============================================================================
 AQuarryDigSite::AQuarryDigSite()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -16,10 +22,10 @@ AQuarryDigSite::AQuarryDigSite()
 
 	TerrainMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("TerrainMesh"));
 	TerrainMesh->SetupAttachment(GetRootComponent());
-	TerrainMesh->bUseAsyncCooking = true;
+	TerrainMesh->bUseAsyncCooking = true;   // 网格重建异步化（挖掘不掉帧）
 	if (!HasAnyFlags(RF_ClassDefaultObject))
 	{
-		TerrainMesh->SetCollisionProfileName(TEXT("BlockAll"));
+		TerrainMesh->SetCollisionProfileName(TEXT("BlockAll"));  // 可碰撞：车轮 raycast 目标
 		TerrainMesh->SetCollisionObjectType(QuarryCollision::Terrain);
 	}
 	TerrainMesh->SetMaterial(0, LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Materials/M_QuarryBlockout.M_QuarryBlockout")));
@@ -124,7 +130,8 @@ void AQuarryDigSite::BuildMesh()
 			const float LocalX = X * CellSize - Extent;
 			const float LocalY = Y * CellSize - Extent;
 			const float NormalizedRadius = FVector2D(LocalX, LocalY).Size() / Extent;
-			Heights[Index] = MoundHeight * FMath::Max(0.0f, 1.0f - NormalizedRadius * NormalizedRadius);
+			// 初始 mound 高度场：中心 MoundHeight，向外二次衰减到 0
+		Heights[Index] = MoundHeight * FMath::Max(0.0f, 1.0f - NormalizedRadius * NormalizedRadius);
 			Vertices[Index] = FVector(LocalX, LocalY, Heights[Index]);
 			Normals[Index] = FVector::UpVector;
 			UV0[Index] = FVector2D(static_cast<float>(X) / GridResolution, static_cast<float>(Y) / GridResolution);
@@ -167,6 +174,7 @@ void AQuarryDigSite::ApplyHeightDelta(const FVector& WorldLocation, float Volume
 		return;
 	}
 
+	// 高度变化量 = 挖掘体积(cm³) ÷ 权重和×格子面积——体积守恒的地形形变
 	const float HeightDelta = VolumeM3 * 1000000.0f / (WeightSum * CellSize * CellSize);
 	for (int32 Index = 0; Index < Vertices.Num(); ++Index)
 	{

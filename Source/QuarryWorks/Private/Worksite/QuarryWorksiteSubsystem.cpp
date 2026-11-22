@@ -50,9 +50,8 @@ void UQuarryWorksiteSubsystem::RegisterMiningTruck(AQuarryMiningTruck* Truck)
 
 void UQuarryWorksiteSubsystem::TickOutOfBoundRespawn()
 {
-	// Fall protection: the site ground plane is finite, and a management-plane
-	// command can drive a vehicle past its edge. Reset to the registration
-	// pose instead of letting it free-fall forever.
+	// 坠落保护：场地地面有限，管理面指令可能把车开出边界——
+	// 越界即重置到注册时的姿态，不让它无限自由落体
 	if (RespawnCooldownS > 0.0f)
 	{
 		RespawnCooldownS -= GetWorld() ? GetWorld()->GetDeltaSeconds() : 0.016f;
@@ -100,6 +99,8 @@ void UQuarryWorksiteSubsystem::RegisterDeliveryPile(AQuarryMaterialPile* Pile)
 	}
 }
 
+// 子系统每帧：1) 越界复位 2) TCP 命令出队 3) MQTT 入站路由 4) 遥测发布
+// 5) 任务执行 6) 同步快照 7) TCP 广播——全部在游戏线程
 void UQuarryWorksiteSubsystem::Tick(float DeltaTime)
 {
 	SimulationTimeSeconds += DeltaTime;
@@ -165,7 +166,7 @@ void UQuarryWorksiteSubsystem::Tick(float DeltaTime)
 			}
 		}
 
-		// Publish the retained online status once per connection.
+		// MQTT 在线状态只发一次（retained），遥测按配置频率持续发布
 		if (MqttClient->IsConnected())
 		{
 			if (!bMqttOnlineStatusSent)

@@ -140,6 +140,7 @@ uint32 FQuarryMqttClient::Run()
 	return 0;
 }
 
+// 单次连接尝试：TCP 连接 → MQTT CONNECT 报文 → 阻塞等 CONNACK
 bool FQuarryMqttClient::ConnectOnce()
 {
 	ISocketSubsystem* Subsystem = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM);
@@ -191,8 +192,8 @@ bool FQuarryMqttClient::ConnectOnce()
 	}
 
 	SendConnect();
-	// Block until CONNACK (or timeout) before subscribing: strict brokers
-	// reject packets that arrive before the connection is acknowledged.
+	// 发送 CONNECT 后阻塞等 CONNACK：严格的 broker 会拒绝
+	// 在连接确认之前到达的任何订阅/发布包
 	const double Deadline = FPlatformTime::Seconds() + 4.0;
 	while (FPlatformTime::Seconds() < Deadline && !bStopping.load() && State != EState::Connected)
 	{
@@ -341,6 +342,7 @@ bool FQuarryMqttClient::TryParsePacket()
 		return false; // wait for the full payload
 	}
 
+	// MQTT 二进制协议解码：高 4 位 = 包类型，低 4 位 = 标志位
 	const uint8 Type = FixedHeader & 0xF0;
 	const uint8 Flags = FixedHeader & 0x0F;
 	const int32 BodyNum = static_cast<int32>(RemainingLength);
@@ -382,7 +384,7 @@ bool FQuarryMqttClient::TryParsePacket()
 		break;
 	}
 	case PacketPublish:
-	{
+	{ // 收到下行发布（命令/任务）：解出主题与载荷
 		if (BodyNum < 2)
 		{
 			return false;
@@ -426,16 +428,14 @@ bool FQuarryMqttClient::TryParsePacket()
 void FQuarryMqttClient::EnsureKeepalive()
 {
 	const double Now = FPlatformTime::Seconds();
-	// A publisher-only session legitimately receives nothing between pings:
-	// outbound telemetry refreshes LastSentTime so the broker never drops us,
-	// while inbound quiet only triggers a PINGREQ probe. Disconnect only when
-	// the broker fails to answer the probe.
+	// 保活策略（纯发布型会话特有）：遥测外发刷新 LastSentTime 让 broker
+	// 不会断我们；入站安静只触发 PINGREQ 探测；仅 broker 不回探包才断线
 	if (Now - LastRecvTime > KeepaliveSeconds * 0.5 && !bPingInFlight)
 	{
 		SendPingReq();
 		bPingInFlight = true;
 	}
-	if (bPingInFlight && Now - LastRecvTime > KeepaliveSeconds)
+	if (bPingInFlight && Now - LastRecvTime > KeepaliveSeconds)   // 探包超时 = 真死链
 	{
 		DisconnectAndBackoff();
 	}

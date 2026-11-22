@@ -15,6 +15,7 @@ AQuarryWorksite::AQuarryWorksite()
 	SetRootComponent(CreateDefaultSubobject<USceneComponent>(TEXT("Root")));
 }
 
+// 采石场场景装配总入口：生成挖掘机/矿卡/料场/卸料区 + 注册到子系统
 void AQuarryWorksite::InitializeWorksite(AQuarryExcavator* PlayerExcavator)
 {
 	if (bInitialized || !GetWorld()) return;

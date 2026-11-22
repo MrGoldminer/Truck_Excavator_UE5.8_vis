@@ -13,6 +13,13 @@ UQuarryVehicleMeshComponent::UQuarryVehicleMeshComponent()
 	PrimaryComponentTick.TickGroup = TG_PostPhysics;
 }
 
+// ============================================================================
+// Initialize —— 资产绑定总入口（按 BodyMeshPath 的类型三路分发）：
+//   骨骼网格（SportsCar 式：轮骨重建轮位 + 隐藏烘焙轮骨）
+//   静态网格（DumpTruck/整机：显式轮位 + 可选整体滚动）
+//   分件装配（PartBindings：部件挂关节链 + 铰接驱动）
+// 统一副作用：PartsToHide 里的方块件全部隐藏
+// ============================================================================
 void UQuarryVehicleMeshComponent::Initialize(UQuarryVehicleMovementComponent* InMovement, USceneComponent* AttachRoot,
 	const TArray<UPrimitiveComponent*>& PartsToHide)
 {

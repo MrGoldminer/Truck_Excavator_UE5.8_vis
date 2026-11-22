@@ -84,6 +84,8 @@ bool FQuarryJsonCodec::ParseTask(const FString& JsonText, FQuarryTaskCommand& Ou
 	return true;
 }
 
+// CARLA 命名遥测序列化：location/velocity（米）、IMU（m/s²·rad/s·compass）、
+// GNSS（度）、每轮 slip/load、货量——与 carla.Actor/Sensor 输出一一对应
 FString FQuarryJsonCodec::EncodeTelemetry(const UQuarryWorksiteSubsystem* Worksite, double GnssOriginLat, double GnssOriginLon)
 {
 	const double MetersPerDegLonHere = MetersPerDegLon(GnssOriginLat);
@@ -104,7 +106,7 @@ FString FQuarryJsonCodec::EncodeTelemetry(const UQuarryWorksiteSubsystem* Worksi
 			TSharedPtr<FJsonObject> Entry = MakeShared<FJsonObject>();
 			Entry->SetStringField(TEXT("id"), Id);
 
-			// carla.Actor: get_location()/get_transform in meters (UE cm / 100).
+			// carla.Actor.get_location()：UE cm → CARLA 米（÷100）
 			const FVector LocationCm = Vehicle->GetActorLocation();
 			{
 				TSharedPtr<FJsonObject> Loc = MakeShared<FJsonObject>();
@@ -126,7 +128,7 @@ FString FQuarryJsonCodec::EncodeTelemetry(const UQuarryWorksiteSubsystem* Worksi
 			Entry->SetNumberField(TEXT("speed_kmh"), Vehicle->VehicleMovement->GetSpeedKmh());
 			Entry->SetNumberField(TEXT("forward_speed_mps"), Vehicle->GetForwardSpeed() * CmToM);
 
-			// carla.IMUMeasurement equivalents.
+			// carla.IMUMeasurement 对等字段：accelerometer/gyroscope/compass
 			if (Vehicle->ImuSensor)
 			{
 				TSharedPtr<FJsonObject> Imu = MakeShared<FJsonObject>();

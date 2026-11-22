@@ -19,6 +19,7 @@ namespace
 	}
 }
 
+// 启动时读 Config/QuarryWorks.pbtxt（文本格式 protobuf）覆盖默认参数
 void UQuarryConfigSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);

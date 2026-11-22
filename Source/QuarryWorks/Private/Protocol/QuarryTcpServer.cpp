@@ -185,12 +185,13 @@ void FQuarryTcpServer::HandleConnectedClient()
 	ParseFrames();
 }
 
+// 帧协议解析：[4B 长度][载荷]——半包等待，超长丢弃，载荷入队
 void FQuarryTcpServer::ParseFrames()
 {
 	while (RecvBuffer.Num() >= 4)
 	{
 		const uint32 Length = ReadFrameLength(RecvBuffer);
-		if (Length == 0 || Length > MaxFrameBytes)
+		if (Length == 0 || Length > MaxFrameBytes)   // 非法长度 = 流错位，丢弃重来
 		{
 			RecvBuffer.Reset();
 			return;

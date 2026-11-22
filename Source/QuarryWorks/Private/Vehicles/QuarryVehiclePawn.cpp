@@ -32,6 +32,11 @@ namespace
 	}
 }
 
+// ============================================================================
+// AQuarryVehiclePawn —— 两台车的公共基座（Pawns 继承它）
+// 组成：物理底盘 Box(碰撞/质量) + SpringArm 追踪相机 + 真机网格组件
+// 输入接口：SetDriveInput/SetServiceBrake/SetParkingBrake（键盘与 MQTT 共用）
+// ============================================================================
 AQuarryVehiclePawn::AQuarryVehiclePawn()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -39,14 +44,13 @@ AQuarryVehiclePawn::AQuarryVehiclePawn()
 	Chassis = CreateDefaultSubobject<UBoxComponent>(TEXT("Chassis"));
 	SetRootComponent(Chassis);
 	Chassis->InitBoxExtent(FVector(250.0f, 160.0f, 70.0f));
-	if (!HasAnyFlags(RF_ClassDefaultObject))
+	if (!HasAnyFlags(RF_ClassDefaultObject))   // CDO（类默认对象）不做物理配置
 	{
-		Chassis->SetCollisionProfileName(TEXT("Vehicle"));
+		Chassis->SetCollisionProfileName(TEXT("Vehicle"));  // 自定义 Vehicle 碰撞通道
 		Chassis->SetCollisionResponseToChannel(QuarryCollision::Terrain, ECR_Ignore);
-		Chassis->SetSimulatePhysics(true);
-		Chassis->SetUseCCD(true);
-		// Light damping: rolling resistance, aero drag, and anti-roll bars are
-		// modelled explicitly by the force-driven movement component.
+		Chassis->SetSimulatePhysics(true);  // 开启刚体模拟（力驱动的前提）
+		Chassis->SetUseCCD(true);           // 连续碰撞检测：高速防穿墙
+		// 阻尼降到最小：滚动阻力/风阻/防倾杆全部由力驱动组件显式建模
 		Chassis->SetLinearDamping(0.02f);
 		Chassis->SetAngularDamping(0.8f);
 	}
@@ -65,6 +69,7 @@ AQuarryVehiclePawn::AQuarryVehiclePawn()
 	CameraBoom->SetRelativeRotation(FRotator(-20.0f, 0.0f, 0.0f));
 	CameraBoom->bUsePawnControlRotation = true;
 	// Horizon-style smooth chase: lagged spring arm, wider cinematic FOV.
+	// Horizon 风格平滑跟随：位置/旋转双滞后（CameraLag 平滑高速抖动）
 	CameraBoom->bEnableCameraLag = true;
 	CameraBoom->CameraLagSpeed = 14.0f;
 	CameraBoom->bEnableCameraRotationLag = true;

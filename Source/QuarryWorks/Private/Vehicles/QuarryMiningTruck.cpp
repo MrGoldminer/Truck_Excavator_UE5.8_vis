@@ -17,17 +17,26 @@
 #include "Worksite/QuarryConfigSubsystem.h"
 #include "Engine/GameInstance.h"
 
+// ============================================================================
+// AQuarryMiningTruck 构造 —— 矿卡（自卸卡车）全部组件装配
+// 视觉：真实自卸卡车身（SM_AmericanDumpTruck，自动适配 650cm）+ 6 个
+//        SM_Wheel_01 轮（顶点聚类实测轮位，滚动方向已修正）
+// 货运：Cargo 组件管理装载量 → 悬架压缩/质心偏移随之变化
+// ============================================================================
 AQuarryMiningTruck::AQuarryMiningTruck()
 {
+	// 每帧更新（车斗倾卸动画 + 货量视觉）
 	PrimaryActorTick.bCanEverTick = true;
+	// 物理底盘盒半尺寸 325×180×80 cm
 	Chassis->InitBoxExtent(FVector(325.0f, 180.0f, 80.0f));
 	VehicleMovement->BaseMassKg = 30000.0f;
 	VehicleMovement->EngineForce = 140000.0f;
 	VehicleMovement->BrakeForce = 240000.0f;
+	// 空载极速 46.8 km/h（满载 60t 时由摩擦圆自然限速）
 	VehicleMovement->MaxForwardSpeed = 1300.0f;
 	VehicleMovement->MaxReverseSpeed = 450.0f;
 	VehicleMovement->SetPayloadCenterOfMass(FVector(-80.0, 0.0, 140.0));
-	// Mining diesel powertrain: low rev range, long gearing, anti-roll bars.
+	// 矿用柴油机特性：低转速大扭矩、长传动比、防倾杆
 	VehicleMovement->ForwardGearRatios = { 3.6f, 2.3f, 1.55f, 1.08f, 0.82f };
 	VehicleMovement->FinalDriveRatio = 4.1f;
 	VehicleMovement->EngineIdleRPM = 600.0f;
@@ -106,6 +115,7 @@ AQuarryMiningTruck::AQuarryMiningTruck()
 	CargoFill = FQuarryBlockoutVisuals::AddCube(this, TEXT("CargoFill"), BedPivot,
 		FVector(390.0, 260.0, 5.0), FVector(-50.0, 0.0, 55.0), FLinearColor(0.55f, 0.38f, 0.16f));
 
+	// 旧方块轮位（±230/−20 × ±175）——BeginPlay 时被实测轮位覆盖
 	for (float X : {-230.0f, -20.0f, 220.0f})
 	{
 		for (float Y : {-175.0f, 175.0f})
@@ -136,8 +146,8 @@ AQuarryMiningTruck::AQuarryMiningTruck()
 	RealVehicleMesh->BodyYawOffsetDeg = -90.0f; // model +Y -> chassis +X (nose forward)
 	RealVehicleMesh->BodyOffsetX = -35.3f; // center the mesh (model Y center +52.4 scaled)
 	RealVehicleMesh->BodyZOffset = -83.0f; // mesh origin sits at ground level; root rides ~83 cm up
-	RealVehicleMesh->StaticBodyWheelRadius = 47.0f; // scaled baked-wheel radius (65 native * 0.674 ~ 44)
-	RealVehicleMesh->StaticBodyWheelMeshScale = 1.57f; // SM_Wheel_01 native radius 30 -> 47
+	RealVehicleMesh->StaticBodyWheelRadius = 47.0f;  // 物理轮半径（缩放后烘焙轮实测值）
+	RealVehicleMesh->StaticBodyWheelMeshScale = 1.57f; // SM_Wheel_01 原生半径 30 → 47
 	// Mount = suspension TOP, not the wheel center: UpdateWheelVisual hangs the
 	// wheel below the mount by SuspensionLength (~75 cm at equilibrium), so the
 	// mount sits at wheel-center (-36) + length (74.75) = +38.75.
@@ -157,6 +167,7 @@ void AQuarryMiningTruck::BeginPlay()
 	if (const UQuarryConfigSubsystem* Config = GetGameInstance() ? GetGameInstance()->GetSubsystem<UQuarryConfigSubsystem>() : nullptr)
 	{
 		const auto& Vehicle = Config->GetMiningTruckConfig();
+	// pbtxt 配置覆盖默认值（Config/QuarryWorks.pbtxt）
 		if (Vehicle.base_mass_kg() > 0.0) VehicleMovement->BaseMassKg = Vehicle.base_mass_kg();
 		if (Vehicle.engine_force_n() > 0.0) VehicleMovement->EngineForce = Vehicle.engine_force_n();
 		if (Vehicle.brake_force_n() > 0.0) VehicleMovement->BrakeForce = Vehicle.brake_force_n();
@@ -169,6 +180,7 @@ void AQuarryMiningTruck::BeginPlay()
 		if (Vehicle.engine_peak_torque_nm() > 0.0) VehicleMovement->EnginePeakTorqueNm = Vehicle.engine_peak_torque_nm();
 		VehicleMovement->bLegacyKinematic = Vehicle.legacy_kinematic();
 	}
+	// 货量变化 → 悬架压缩/质心/视觉同步（委托回调）
 	Cargo->OnCargoChanged.AddDynamic(this, &AQuarryMiningTruck::UpdateCargoVisual);
 	UpdateCargoVisual(Cargo->MaterialType, Cargo->CurrentMassKg, Cargo->CapacityKg);
 

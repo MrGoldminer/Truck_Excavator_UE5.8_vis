@@ -22,6 +22,7 @@ bool UQuarryCargoComponent::CanAcceptMaterial(EQuarryMaterialType InMaterialType
 		&& (CurrentMassKg <= KINDA_SMALL_NUMBER || MaterialType == InMaterialType);
 }
 
+// 装载：同类型物料才能混装（沙/砾石/矿分仓），返回实际接受量
 float UQuarryCargoComponent::Load(EQuarryMaterialType InMaterialType, float RequestedMassKg)
 {
 	if (!CanAcceptMaterial(InMaterialType) || !FMath::IsFinite(RequestedMassKg) || RequestedMassKg <= 0.0f)
@@ -61,6 +62,7 @@ float UQuarryCargoComponent::Unload(float RequestedMassKg, EQuarryMaterialType& 
 	return RemovedMassKg;
 }
 
+// 转移（挖斗→车斗）：先在目标方预留容量再扣源，保证料流守恒不超发
 float UQuarryCargoComponent::TransferTo(UQuarryCargoComponent* Destination, float RequestedMassKg)
 {
 	if (!IsValid(Destination) || Destination == this || MaterialType == EQuarryMaterialType::None

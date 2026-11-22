@@ -85,6 +85,7 @@ void FQuarryTaskExecutor::Tick(float DeltaSeconds)
 	}
 }
 
+// 任务启动：重置全部相位状态（挖掘相位/倾卸相位/测试用例状态机）
 void FQuarryTaskExecutor::StartTask(const FQuarryTaskCommand& Task)
 {
 	Current = Task;
@@ -103,6 +104,7 @@ void FQuarryTaskExecutor::StartTask(const FQuarryTaskCommand& Task)
 		*Current.TaskId, static_cast<int32>(Current.Type), *Current.VehicleId);
 }
 
+// 任务完成：清零所有控制输入（防止油门/制动锁存）+ 发布结果
 void FQuarryTaskExecutor::FinishTask(const FString& Result, const FString& Reason)
 {
 	// Zero every controlled input: a finished task must not leave throttles or
@@ -179,6 +181,8 @@ AQuarryVehiclePawn* FindVehicleById(UQuarryWorksiteSubsystem* Worksite, const FS
  * EStepResult::Completed once inside tolerance with the vehicle braked to a
  * stop, Failed if the pawn or movement is missing.
  */
+// 导航控制器（航向误差 P 律 + 三点掉头/倒车入库 + 宽弧线大半径转弯）：
+//   返回 Completed = 已到容差内且刹停；Failed = 无有效移动组件
 EStepResult DriveVehicleToward(AQuarryVehiclePawn* Vehicle, const FVector& Target2D, float ToleranceM,
 	float MaxThrottle, float DeltaSeconds)
 {
@@ -220,9 +224,8 @@ EStepResult DriveVehicleToward(AQuarryVehiclePawn* Vehicle, const FVector& Targe
 	}
 	if (Movement->DriveType == EQuarryDriveType::Wheeled && FMath::Abs(HeadingError) > 90.0f)
 		{
-		// Back the truck to the target tail-first: a dump truck unloads from
-		// its bed, so the nose heading is irrelevant. Reversing with the tail
-		// steered toward the target avoids U-turns entirely.
+		// 自卸车尾对目标倒车：卸料只看车厢位置，车头朝向无关——
+		// 尾朝目标倒车彻底绕开 U-turn 的不收敛问题
 		const float TailHeadingError = FMath::UnwindDegrees(
 			YawToTarget(Location, Target2D) - (Vehicle->GetActorRotation().Yaw + 180.0f));
 		// Distance-proportional reverse throttle: a 30t truck at full reverse

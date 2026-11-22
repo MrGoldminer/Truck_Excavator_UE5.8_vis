@@ -24,6 +24,7 @@ float AQuarryMaterialPile::GetRemainingVolumeM3() const
 	return BulkDensityKgPerM3 > 0.0f ? RemainingMassKg / BulkDensityKgPerM3 : 0.0f;
 }
 
+// 挖取：无限源直接给量；有限源按剩余量给（挖空即止）+ 广播变化事件
 float AQuarryMaterialPile::Extract(float RequestedMassKg)
 {
 	if (MaterialType == EQuarryMaterialType::None || !FMath::IsFinite(RequestedMassKg) || RequestedMassKg <= 0.0f)
