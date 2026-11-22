@@ -146,15 +146,18 @@ AQuarryMiningTruck::AQuarryMiningTruck()
 	RealVehicleMesh->BodyYawOffsetDeg = -90.0f; // model +Y -> chassis +X (nose forward)
 	RealVehicleMesh->BodyOffsetX = -35.3f; // center the mesh (model Y center +52.4 scaled)
 	RealVehicleMesh->BodyZOffset = -83.0f; // mesh origin sits at ground level; root rides ~83 cm up
-	RealVehicleMesh->StaticBodyWheelRadius = 47.0f;  // 物理轮半径（缩放后烘焙轮实测值）
-	RealVehicleMesh->StaticBodyWheelMeshScale = 1.57f; // SM_Wheel_01 原生半径 30 → 47
+	// 全部数值来自 5cm 顶点聚类实测（Docs/VEHICLE_ORIENTATION.md）：
+	//   前轴模型 Y+107.5 / 后双联 Y-143,-268 / 轮距 X±100 / 烘焙轮半径 ~57.4
+	//   底盘 yaw -90 + scale 0.674 → 轮距 ±67.4 / 半径 38.7
+	RealVehicleMesh->StaticBodyWheelRadius = 39.0f;  // 缩放后烘焙轮半径
+	RealVehicleMesh->StaticBodyWheelMeshScale = 1.3f; // SM_Wheel_01 原生 30 → 39
 	// Mount = suspension TOP, not the wheel center: UpdateWheelVisual hangs the
 	// wheel below the mount by SuspensionLength (~75 cm at equilibrium), so the
 	// mount sits at wheel-center (-36) + length (74.75) = +38.75.
 	RealVehicleMesh->StaticBodyWheelMounts = {
-		FVector(308.0f, 92.5f, 38.75f), FVector(308.0f, -92.5f, 38.75f),
-		FVector(-96.4f, 92.5f, 38.75f), FVector(-96.4f, -92.5f, 38.75f),
-		FVector(-180.6f, 92.5f, 38.75f), FVector(-180.6f, -92.5f, 38.75f)
+		FVector(72.5f, 67.4f, 30.4f), FVector(72.5f, -67.4f, 30.4f),
+		FVector(-96.4f, 67.4f, 30.4f), FVector(-96.4f, -67.4f, 30.4f),
+		FVector(-180.6f, 67.4f, 30.4f), FVector(-180.6f, -67.4f, 30.4f)
 	};
 
 	Cargo = CreateDefaultSubobject<UQuarryCargoComponent>(TEXT("Cargo"));
