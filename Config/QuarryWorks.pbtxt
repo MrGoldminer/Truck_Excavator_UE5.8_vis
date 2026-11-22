@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 excavator {
   base_mass_kg: 24000
   engine_force_n: 100000
@@ -7,6 +7,10 @@ excavator {
   max_reverse_speed_cm_s: 350
   cargo_capacity_kg: 5000
   work_rate_kg_s: 2500
+  # Force-driven model overrides (omit or keep <= 0 for auto-calibration).
+  track_yaw_rate_deg_s: 45
+  tire_friction: 1.0
+  loose_material_friction: 0.4
 }
 mining_truck {
   base_mass_kg: 30000
@@ -16,4 +20,6 @@ mining_truck {
   max_reverse_speed_cm_s: 450
   cargo_capacity_kg: 60000
   work_rate_kg_s: 6000
+  tire_friction: 1.0
+  loose_material_friction: 0.4
 }

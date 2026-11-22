@@ -33,6 +33,6 @@ void UQuarryConfigSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 		SetDefaults(*Config.mutable_excavator(), 24000.0, 100000.0, 180000.0, 500.0, 350.0, 5000.0, 2500.0);
 		SetDefaults(*Config.mutable_mining_truck(), 30000.0, 140000.0, 240000.0, 1300.0, 450.0, 60000.0, 6000.0);
 	}
-	Config.set_schema_version(1);
+	Config.set_schema_version(2);
 	UE_LOG(LogTemp, Log, TEXT("QuarryWorks configuration loaded from %s"), *ConfigPath);
 }

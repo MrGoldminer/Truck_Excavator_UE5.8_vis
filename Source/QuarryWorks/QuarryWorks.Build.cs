@@ -19,6 +19,9 @@ public class QuarryWorks : ModuleRules
 				"EnhancedInput",
 				"PhysicsCore",
 				"ProceduralMeshComponent",
+				"Sockets",
+				"Networking",
+				"Json",
 				"Protobuf"
 			});
 	}

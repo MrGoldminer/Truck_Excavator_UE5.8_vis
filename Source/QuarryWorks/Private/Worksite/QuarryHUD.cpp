@@ -4,6 +4,7 @@
 #include "Engine/Canvas.h"
 #include "Engine/Engine.h"
 #include "Materials/QuarryMaterialPile.h"
+#include "Sensors/QuarryImuSensorComponent.h"
 #include "Terrain/QuarryDigSite.h"
 #include "Vehicles/QuarryExcavator.h"
 #include "Vehicles/QuarryMiningTruck.h"
@@ -19,34 +20,53 @@ void AQuarryHUD::DrawHUD()
 	AQuarryVehiclePawn* Vehicle = Cast<AQuarryVehiclePawn>(PlayerOwner->GetPawn());
 	if (!Subsystem || !Vehicle) return;
 
-	DrawRect(FLinearColor(0.015f, 0.02f, 0.025f, 0.82f), 20.0f, 20.0f, 390.0f, 245.0f);
+	DrawRect(FLinearColor(0.015f, 0.02f, 0.025f, 0.82f), 20.0f, 20.0f, 390.0f, 330.0f);
 	DrawPanelLine(Cast<AQuarryExcavator>(Vehicle) ? TEXT("EXCAVATOR") : TEXT("MINING TRUCK"), 34.0f,
 		FLinearColor(0.95f, 0.65f, 0.1f));
-	DrawPanelLine(FString::Printf(TEXT("Speed: %.1f km/h   Gear: %s"),
-		Vehicle->VehicleMovement->GetSpeedKmh(), Vehicle->GetForwardSpeed() < -5.0f ? TEXT("R") : TEXT("D")), 62.0f);
+	DrawPanelLine(FString::Printf(TEXT("Speed: %.1f km/h   Gear: %s   RPM: %.0f"),
+		Vehicle->VehicleMovement->GetSpeedKmh(),
+		*Vehicle->VehicleMovement->GetGearLabel(),
+		Vehicle->VehicleMovement->GetEngineRPM()), 62.0f);
+	const bool bSlipping = Vehicle->VehicleMovement->IsAnyWheelSlipping();
+	DrawPanelLine(FString::Printf(TEXT("Wheels: %d/%d grounded   %s"),
+		Vehicle->VehicleMovement->GetGroundedWheelCount(),
+		Vehicle->VehicleMovement->GetNumWheels(),
+		bSlipping ? TEXT("TIRE SLIP") : TEXT("grip OK")),
+		88.0f, bSlipping ? FLinearColor(1.0f, 0.35f, 0.2f) : FLinearColor::White);
 	DrawPanelLine(FString::Printf(TEXT("Parking brake: %s"),
-		Vehicle->VehicleMovement->IsParkingBrakeEnabled() ? TEXT("ON") : TEXT("OFF")), 88.0f);
+		Vehicle->VehicleMovement->IsParkingBrakeEnabled() ? TEXT("ON") : TEXT("OFF")), 114.0f);
 
 	if (AQuarryExcavator* Excavator = Cast<AQuarryExcavator>(Vehicle))
 	{
-		DrawPanelLine(FString::Printf(TEXT("Bucket: %.0f / %.0f kg"),
-			Excavator->BucketCargo->CurrentMassKg, Excavator->BucketCargo->CapacityKg), 114.0f);
-		DrawPanelLine(Excavator->GetOperationStatus(), 140.0f, FLinearColor(0.4f, 0.85f, 1.0f));
+		DrawPanelLine(FString::Printf(TEXT("Bucket: %.0f / %.0f kg   Tip: %.0f cm/s"),
+			Excavator->BucketCargo->CurrentMassKg, Excavator->BucketCargo->CapacityKg,
+			Excavator->BucketTipSpeedCmS), 140.0f);
+		DrawPanelLine(Excavator->GetOperationStatus(), 166.0f, FLinearColor(0.4f, 0.85f, 1.0f));
 	}
 	if (AQuarryMiningTruck* Truck = Cast<AQuarryMiningTruck>(Vehicle))
 	{
 		DrawPanelLine(FString::Printf(TEXT("Truck bed: %.0f / %.0f kg"),
-			Truck->Cargo->CurrentMassKg, Truck->Cargo->CapacityKg), 114.0f);
-		DrawPanelLine(Truck->GetOperationStatus(), 140.0f, FLinearColor(0.4f, 0.85f, 1.0f));
+			Truck->Cargo->CurrentMassKg, Truck->Cargo->CapacityKg), 140.0f);
+		DrawPanelLine(Truck->GetOperationStatus(), 166.0f, FLinearColor(0.4f, 0.85f, 1.0f));
+	}
+	if (Vehicle->ImuSensor)
+	{
+		const FVector SpecificForce = Vehicle->ImuSensor->GetSpecificForceMps2();
+		const FVector AngularVelocity = Vehicle->ImuSensor->GetAngularVelocityRadS();
+		DrawPanelLine(FString::Printf(TEXT("IMU  |f|: %5.1f m/s2   yaw rate: %+5.2f rad/s"),
+			SpecificForce.Size(), AngularVelocity.Z), 194.0f, FLinearColor(0.75f, 0.75f, 0.85f));
 	}
 	if (Subsystem->GetMiningTruck())
 	{
 		DrawPanelLine(FString::Printf(TEXT("Truck total: %.1f t"),
-			Subsystem->GetMiningTruck()->Cargo->CurrentMassKg / 1000.0f), 174.0f);
+			Subsystem->GetMiningTruck()->Cargo->CurrentMassKg / 1000.0f), 222.0f);
 	}
-	DrawPanelLine(FString::Printf(TEXT("Delivered: %.2f t"), Subsystem->GetDeliveredMassKg() / 1000.0f), 202.0f,
+	DrawPanelLine(FString::Printf(TEXT("Delivered: %.2f t"), Subsystem->GetDeliveredMassKg() / 1000.0f), 250.0f,
 		FLinearColor(0.35f, 1.0f, 0.45f));
-	DrawPanelLine(TEXT("Ctrl+1/2 or V: switch vehicle"), 230.0f, FLinearColor(0.65f, 0.65f, 0.65f));
+	DrawPanelLine(FString::Printf(TEXT("TCP: %s"),
+		Subsystem->IsTcpServerRunning() ? TEXT("running (:17000)") : TEXT("off (Quarry.Server.Start)")),
+		278.0f, FLinearColor(0.65f, 0.65f, 0.65f));
+	DrawPanelLine(TEXT("Ctrl+1/2 or V: switch vehicle"), 306.0f, FLinearColor(0.65f, 0.65f, 0.65f));
 
 	DrawRect(FLinearColor(0.015f, 0.02f, 0.025f, 0.78f), 20.0f, Canvas->SizeY - 82.0f, 850.0f, 60.0f);
 	DrawText(TEXT("W/S drive  A/D steer  Space brake  Shift parking  Mouse camera"),

@@ -9,6 +9,7 @@ class AQuarryMiningTruck;
 class UInputAction;
 class UQuarryBlockoutComponent;
 class UQuarryCargoComponent;
+class UQuarryVehicleMeshComponent;
 class USceneComponent;
 
 UENUM(BlueprintType)
@@ -52,6 +53,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Cargo")
 	TObjectPtr<UQuarryCargoComponent> BucketCargo;
 
+	/** Real track chains + road wheels from the ConstructionMachines pack. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Vehicle")
+	TObjectPtr<UQuarryVehicleMeshComponent> RealVehicleMesh;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Excavator")
 	float SlewSpeedDegreesPerSecond = 45.0f;
 
@@ -65,19 +70,44 @@ public:
 	float ScoopMassKg = 5000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Cargo", meta=(ClampMin="100.0"))
-	float WorkRadius = 400.0f;
+	float WorkRadius = 600.0f;
+
+	// --- Dig mechanics: rate scales with bucket tip speed, cut angle, and material hardness ---
+
+	/** Bucket tip speed below which the bucket cannot load material, cm/s. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Digging")
+	float MinDigSpeedCmS = 60.0f;
+
+	/** Bucket tip speed at which the dig rate reaches 100%, cm/s. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Digging")
+	float OptimalDigSpeedCmS = 350.0f;
+
+	/** World pitch of the bucket that gives the best cut, degrees. Negative = teeth bite downward, which is what a real dig pose reaches. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Digging")
+	float OptimalCutAngleDeg = -10.0f;
+
+	/** Cut angle error at which digging efficiency reaches zero, degrees. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Digging")
+	float CutAngleToleranceDeg = 30.0f;
+
+	/** Smoothed bucket tip speed for dig mechanics, cm/s. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Digging")
+	float BucketTipSpeedCmS = 0.0f;
+
+	/** Dig-sample location: the real FK bucket tip when available, else BucketTip. */
+	FVector GetDigSampleLocation() const;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Excavator")
 	float SlewAngle = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Excavator")
-	float BoomAngle = -10.0f;
+	float BoomAngle = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Excavator")
-	float StickAngle = -25.0f;
+	float StickAngle = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Excavator")
-	float BucketAngle = 15.0f;
+	float BucketAngle = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Cargo")
 	EQuarryExcavatorWorkState WorkState = EQuarryExcavatorWorkState::Idle;
@@ -99,6 +129,17 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Cargo")
 	float DumpIntoNearestTruck();
+
+	/** Remote actuator control (protocol/TCP path); each axis clamped to [-1, 1]. */
+	UFUNCTION(BlueprintCallable, Category="Quarry|Remote")
+	void ApplyActuatorCommands(float Slew, float Boom, float Stick, float Bucket);
+
+	/** Hold-to-dig / hold-to-dump semantics for remote control. */
+	UFUNCTION(BlueprintCallable, Category="Quarry|Remote")
+	void SetDiggingActive(bool bActive);
+
+	UFUNCTION(BlueprintCallable, Category="Quarry|Remote")
+	void SetDumpingActive(bool bActive);
 
 	UFUNCTION(BlueprintPure, Category="Cargo")
 	FString GetOperationStatus() const { return OperationStatus; }
@@ -130,6 +171,7 @@ private:
 	void HandleStick(const FInputActionValue& Value);
 	void HandleBucket(const FInputActionValue& Value);
 	void TickWork(float DeltaSeconds);
+	float ComputeDigEfficiency() const;
 	AQuarryMaterialPile* FindNearestPile(float Radius) const;
 	AQuarryMiningTruck* FindNearestTruck(float Radius) const;
 
@@ -141,6 +183,9 @@ private:
 	float StickCommand = 0.0f;
 	float BucketCommand = 0.0f;
 	FString OperationStatus = TEXT("READY");
+	FVector LastTipLocation = FVector::ZeroVector;
+	bool bHasLastTipLocation = false;
+	TArray<TObjectPtr<UPrimitiveComponent>> ReplacedVisualParts; // blockout tracks hidden when real meshes load
 
 	UPROPERTY(Transient)
 	TObjectPtr<AQuarryMaterialPile> WorkPile = nullptr;

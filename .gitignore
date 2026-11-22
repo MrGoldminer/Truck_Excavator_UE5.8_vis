@@ -21,3 +21,4 @@ Content/Levels/*
 !Content/Materials/
 Content/Materials/*
 !Content/Materials/M_QuarryBlockout.uasset
+__pycache__/

@@ -8,6 +8,7 @@ class AQuarryMaterialPile;
 class UInputAction;
 class UQuarryBlockoutComponent;
 class UQuarryCargoComponent;
+class UQuarryVehicleMeshComponent;
 class USceneComponent;
 
 UCLASS(Blueprintable)
@@ -36,6 +37,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Cargo")
 	TObjectPtr<UQuarryCargoComponent> Cargo;
+
+	/** Real skeletal-mesh body (engine free content) replacing the blockout cab. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Vehicle")
+	TObjectPtr<UQuarryVehicleMeshComponent> RealVehicleMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Cargo")
 	float UnloadRadius = 500.0f;
@@ -68,6 +73,9 @@ protected:
 	virtual void CreateDefaultInputMappings() override;
 
 private:
+	// Blockout parts hidden when the real mesh loads (cubes + hub cylinders).
+	TArray<TObjectPtr<UPrimitiveComponent>> ReplacedVisualParts;
+
 	AQuarryMaterialPile* FindUnloadPile() const;
 
 	UFUNCTION()

@@ -12,6 +12,7 @@
 #include "InputMappingContext.h"
 #include "InputModifiers.h"
 #include "QuarryCollisionChannels.h"
+#include "Sensors/QuarryImuSensorComponent.h"
 #include "Vehicles/QuarryVehicleMovementComponent.h"
 
 namespace
@@ -44,8 +45,10 @@ AQuarryVehiclePawn::AQuarryVehiclePawn()
 		Chassis->SetCollisionResponseToChannel(QuarryCollision::Terrain, ECR_Ignore);
 		Chassis->SetSimulatePhysics(true);
 		Chassis->SetUseCCD(true);
-		Chassis->SetLinearDamping(0.08f);
-		Chassis->SetAngularDamping(2.0f);
+		// Light damping: rolling resistance, aero drag, and anti-roll bars are
+		// modelled explicitly by the force-driven movement component.
+		Chassis->SetLinearDamping(0.02f);
+		Chassis->SetAngularDamping(0.8f);
 	}
 
 	VisualRoot = CreateDefaultSubobject<USceneComponent>(TEXT("VisualRoot"));
@@ -54,11 +57,18 @@ AQuarryVehiclePawn::AQuarryVehiclePawn()
 	VehicleMovement = CreateDefaultSubobject<UQuarryVehicleMovementComponent>(TEXT("VehicleMovement"));
 	VehicleMovement->ConfigureChassis(Chassis);
 
+	ImuSensor = CreateDefaultSubobject<UQuarryImuSensorComponent>(TEXT("ImuSensor"));
+
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(Chassis);
 	CameraBoom->TargetArmLength = 1000.0f;
 	CameraBoom->SetRelativeRotation(FRotator(-20.0f, 0.0f, 0.0f));
 	CameraBoom->bUsePawnControlRotation = true;
+	// Horizon-style smooth chase: lagged spring arm, wider cinematic FOV.
+	CameraBoom->bEnableCameraLag = true;
+	CameraBoom->CameraLagSpeed = 14.0f;
+	CameraBoom->bEnableCameraRotationLag = true;
+	CameraBoom->CameraRotationLagSpeed = 10.0f;
 
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
@@ -71,9 +81,17 @@ UPawnMovementComponent* AQuarryVehiclePawn::GetMovementComponent() const
 	return VehicleMovement;
 }
 
+void AQuarryVehiclePawn::BeginPlay()
+{
+	Super::BeginPlay();
+	// Park spawned vehicles until a driver takes over.
+	SetParkingBrake(true);
+}
+
 void AQuarryVehiclePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	SetParkingBrake(false);
 	if (!DrivingContext)
 	{
 		DrivingContext = NewObject<UInputMappingContext>(this, TEXT("QuarryDrivingContext"));

@@ -61,6 +61,14 @@ class CargoTelemetry;
 struct CargoTelemetryDefaultTypeInternal;
 extern CargoTelemetryDefaultTypeInternal _CargoTelemetry_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull CargoTelemetry_class_data_;
+class ExcavatorCommand;
+struct ExcavatorCommandDefaultTypeInternal;
+extern ExcavatorCommandDefaultTypeInternal _ExcavatorCommand_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull ExcavatorCommand_class_data_;
+class ImuTelemetry;
+struct ImuTelemetryDefaultTypeInternal;
+extern ImuTelemetryDefaultTypeInternal _ImuTelemetry_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull ImuTelemetry_class_data_;
 class QuarryConfig;
 struct QuarryConfigDefaultTypeInternal;
 extern QuarryConfigDefaultTypeInternal _QuarryConfig_default_instance_;
@@ -69,6 +77,10 @@ class QuarryTelemetry;
 struct QuarryTelemetryDefaultTypeInternal;
 extern QuarryTelemetryDefaultTypeInternal _QuarryTelemetry_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull QuarryTelemetry_class_data_;
+class Quaternion;
+struct QuaternionDefaultTypeInternal;
+extern QuaternionDefaultTypeInternal _Quaternion_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull Quaternion_class_data_;
 class Vector3;
 struct Vector3DefaultTypeInternal;
 extern Vector3DefaultTypeInternal _Vector3_default_instance_;
@@ -85,6 +97,10 @@ class VehicleTelemetry;
 struct VehicleTelemetryDefaultTypeInternal;
 extern VehicleTelemetryDefaultTypeInternal _VehicleTelemetry_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull VehicleTelemetry_class_data_;
+class WheelTelemetry;
+struct WheelTelemetryDefaultTypeInternal;
+extern WheelTelemetryDefaultTypeInternal _WheelTelemetry_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull WheelTelemetry_class_data_;
 }  // namespace v1
 }  // namespace quarryworks
 namespace google {
@@ -139,6 +155,281 @@ inline bool MaterialType_Parse(
 // ===================================================================
 
 
+// -------------------------------------------------------------------
+
+class WheelTelemetry final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:quarryworks.v1.WheelTelemetry) */ {
+ public:
+  inline WheelTelemetry() : WheelTelemetry(nullptr) {}
+  ~WheelTelemetry() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(WheelTelemetry* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(WheelTelemetry));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR WheelTelemetry(::google::protobuf::internal::ConstantInitialized);
+
+  inline WheelTelemetry(const WheelTelemetry& from) : WheelTelemetry(nullptr, from) {}
+  inline WheelTelemetry(WheelTelemetry&& from) noexcept
+      : WheelTelemetry(nullptr, std::move(from)) {}
+  inline WheelTelemetry& operator=(const WheelTelemetry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline WheelTelemetry& operator=(WheelTelemetry&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const WheelTelemetry& default_instance() {
+    return *reinterpret_cast<const WheelTelemetry*>(
+        &_WheelTelemetry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 5;
+  friend void swap(WheelTelemetry& a, WheelTelemetry& b) { a.Swap(&b); }
+  inline void Swap(WheelTelemetry* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(WheelTelemetry* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  WheelTelemetry* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<WheelTelemetry>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const WheelTelemetry& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const WheelTelemetry& from) { WheelTelemetry::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(WheelTelemetry* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "quarryworks.v1.WheelTelemetry"; }
+
+ protected:
+  explicit WheelTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  WheelTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const WheelTelemetry& from);
+  WheelTelemetry(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, WheelTelemetry&& from) noexcept
+      : WheelTelemetry(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kSlipRatioFieldNumber = 1,
+    kSlipAngleRadFieldNumber = 2,
+    kLoadNFieldNumber = 3,
+    kAngularVelocityRadSFieldNumber = 4,
+    kLongitudinalForceNFieldNumber = 5,
+    kLateralForceNFieldNumber = 6,
+    kContactFrictionFieldNumber = 7,
+    kInContactFieldNumber = 8,
+  };
+  // float slip_ratio = 1;
+  void clear_slip_ratio() ;
+  float slip_ratio() const;
+  void set_slip_ratio(float value);
+
+  private:
+  float _internal_slip_ratio() const;
+  void _internal_set_slip_ratio(float value);
+
+  public:
+  // float slip_angle_rad = 2;
+  void clear_slip_angle_rad() ;
+  float slip_angle_rad() const;
+  void set_slip_angle_rad(float value);
+
+  private:
+  float _internal_slip_angle_rad() const;
+  void _internal_set_slip_angle_rad(float value);
+
+  public:
+  // double load_n = 3;
+  void clear_load_n() ;
+  double load_n() const;
+  void set_load_n(double value);
+
+  private:
+  double _internal_load_n() const;
+  void _internal_set_load_n(double value);
+
+  public:
+  // float angular_velocity_rad_s = 4;
+  void clear_angular_velocity_rad_s() ;
+  float angular_velocity_rad_s() const;
+  void set_angular_velocity_rad_s(float value);
+
+  private:
+  float _internal_angular_velocity_rad_s() const;
+  void _internal_set_angular_velocity_rad_s(float value);
+
+  public:
+  // float longitudinal_force_n = 5;
+  void clear_longitudinal_force_n() ;
+  float longitudinal_force_n() const;
+  void set_longitudinal_force_n(float value);
+
+  private:
+  float _internal_longitudinal_force_n() const;
+  void _internal_set_longitudinal_force_n(float value);
+
+  public:
+  // float lateral_force_n = 6;
+  void clear_lateral_force_n() ;
+  float lateral_force_n() const;
+  void set_lateral_force_n(float value);
+
+  private:
+  float _internal_lateral_force_n() const;
+  void _internal_set_lateral_force_n(float value);
+
+  public:
+  // float contact_friction = 7;
+  void clear_contact_friction() ;
+  float contact_friction() const;
+  void set_contact_friction(float value);
+
+  private:
+  float _internal_contact_friction() const;
+  void _internal_set_contact_friction(float value);
+
+  public:
+  // bool in_contact = 8;
+  void clear_in_contact() ;
+  bool in_contact() const;
+  void set_in_contact(bool value);
+
+  private:
+  bool _internal_in_contact() const;
+  void _internal_set_in_contact(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:quarryworks.v1.WheelTelemetry)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 8,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const WheelTelemetry& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    float slip_ratio_;
+    float slip_angle_rad_;
+    double load_n_;
+    float angular_velocity_rad_s_;
+    float longitudinal_force_n_;
+    float lateral_force_n_;
+    float contact_friction_;
+    bool in_contact_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quarryworks_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull WheelTelemetry_class_data_;
 // -------------------------------------------------------------------
 
 class VehicleConfig final : public ::google::protobuf::Message
@@ -291,6 +582,11 @@ class VehicleConfig final : public ::google::protobuf::Message
     kMaxReverseSpeedCmSFieldNumber = 5,
     kCargoCapacityKgFieldNumber = 6,
     kWorkRateKgSFieldNumber = 7,
+    kEnginePeakTorqueNmFieldNumber = 8,
+    kTireFrictionFieldNumber = 9,
+    kLooseMaterialFrictionFieldNumber = 10,
+    kTrackYawRateDegSFieldNumber = 11,
+    kLegacyKinematicFieldNumber = 12,
   };
   // double base_mass_kg = 1;
   void clear_base_mass_kg() ;
@@ -362,11 +658,61 @@ class VehicleConfig final : public ::google::protobuf::Message
   void _internal_set_work_rate_kg_s(double value);
 
   public:
+  // double engine_peak_torque_nm = 8;
+  void clear_engine_peak_torque_nm() ;
+  double engine_peak_torque_nm() const;
+  void set_engine_peak_torque_nm(double value);
+
+  private:
+  double _internal_engine_peak_torque_nm() const;
+  void _internal_set_engine_peak_torque_nm(double value);
+
+  public:
+  // double tire_friction = 9;
+  void clear_tire_friction() ;
+  double tire_friction() const;
+  void set_tire_friction(double value);
+
+  private:
+  double _internal_tire_friction() const;
+  void _internal_set_tire_friction(double value);
+
+  public:
+  // double loose_material_friction = 10;
+  void clear_loose_material_friction() ;
+  double loose_material_friction() const;
+  void set_loose_material_friction(double value);
+
+  private:
+  double _internal_loose_material_friction() const;
+  void _internal_set_loose_material_friction(double value);
+
+  public:
+  // double track_yaw_rate_deg_s = 11;
+  void clear_track_yaw_rate_deg_s() ;
+  double track_yaw_rate_deg_s() const;
+  void set_track_yaw_rate_deg_s(double value);
+
+  private:
+  double _internal_track_yaw_rate_deg_s() const;
+  void _internal_set_track_yaw_rate_deg_s(double value);
+
+  public:
+  // bool legacy_kinematic = 12;
+  void clear_legacy_kinematic() ;
+  bool legacy_kinematic() const;
+  void set_legacy_kinematic(bool value);
+
+  private:
+  bool _internal_legacy_kinematic() const;
+  void _internal_set_legacy_kinematic(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:quarryworks.v1.VehicleConfig)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 7,
+  static const ::google::protobuf::internal::TcParseTable<4, 12,
                                    0, 0,
                                    2>
       _table_;
@@ -395,6 +741,11 @@ class VehicleConfig final : public ::google::protobuf::Message
     double max_reverse_speed_cm_s_;
     double cargo_capacity_kg_;
     double work_rate_kg_s_;
+    double engine_peak_torque_nm_;
+    double tire_friction_;
+    double loose_material_friction_;
+    double track_yaw_rate_deg_s_;
+    bool legacy_kinematic_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -402,250 +753,6 @@ class VehicleConfig final : public ::google::protobuf::Message
 };
 
 extern const ::google::protobuf::internal::ClassDataFull VehicleConfig_class_data_;
-// -------------------------------------------------------------------
-
-class VehicleCommand final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:quarryworks.v1.VehicleCommand) */ {
- public:
-  inline VehicleCommand() : VehicleCommand(nullptr) {}
-  ~VehicleCommand() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(VehicleCommand* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(VehicleCommand));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR VehicleCommand(::google::protobuf::internal::ConstantInitialized);
-
-  inline VehicleCommand(const VehicleCommand& from) : VehicleCommand(nullptr, from) {}
-  inline VehicleCommand(VehicleCommand&& from) noexcept
-      : VehicleCommand(nullptr, std::move(from)) {}
-  inline VehicleCommand& operator=(const VehicleCommand& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline VehicleCommand& operator=(VehicleCommand&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const VehicleCommand& default_instance() {
-    return *reinterpret_cast<const VehicleCommand*>(
-        &_VehicleCommand_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 2;
-  friend void swap(VehicleCommand& a, VehicleCommand& b) { a.Swap(&b); }
-  inline void Swap(VehicleCommand* PROTOBUF_NONNULL other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(VehicleCommand* PROTOBUF_NONNULL other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  VehicleCommand* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<VehicleCommand>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const VehicleCommand& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const VehicleCommand& from) { VehicleCommand::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
-                        const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
-      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
-      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
-      ::uint8_t* PROTOBUF_NONNULL target,
-      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
-      ::uint8_t* PROTOBUF_NONNULL target,
-      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(VehicleCommand* PROTOBUF_NONNULL other);
- private:
-  template <typename T>
-  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "quarryworks.v1.VehicleCommand"; }
-
- protected:
-  explicit VehicleCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  VehicleCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const VehicleCommand& from);
-  VehicleCommand(
-      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, VehicleCommand&& from) noexcept
-      : VehicleCommand(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
-  static void* PROTOBUF_NONNULL PlacementNew_(
-      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
-      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  static constexpr auto InternalNewImpl_();
-
- public:
-  static constexpr auto InternalGenerateClassData_();
-
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kVehicleIdFieldNumber = 1,
-    kThrottleFieldNumber = 2,
-    kSteeringFieldNumber = 3,
-    kServiceBrakeFieldNumber = 4,
-    kParkingBrakeFieldNumber = 5,
-  };
-  // string vehicle_id = 1;
-  void clear_vehicle_id() ;
-  const std::string& vehicle_id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_vehicle_id(Arg_&& arg, Args_... args);
-  std::string* PROTOBUF_NONNULL mutable_vehicle_id();
-  [[nodiscard]] std::string* PROTOBUF_NULLABLE release_vehicle_id();
-  void set_allocated_vehicle_id(std::string* PROTOBUF_NULLABLE value);
-
-  private:
-  const std::string& _internal_vehicle_id() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_vehicle_id(const std::string& value);
-  std::string* PROTOBUF_NONNULL _internal_mutable_vehicle_id();
-
-  public:
-  // double throttle = 2;
-  void clear_throttle() ;
-  double throttle() const;
-  void set_throttle(double value);
-
-  private:
-  double _internal_throttle() const;
-  void _internal_set_throttle(double value);
-
-  public:
-  // double steering = 3;
-  void clear_steering() ;
-  double steering() const;
-  void set_steering(double value);
-
-  private:
-  double _internal_steering() const;
-  void _internal_set_steering(double value);
-
-  public:
-  // double service_brake = 4;
-  void clear_service_brake() ;
-  double service_brake() const;
-  void set_service_brake(double value);
-
-  private:
-  double _internal_service_brake() const;
-  void _internal_set_service_brake(double value);
-
-  public:
-  // bool parking_brake = 5;
-  void clear_parking_brake() ;
-  bool parking_brake() const;
-  void set_parking_brake(bool value);
-
-  private:
-  bool _internal_parking_brake() const;
-  void _internal_set_parking_brake(bool value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:quarryworks.v1.VehicleCommand)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 48,
-                                   2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(
-        ::google::protobuf::internal::InternalVisibility visibility,
-        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-    inline explicit Impl_(
-        ::google::protobuf::internal::InternalVisibility visibility,
-        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-        const VehicleCommand& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::internal::ArenaStringPtr vehicle_id_;
-    double throttle_;
-    double steering_;
-    double service_brake_;
-    bool parking_brake_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_quarryworks_2eproto;
-};
-
-extern const ::google::protobuf::internal::ClassDataFull VehicleCommand_class_data_;
 // -------------------------------------------------------------------
 
 class Vector3 final : public ::google::protobuf::Message
@@ -703,7 +810,7 @@ class Vector3 final : public ::google::protobuf::Message
     return *reinterpret_cast<const Vector3*>(
         &_Vector3_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(Vector3& a, Vector3& b) { a.Swap(&b); }
   inline void Swap(Vector3* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -861,6 +968,484 @@ class Vector3 final : public ::google::protobuf::Message
 };
 
 extern const ::google::protobuf::internal::ClassDataFull Vector3_class_data_;
+// -------------------------------------------------------------------
+
+class Quaternion final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:quarryworks.v1.Quaternion) */ {
+ public:
+  inline Quaternion() : Quaternion(nullptr) {}
+  ~Quaternion() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Quaternion* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Quaternion));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Quaternion(::google::protobuf::internal::ConstantInitialized);
+
+  inline Quaternion(const Quaternion& from) : Quaternion(nullptr, from) {}
+  inline Quaternion(Quaternion&& from) noexcept
+      : Quaternion(nullptr, std::move(from)) {}
+  inline Quaternion& operator=(const Quaternion& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Quaternion& operator=(Quaternion&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Quaternion& default_instance() {
+    return *reinterpret_cast<const Quaternion*>(
+        &_Quaternion_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 3;
+  friend void swap(Quaternion& a, Quaternion& b) { a.Swap(&b); }
+  inline void Swap(Quaternion* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Quaternion* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Quaternion* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Quaternion>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Quaternion& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Quaternion& from) { Quaternion::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Quaternion* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "quarryworks.v1.Quaternion"; }
+
+ protected:
+  explicit Quaternion(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  Quaternion(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Quaternion& from);
+  Quaternion(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, Quaternion&& from) noexcept
+      : Quaternion(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kWFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+  };
+  // double w = 1;
+  void clear_w() ;
+  double w() const;
+  void set_w(double value);
+
+  private:
+  double _internal_w() const;
+  void _internal_set_w(double value);
+
+  public:
+  // double x = 2;
+  void clear_x() ;
+  double x() const;
+  void set_x(double value);
+
+  private:
+  double _internal_x() const;
+  void _internal_set_x(double value);
+
+  public:
+  // double y = 3;
+  void clear_y() ;
+  double y() const;
+  void set_y(double value);
+
+  private:
+  double _internal_y() const;
+  void _internal_set_y(double value);
+
+  public:
+  // double z = 4;
+  void clear_z() ;
+  double z() const;
+  void set_z(double value);
+
+  private:
+  double _internal_z() const;
+  void _internal_set_z(double value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:quarryworks.v1.Quaternion)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 4,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const Quaternion& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    double w_;
+    double x_;
+    double y_;
+    double z_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quarryworks_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull Quaternion_class_data_;
+// -------------------------------------------------------------------
+
+class ExcavatorCommand final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:quarryworks.v1.ExcavatorCommand) */ {
+ public:
+  inline ExcavatorCommand() : ExcavatorCommand(nullptr) {}
+  ~ExcavatorCommand() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ExcavatorCommand* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ExcavatorCommand));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ExcavatorCommand(::google::protobuf::internal::ConstantInitialized);
+
+  inline ExcavatorCommand(const ExcavatorCommand& from) : ExcavatorCommand(nullptr, from) {}
+  inline ExcavatorCommand(ExcavatorCommand&& from) noexcept
+      : ExcavatorCommand(nullptr, std::move(from)) {}
+  inline ExcavatorCommand& operator=(const ExcavatorCommand& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExcavatorCommand& operator=(ExcavatorCommand&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExcavatorCommand& default_instance() {
+    return *reinterpret_cast<const ExcavatorCommand*>(
+        &_ExcavatorCommand_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 7;
+  friend void swap(ExcavatorCommand& a, ExcavatorCommand& b) { a.Swap(&b); }
+  inline void Swap(ExcavatorCommand* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExcavatorCommand* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExcavatorCommand* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ExcavatorCommand>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ExcavatorCommand& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ExcavatorCommand& from) { ExcavatorCommand::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ExcavatorCommand* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "quarryworks.v1.ExcavatorCommand"; }
+
+ protected:
+  explicit ExcavatorCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  ExcavatorCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ExcavatorCommand& from);
+  ExcavatorCommand(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, ExcavatorCommand&& from) noexcept
+      : ExcavatorCommand(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kSlewFieldNumber = 1,
+    kBoomFieldNumber = 2,
+    kStickFieldNumber = 3,
+    kBucketFieldNumber = 4,
+    kDigFieldNumber = 5,
+    kDumpFieldNumber = 6,
+  };
+  // double slew = 1;
+  void clear_slew() ;
+  double slew() const;
+  void set_slew(double value);
+
+  private:
+  double _internal_slew() const;
+  void _internal_set_slew(double value);
+
+  public:
+  // double boom = 2;
+  void clear_boom() ;
+  double boom() const;
+  void set_boom(double value);
+
+  private:
+  double _internal_boom() const;
+  void _internal_set_boom(double value);
+
+  public:
+  // double stick = 3;
+  void clear_stick() ;
+  double stick() const;
+  void set_stick(double value);
+
+  private:
+  double _internal_stick() const;
+  void _internal_set_stick(double value);
+
+  public:
+  // double bucket = 4;
+  void clear_bucket() ;
+  double bucket() const;
+  void set_bucket(double value);
+
+  private:
+  double _internal_bucket() const;
+  void _internal_set_bucket(double value);
+
+  public:
+  // bool dig = 5;
+  void clear_dig() ;
+  bool dig() const;
+  void set_dig(bool value);
+
+  private:
+  bool _internal_dig() const;
+  void _internal_set_dig(bool value);
+
+  public:
+  // bool dump = 6;
+  void clear_dump() ;
+  bool dump() const;
+  void set_dump(bool value);
+
+  private:
+  bool _internal_dump() const;
+  void _internal_set_dump(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:quarryworks.v1.ExcavatorCommand)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 6,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const ExcavatorCommand& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    double slew_;
+    double boom_;
+    double stick_;
+    double bucket_;
+    bool dig_;
+    bool dump_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quarryworks_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull ExcavatorCommand_class_data_;
 // -------------------------------------------------------------------
 
 class CargoTelemetry final : public ::google::protobuf::Message
@@ -1078,30 +1663,30 @@ class CargoTelemetry final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull CargoTelemetry_class_data_;
 // -------------------------------------------------------------------
 
-class VehicleTelemetry final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:quarryworks.v1.VehicleTelemetry) */ {
+class VehicleCommand final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:quarryworks.v1.VehicleCommand) */ {
  public:
-  inline VehicleTelemetry() : VehicleTelemetry(nullptr) {}
-  ~VehicleTelemetry() PROTOBUF_FINAL;
+  inline VehicleCommand() : VehicleCommand(nullptr) {}
+  ~VehicleCommand() PROTOBUF_FINAL;
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(VehicleTelemetry* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+  void operator delete(VehicleCommand* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
     SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(VehicleTelemetry));
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(VehicleCommand));
   }
 #endif
 
   template <typename = void>
-  explicit PROTOBUF_CONSTEXPR VehicleTelemetry(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR VehicleCommand(::google::protobuf::internal::ConstantInitialized);
 
-  inline VehicleTelemetry(const VehicleTelemetry& from) : VehicleTelemetry(nullptr, from) {}
-  inline VehicleTelemetry(VehicleTelemetry&& from) noexcept
-      : VehicleTelemetry(nullptr, std::move(from)) {}
-  inline VehicleTelemetry& operator=(const VehicleTelemetry& from) {
+  inline VehicleCommand(const VehicleCommand& from) : VehicleCommand(nullptr, from) {}
+  inline VehicleCommand(VehicleCommand&& from) noexcept
+      : VehicleCommand(nullptr, std::move(from)) {}
+  inline VehicleCommand& operator=(const VehicleCommand& from) {
     CopyFrom(from);
     return *this;
   }
-  inline VehicleTelemetry& operator=(VehicleTelemetry&& from) noexcept {
+  inline VehicleCommand& operator=(VehicleCommand&& from) noexcept {
     if (this == &from) return *this;
     if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
       InternalSwap(&from);
@@ -1129,13 +1714,13 @@ class VehicleTelemetry final : public ::google::protobuf::Message
   static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const VehicleTelemetry& default_instance() {
-    return *reinterpret_cast<const VehicleTelemetry*>(
-        &_VehicleTelemetry_default_instance_);
+  static const VehicleCommand& default_instance() {
+    return *reinterpret_cast<const VehicleCommand*>(
+        &_VehicleCommand_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
-  friend void swap(VehicleTelemetry& a, VehicleTelemetry& b) { a.Swap(&b); }
-  inline void Swap(VehicleTelemetry* PROTOBUF_NONNULL other) {
+  static constexpr int kIndexInFileMessages = 8;
+  friend void swap(VehicleCommand& a, VehicleCommand& b) { a.Swap(&b); }
+  inline void Swap(VehicleCommand* PROTOBUF_NONNULL other) {
     if (other == this) return;
     if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
       InternalSwap(other);
@@ -1143,7 +1728,7 @@ class VehicleTelemetry final : public ::google::protobuf::Message
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(VehicleTelemetry* PROTOBUF_NONNULL other) {
+  void UnsafeArenaSwap(VehicleCommand* PROTOBUF_NONNULL other) {
     if (other == this) return;
     ABSL_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -1151,13 +1736,13 @@ class VehicleTelemetry final : public ::google::protobuf::Message
 
   // implements Message ----------------------------------------------
 
-  VehicleTelemetry* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<VehicleTelemetry>(arena);
+  VehicleCommand* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<VehicleCommand>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const VehicleTelemetry& from);
+  void CopyFrom(const VehicleCommand& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const VehicleTelemetry& from) { VehicleTelemetry::MergeImpl(*this, from); }
+  void MergeFrom(const VehicleCommand& from) { VehicleCommand::MergeImpl(*this, from); }
 
   private:
   static void MergeImpl(::google::protobuf::MessageLite& to_msg,
@@ -1193,18 +1778,18 @@ class VehicleTelemetry final : public ::google::protobuf::Message
   private:
   void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   static void SharedDtor(MessageLite& self);
-  void InternalSwap(VehicleTelemetry* PROTOBUF_NONNULL other);
+  void InternalSwap(VehicleCommand* PROTOBUF_NONNULL other);
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "quarryworks.v1.VehicleTelemetry"; }
+  static ::absl::string_view FullMessageName() { return "quarryworks.v1.VehicleCommand"; }
 
  protected:
-  explicit VehicleTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  VehicleTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const VehicleTelemetry& from);
-  VehicleTelemetry(
-      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, VehicleTelemetry&& from) noexcept
-      : VehicleTelemetry(arena) {
+  explicit VehicleCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  VehicleCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const VehicleCommand& from);
+  VehicleCommand(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, VehicleCommand&& from) noexcept
+      : VehicleCommand(arena) {
     *this = ::std::move(from);
   }
   const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
@@ -1222,10 +1807,11 @@ class VehicleTelemetry final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kVehicleIdFieldNumber = 1,
-    kLocationCmFieldNumber = 2,
-    kCargoFieldNumber = 5,
-    kSpeedKmhFieldNumber = 3,
-    kParkingBrakeFieldNumber = 4,
+    kExcavatorFieldNumber = 6,
+    kThrottleFieldNumber = 2,
+    kSteeringFieldNumber = 3,
+    kServiceBrakeFieldNumber = 4,
+    kParkingBrakeFieldNumber = 5,
   };
   // string vehicle_id = 1;
   void clear_vehicle_id() ;
@@ -1242,47 +1828,52 @@ class VehicleTelemetry final : public ::google::protobuf::Message
   std::string* PROTOBUF_NONNULL _internal_mutable_vehicle_id();
 
   public:
-  // .quarryworks.v1.Vector3 location_cm = 2;
-  bool has_location_cm() const;
-  void clear_location_cm() ;
-  const ::quarryworks::v1::Vector3& location_cm() const;
-  [[nodiscard]] ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE release_location_cm();
-  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL mutable_location_cm();
-  void set_allocated_location_cm(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_location_cm(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
-  ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE unsafe_arena_release_location_cm();
+  // .quarryworks.v1.ExcavatorCommand excavator = 6;
+  bool has_excavator() const;
+  void clear_excavator() ;
+  const ::quarryworks::v1::ExcavatorCommand& excavator() const;
+  [[nodiscard]] ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE release_excavator();
+  ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NONNULL mutable_excavator();
+  void set_allocated_excavator(::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_excavator(::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE unsafe_arena_release_excavator();
 
   private:
-  const ::quarryworks::v1::Vector3& _internal_location_cm() const;
-  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL _internal_mutable_location_cm();
+  const ::quarryworks::v1::ExcavatorCommand& _internal_excavator() const;
+  ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NONNULL _internal_mutable_excavator();
 
   public:
-  // .quarryworks.v1.CargoTelemetry cargo = 5;
-  bool has_cargo() const;
-  void clear_cargo() ;
-  const ::quarryworks::v1::CargoTelemetry& cargo() const;
-  [[nodiscard]] ::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE release_cargo();
-  ::quarryworks::v1::CargoTelemetry* PROTOBUF_NONNULL mutable_cargo();
-  void set_allocated_cargo(::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_cargo(::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE value);
-  ::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE unsafe_arena_release_cargo();
+  // double throttle = 2;
+  void clear_throttle() ;
+  double throttle() const;
+  void set_throttle(double value);
 
   private:
-  const ::quarryworks::v1::CargoTelemetry& _internal_cargo() const;
-  ::quarryworks::v1::CargoTelemetry* PROTOBUF_NONNULL _internal_mutable_cargo();
+  double _internal_throttle() const;
+  void _internal_set_throttle(double value);
 
   public:
-  // double speed_kmh = 3;
-  void clear_speed_kmh() ;
-  double speed_kmh() const;
-  void set_speed_kmh(double value);
+  // double steering = 3;
+  void clear_steering() ;
+  double steering() const;
+  void set_steering(double value);
 
   private:
-  double _internal_speed_kmh() const;
-  void _internal_set_speed_kmh(double value);
+  double _internal_steering() const;
+  void _internal_set_steering(double value);
 
   public:
-  // bool parking_brake = 4;
+  // double service_brake = 4;
+  void clear_service_brake() ;
+  double service_brake() const;
+  void set_service_brake(double value);
+
+  private:
+  double _internal_service_brake() const;
+  void _internal_set_service_brake(double value);
+
+  public:
+  // bool parking_brake = 5;
   void clear_parking_brake() ;
   bool parking_brake() const;
   void set_parking_brake(bool value);
@@ -1292,12 +1883,12 @@ class VehicleTelemetry final : public ::google::protobuf::Message
   void _internal_set_parking_brake(bool value);
 
   public:
-  // @@protoc_insertion_point(class_scope:quarryworks.v1.VehicleTelemetry)
+  // @@protoc_insertion_point(class_scope:quarryworks.v1.VehicleCommand)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   2, 50,
+  static const ::google::protobuf::internal::TcParseTable<3, 6,
+                                   1, 48,
                                    2>
       _table_;
 
@@ -1315,13 +1906,14 @@ class VehicleTelemetry final : public ::google::protobuf::Message
     inline explicit Impl_(
         ::google::protobuf::internal::InternalVisibility visibility,
         ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-        const VehicleTelemetry& from_msg);
+        const VehicleCommand& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr vehicle_id_;
-    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE location_cm_;
-    ::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE cargo_;
-    double speed_kmh_;
+    ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE excavator_;
+    double throttle_;
+    double steering_;
+    double service_brake_;
     bool parking_brake_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1329,7 +1921,7 @@ class VehicleTelemetry final : public ::google::protobuf::Message
   friend struct ::TableStruct_quarryworks_2eproto;
 };
 
-extern const ::google::protobuf::internal::ClassDataFull VehicleTelemetry_class_data_;
+extern const ::google::protobuf::internal::ClassDataFull VehicleCommand_class_data_;
 // -------------------------------------------------------------------
 
 class QuarryConfig final : public ::google::protobuf::Message
@@ -1557,6 +2149,608 @@ class QuarryConfig final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull QuarryConfig_class_data_;
 // -------------------------------------------------------------------
 
+class ImuTelemetry final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:quarryworks.v1.ImuTelemetry) */ {
+ public:
+  inline ImuTelemetry() : ImuTelemetry(nullptr) {}
+  ~ImuTelemetry() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ImuTelemetry* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ImuTelemetry));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ImuTelemetry(::google::protobuf::internal::ConstantInitialized);
+
+  inline ImuTelemetry(const ImuTelemetry& from) : ImuTelemetry(nullptr, from) {}
+  inline ImuTelemetry(ImuTelemetry&& from) noexcept
+      : ImuTelemetry(nullptr, std::move(from)) {}
+  inline ImuTelemetry& operator=(const ImuTelemetry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ImuTelemetry& operator=(ImuTelemetry&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ImuTelemetry& default_instance() {
+    return *reinterpret_cast<const ImuTelemetry*>(
+        &_ImuTelemetry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(ImuTelemetry& a, ImuTelemetry& b) { a.Swap(&b); }
+  inline void Swap(ImuTelemetry* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ImuTelemetry* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ImuTelemetry* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ImuTelemetry>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ImuTelemetry& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ImuTelemetry& from) { ImuTelemetry::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ImuTelemetry* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "quarryworks.v1.ImuTelemetry"; }
+
+ protected:
+  explicit ImuTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  ImuTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ImuTelemetry& from);
+  ImuTelemetry(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, ImuTelemetry&& from) noexcept
+      : ImuTelemetry(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kSpecificForceMS2FieldNumber = 1,
+    kAngularVelocityRadSFieldNumber = 2,
+  };
+  // .quarryworks.v1.Vector3 specific_force_m_s2 = 1;
+  bool has_specific_force_m_s2() const;
+  void clear_specific_force_m_s2() ;
+  const ::quarryworks::v1::Vector3& specific_force_m_s2() const;
+  [[nodiscard]] ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE release_specific_force_m_s2();
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL mutable_specific_force_m_s2();
+  void set_allocated_specific_force_m_s2(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_specific_force_m_s2(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE unsafe_arena_release_specific_force_m_s2();
+
+  private:
+  const ::quarryworks::v1::Vector3& _internal_specific_force_m_s2() const;
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL _internal_mutable_specific_force_m_s2();
+
+  public:
+  // .quarryworks.v1.Vector3 angular_velocity_rad_s = 2;
+  bool has_angular_velocity_rad_s() const;
+  void clear_angular_velocity_rad_s() ;
+  const ::quarryworks::v1::Vector3& angular_velocity_rad_s() const;
+  [[nodiscard]] ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE release_angular_velocity_rad_s();
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL mutable_angular_velocity_rad_s();
+  void set_allocated_angular_velocity_rad_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_angular_velocity_rad_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE unsafe_arena_release_angular_velocity_rad_s();
+
+  private:
+  const ::quarryworks::v1::Vector3& _internal_angular_velocity_rad_s() const;
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL _internal_mutable_angular_velocity_rad_s();
+
+  public:
+  // @@protoc_insertion_point(class_scope:quarryworks.v1.ImuTelemetry)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2,
+                                   2, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const ImuTelemetry& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE specific_force_m_s2_;
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE angular_velocity_rad_s_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quarryworks_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull ImuTelemetry_class_data_;
+// -------------------------------------------------------------------
+
+class VehicleTelemetry final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:quarryworks.v1.VehicleTelemetry) */ {
+ public:
+  inline VehicleTelemetry() : VehicleTelemetry(nullptr) {}
+  ~VehicleTelemetry() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(VehicleTelemetry* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(VehicleTelemetry));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR VehicleTelemetry(::google::protobuf::internal::ConstantInitialized);
+
+  inline VehicleTelemetry(const VehicleTelemetry& from) : VehicleTelemetry(nullptr, from) {}
+  inline VehicleTelemetry(VehicleTelemetry&& from) noexcept
+      : VehicleTelemetry(nullptr, std::move(from)) {}
+  inline VehicleTelemetry& operator=(const VehicleTelemetry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline VehicleTelemetry& operator=(VehicleTelemetry&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const VehicleTelemetry& default_instance() {
+    return *reinterpret_cast<const VehicleTelemetry*>(
+        &_VehicleTelemetry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 9;
+  friend void swap(VehicleTelemetry& a, VehicleTelemetry& b) { a.Swap(&b); }
+  inline void Swap(VehicleTelemetry* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(VehicleTelemetry* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  VehicleTelemetry* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<VehicleTelemetry>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const VehicleTelemetry& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const VehicleTelemetry& from) { VehicleTelemetry::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(VehicleTelemetry* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "quarryworks.v1.VehicleTelemetry"; }
+
+ protected:
+  explicit VehicleTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  VehicleTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const VehicleTelemetry& from);
+  VehicleTelemetry(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, VehicleTelemetry&& from) noexcept
+      : VehicleTelemetry(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kWheelsFieldNumber = 14,
+    kVehicleIdFieldNumber = 1,
+    kLocationCmFieldNumber = 2,
+    kCargoFieldNumber = 5,
+    kOrientationFieldNumber = 6,
+    kVelocityCmSFieldNumber = 7,
+    kAngularVelocityRadSFieldNumber = 8,
+    kImuFieldNumber = 9,
+    kSpeedKmhFieldNumber = 3,
+    kParkingBrakeFieldNumber = 4,
+    kAnyWheelSlippingFieldNumber = 13,
+    kGearFieldNumber = 11,
+    kEngineRpmFieldNumber = 10,
+    kGroundedWheelCountFieldNumber = 12,
+  };
+  // repeated .quarryworks.v1.WheelTelemetry wheels = 14;
+  int wheels_size() const;
+  private:
+  int _internal_wheels_size() const;
+
+  public:
+  void clear_wheels() ;
+  ::quarryworks::v1::WheelTelemetry* PROTOBUF_NONNULL mutable_wheels(int index);
+  ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>* PROTOBUF_NONNULL mutable_wheels();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>& _internal_wheels() const;
+  ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>* PROTOBUF_NONNULL _internal_mutable_wheels();
+  public:
+  const ::quarryworks::v1::WheelTelemetry& wheels(int index) const;
+  ::quarryworks::v1::WheelTelemetry* PROTOBUF_NONNULL add_wheels();
+  const ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>& wheels() const;
+  // string vehicle_id = 1;
+  void clear_vehicle_id() ;
+  const std::string& vehicle_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_vehicle_id(Arg_&& arg, Args_... args);
+  std::string* PROTOBUF_NONNULL mutable_vehicle_id();
+  [[nodiscard]] std::string* PROTOBUF_NULLABLE release_vehicle_id();
+  void set_allocated_vehicle_id(std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const std::string& _internal_vehicle_id() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_vehicle_id(const std::string& value);
+  std::string* PROTOBUF_NONNULL _internal_mutable_vehicle_id();
+
+  public:
+  // .quarryworks.v1.Vector3 location_cm = 2;
+  bool has_location_cm() const;
+  void clear_location_cm() ;
+  const ::quarryworks::v1::Vector3& location_cm() const;
+  [[nodiscard]] ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE release_location_cm();
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL mutable_location_cm();
+  void set_allocated_location_cm(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_location_cm(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE unsafe_arena_release_location_cm();
+
+  private:
+  const ::quarryworks::v1::Vector3& _internal_location_cm() const;
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL _internal_mutable_location_cm();
+
+  public:
+  // .quarryworks.v1.CargoTelemetry cargo = 5;
+  bool has_cargo() const;
+  void clear_cargo() ;
+  const ::quarryworks::v1::CargoTelemetry& cargo() const;
+  [[nodiscard]] ::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE release_cargo();
+  ::quarryworks::v1::CargoTelemetry* PROTOBUF_NONNULL mutable_cargo();
+  void set_allocated_cargo(::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_cargo(::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE unsafe_arena_release_cargo();
+
+  private:
+  const ::quarryworks::v1::CargoTelemetry& _internal_cargo() const;
+  ::quarryworks::v1::CargoTelemetry* PROTOBUF_NONNULL _internal_mutable_cargo();
+
+  public:
+  // .quarryworks.v1.Quaternion orientation = 6;
+  bool has_orientation() const;
+  void clear_orientation() ;
+  const ::quarryworks::v1::Quaternion& orientation() const;
+  [[nodiscard]] ::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE release_orientation();
+  ::quarryworks::v1::Quaternion* PROTOBUF_NONNULL mutable_orientation();
+  void set_allocated_orientation(::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_orientation(::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE unsafe_arena_release_orientation();
+
+  private:
+  const ::quarryworks::v1::Quaternion& _internal_orientation() const;
+  ::quarryworks::v1::Quaternion* PROTOBUF_NONNULL _internal_mutable_orientation();
+
+  public:
+  // .quarryworks.v1.Vector3 velocity_cm_s = 7;
+  bool has_velocity_cm_s() const;
+  void clear_velocity_cm_s() ;
+  const ::quarryworks::v1::Vector3& velocity_cm_s() const;
+  [[nodiscard]] ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE release_velocity_cm_s();
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL mutable_velocity_cm_s();
+  void set_allocated_velocity_cm_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_velocity_cm_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE unsafe_arena_release_velocity_cm_s();
+
+  private:
+  const ::quarryworks::v1::Vector3& _internal_velocity_cm_s() const;
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL _internal_mutable_velocity_cm_s();
+
+  public:
+  // .quarryworks.v1.Vector3 angular_velocity_rad_s = 8;
+  bool has_angular_velocity_rad_s() const;
+  void clear_angular_velocity_rad_s() ;
+  const ::quarryworks::v1::Vector3& angular_velocity_rad_s() const;
+  [[nodiscard]] ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE release_angular_velocity_rad_s();
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL mutable_angular_velocity_rad_s();
+  void set_allocated_angular_velocity_rad_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_angular_velocity_rad_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE unsafe_arena_release_angular_velocity_rad_s();
+
+  private:
+  const ::quarryworks::v1::Vector3& _internal_angular_velocity_rad_s() const;
+  ::quarryworks::v1::Vector3* PROTOBUF_NONNULL _internal_mutable_angular_velocity_rad_s();
+
+  public:
+  // .quarryworks.v1.ImuTelemetry imu = 9;
+  bool has_imu() const;
+  void clear_imu() ;
+  const ::quarryworks::v1::ImuTelemetry& imu() const;
+  [[nodiscard]] ::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE release_imu();
+  ::quarryworks::v1::ImuTelemetry* PROTOBUF_NONNULL mutable_imu();
+  void set_allocated_imu(::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_imu(::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE value);
+  ::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE unsafe_arena_release_imu();
+
+  private:
+  const ::quarryworks::v1::ImuTelemetry& _internal_imu() const;
+  ::quarryworks::v1::ImuTelemetry* PROTOBUF_NONNULL _internal_mutable_imu();
+
+  public:
+  // double speed_kmh = 3;
+  void clear_speed_kmh() ;
+  double speed_kmh() const;
+  void set_speed_kmh(double value);
+
+  private:
+  double _internal_speed_kmh() const;
+  void _internal_set_speed_kmh(double value);
+
+  public:
+  // bool parking_brake = 4;
+  void clear_parking_brake() ;
+  bool parking_brake() const;
+  void set_parking_brake(bool value);
+
+  private:
+  bool _internal_parking_brake() const;
+  void _internal_set_parking_brake(bool value);
+
+  public:
+  // bool any_wheel_slipping = 13;
+  void clear_any_wheel_slipping() ;
+  bool any_wheel_slipping() const;
+  void set_any_wheel_slipping(bool value);
+
+  private:
+  bool _internal_any_wheel_slipping() const;
+  void _internal_set_any_wheel_slipping(bool value);
+
+  public:
+  // sint32 gear = 11;
+  void clear_gear() ;
+  ::int32_t gear() const;
+  void set_gear(::int32_t value);
+
+  private:
+  ::int32_t _internal_gear() const;
+  void _internal_set_gear(::int32_t value);
+
+  public:
+  // double engine_rpm = 10;
+  void clear_engine_rpm() ;
+  double engine_rpm() const;
+  void set_engine_rpm(double value);
+
+  private:
+  double _internal_engine_rpm() const;
+  void _internal_set_engine_rpm(double value);
+
+  public:
+  // int32 grounded_wheel_count = 12;
+  void clear_grounded_wheel_count() ;
+  ::int32_t grounded_wheel_count() const;
+  void set_grounded_wheel_count(::int32_t value);
+
+  private:
+  ::int32_t _internal_grounded_wheel_count() const;
+  void _internal_set_grounded_wheel_count(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:quarryworks.v1.VehicleTelemetry)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<4, 14,
+                                   7, 58,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const VehicleTelemetry& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::quarryworks::v1::WheelTelemetry > wheels_;
+    ::google::protobuf::internal::ArenaStringPtr vehicle_id_;
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE location_cm_;
+    ::quarryworks::v1::CargoTelemetry* PROTOBUF_NULLABLE cargo_;
+    ::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE orientation_;
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE velocity_cm_s_;
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE angular_velocity_rad_s_;
+    ::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE imu_;
+    double speed_kmh_;
+    bool parking_brake_;
+    bool any_wheel_slipping_;
+    ::int32_t gear_;
+    double engine_rpm_;
+    ::int32_t grounded_wheel_count_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quarryworks_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull VehicleTelemetry_class_data_;
+// -------------------------------------------------------------------
+
 class QuarryTelemetry final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:quarryworks.v1.QuarryTelemetry) */ {
  public:
@@ -1612,7 +2806,7 @@ class QuarryTelemetry final : public ::google::protobuf::Message
     return *reinterpret_cast<const QuarryTelemetry*>(
         &_QuarryTelemetry_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(QuarryTelemetry& a, QuarryTelemetry& b) { a.Swap(&b); }
   inline void Swap(QuarryTelemetry* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1703,6 +2897,7 @@ class QuarryTelemetry final : public ::google::protobuf::Message
     kVehiclesFieldNumber = 3,
     kSequenceFieldNumber = 1,
     kDeliveredMassKgFieldNumber = 2,
+    kSimulationTimeSFieldNumber = 4,
   };
   // repeated .quarryworks.v1.VehicleTelemetry vehicles = 3;
   int vehicles_size() const;
@@ -1741,11 +2936,21 @@ class QuarryTelemetry final : public ::google::protobuf::Message
   void _internal_set_delivered_mass_kg(double value);
 
   public:
+  // double simulation_time_s = 4;
+  void clear_simulation_time_s() ;
+  double simulation_time_s() const;
+  void set_simulation_time_s(double value);
+
+  private:
+  double _internal_simulation_time_s() const;
+  void _internal_set_simulation_time_s(double value);
+
+  public:
   // @@protoc_insertion_point(class_scope:quarryworks.v1.QuarryTelemetry)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 3,
+  static const ::google::protobuf::internal::TcParseTable<2, 4,
                                    1, 0,
                                    2>
       _table_;
@@ -1770,6 +2975,7 @@ class QuarryTelemetry final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedPtrField< ::quarryworks::v1::VehicleTelemetry > vehicles_;
     ::uint64_t sequence_;
     double delivered_mass_kg_;
+    double simulation_time_s_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1960,6 +3166,126 @@ inline double VehicleConfig::_internal_work_rate_kg_s() const {
 inline void VehicleConfig::_internal_set_work_rate_kg_s(double value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.work_rate_kg_s_ = value;
+}
+
+// double engine_peak_torque_nm = 8;
+inline void VehicleConfig::clear_engine_peak_torque_nm() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.engine_peak_torque_nm_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline double VehicleConfig::engine_peak_torque_nm() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleConfig.engine_peak_torque_nm)
+  return _internal_engine_peak_torque_nm();
+}
+inline void VehicleConfig::set_engine_peak_torque_nm(double value) {
+  _internal_set_engine_peak_torque_nm(value);
+  _impl_._has_bits_[0] |= 0x00000080u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleConfig.engine_peak_torque_nm)
+}
+inline double VehicleConfig::_internal_engine_peak_torque_nm() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.engine_peak_torque_nm_;
+}
+inline void VehicleConfig::_internal_set_engine_peak_torque_nm(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.engine_peak_torque_nm_ = value;
+}
+
+// double tire_friction = 9;
+inline void VehicleConfig::clear_tire_friction() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.tire_friction_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline double VehicleConfig::tire_friction() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleConfig.tire_friction)
+  return _internal_tire_friction();
+}
+inline void VehicleConfig::set_tire_friction(double value) {
+  _internal_set_tire_friction(value);
+  _impl_._has_bits_[0] |= 0x00000100u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleConfig.tire_friction)
+}
+inline double VehicleConfig::_internal_tire_friction() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.tire_friction_;
+}
+inline void VehicleConfig::_internal_set_tire_friction(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.tire_friction_ = value;
+}
+
+// double loose_material_friction = 10;
+inline void VehicleConfig::clear_loose_material_friction() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.loose_material_friction_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline double VehicleConfig::loose_material_friction() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleConfig.loose_material_friction)
+  return _internal_loose_material_friction();
+}
+inline void VehicleConfig::set_loose_material_friction(double value) {
+  _internal_set_loose_material_friction(value);
+  _impl_._has_bits_[0] |= 0x00000200u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleConfig.loose_material_friction)
+}
+inline double VehicleConfig::_internal_loose_material_friction() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.loose_material_friction_;
+}
+inline void VehicleConfig::_internal_set_loose_material_friction(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.loose_material_friction_ = value;
+}
+
+// double track_yaw_rate_deg_s = 11;
+inline void VehicleConfig::clear_track_yaw_rate_deg_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.track_yaw_rate_deg_s_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline double VehicleConfig::track_yaw_rate_deg_s() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleConfig.track_yaw_rate_deg_s)
+  return _internal_track_yaw_rate_deg_s();
+}
+inline void VehicleConfig::set_track_yaw_rate_deg_s(double value) {
+  _internal_set_track_yaw_rate_deg_s(value);
+  _impl_._has_bits_[0] |= 0x00000400u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleConfig.track_yaw_rate_deg_s)
+}
+inline double VehicleConfig::_internal_track_yaw_rate_deg_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.track_yaw_rate_deg_s_;
+}
+inline void VehicleConfig::_internal_set_track_yaw_rate_deg_s(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.track_yaw_rate_deg_s_ = value;
+}
+
+// bool legacy_kinematic = 12;
+inline void VehicleConfig::clear_legacy_kinematic() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.legacy_kinematic_ = false;
+  _impl_._has_bits_[0] &= ~0x00000800u;
+}
+inline bool VehicleConfig::legacy_kinematic() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleConfig.legacy_kinematic)
+  return _internal_legacy_kinematic();
+}
+inline void VehicleConfig::set_legacy_kinematic(bool value) {
+  _internal_set_legacy_kinematic(value);
+  _impl_._has_bits_[0] |= 0x00000800u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleConfig.legacy_kinematic)
+}
+inline bool VehicleConfig::_internal_legacy_kinematic() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.legacy_kinematic_;
+}
+inline void VehicleConfig::_internal_set_legacy_kinematic(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.legacy_kinematic_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -2188,171 +3514,6 @@ inline void QuarryConfig::set_allocated_mining_truck(::quarryworks::v1::VehicleC
 
 // -------------------------------------------------------------------
 
-// VehicleCommand
-
-// string vehicle_id = 1;
-inline void VehicleCommand::clear_vehicle_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.vehicle_id_.ClearToEmpty();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const std::string& VehicleCommand::vehicle_id() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.vehicle_id)
-  return _internal_vehicle_id();
-}
-template <typename Arg_, typename... Args_>
-PROTOBUF_ALWAYS_INLINE void VehicleCommand::set_vehicle_id(Arg_&& arg, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_._has_bits_[0] |= 0x00000001u;
-  _impl_.vehicle_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.vehicle_id)
-}
-inline std::string* PROTOBUF_NONNULL VehicleCommand::mutable_vehicle_id()
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_vehicle_id();
-  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleCommand.vehicle_id)
-  return _s;
-}
-inline const std::string& VehicleCommand::_internal_vehicle_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.vehicle_id_.Get();
-}
-inline void VehicleCommand::_internal_set_vehicle_id(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_._has_bits_[0] |= 0x00000001u;
-  _impl_.vehicle_id_.Set(value, GetArena());
-}
-inline std::string* PROTOBUF_NONNULL VehicleCommand::_internal_mutable_vehicle_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_._has_bits_[0] |= 0x00000001u;
-  return _impl_.vehicle_id_.Mutable( GetArena());
-}
-inline std::string* PROTOBUF_NULLABLE VehicleCommand::release_vehicle_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleCommand.vehicle_id)
-  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
-    return nullptr;
-  }
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  auto* released = _impl_.vehicle_id_.Release();
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
-    _impl_.vehicle_id_.Set("", GetArena());
-  }
-  return released;
-}
-inline void VehicleCommand::set_allocated_vehicle_id(std::string* PROTOBUF_NULLABLE value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  _impl_.vehicle_id_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.vehicle_id_.IsDefault()) {
-    _impl_.vehicle_id_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleCommand.vehicle_id)
-}
-
-// double throttle = 2;
-inline void VehicleCommand::clear_throttle() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.throttle_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000002u;
-}
-inline double VehicleCommand::throttle() const {
-  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.throttle)
-  return _internal_throttle();
-}
-inline void VehicleCommand::set_throttle(double value) {
-  _internal_set_throttle(value);
-  _impl_._has_bits_[0] |= 0x00000002u;
-  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.throttle)
-}
-inline double VehicleCommand::_internal_throttle() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.throttle_;
-}
-inline void VehicleCommand::_internal_set_throttle(double value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.throttle_ = value;
-}
-
-// double steering = 3;
-inline void VehicleCommand::clear_steering() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.steering_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000004u;
-}
-inline double VehicleCommand::steering() const {
-  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.steering)
-  return _internal_steering();
-}
-inline void VehicleCommand::set_steering(double value) {
-  _internal_set_steering(value);
-  _impl_._has_bits_[0] |= 0x00000004u;
-  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.steering)
-}
-inline double VehicleCommand::_internal_steering() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.steering_;
-}
-inline void VehicleCommand::_internal_set_steering(double value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.steering_ = value;
-}
-
-// double service_brake = 4;
-inline void VehicleCommand::clear_service_brake() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.service_brake_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000008u;
-}
-inline double VehicleCommand::service_brake() const {
-  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.service_brake)
-  return _internal_service_brake();
-}
-inline void VehicleCommand::set_service_brake(double value) {
-  _internal_set_service_brake(value);
-  _impl_._has_bits_[0] |= 0x00000008u;
-  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.service_brake)
-}
-inline double VehicleCommand::_internal_service_brake() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.service_brake_;
-}
-inline void VehicleCommand::_internal_set_service_brake(double value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.service_brake_ = value;
-}
-
-// bool parking_brake = 5;
-inline void VehicleCommand::clear_parking_brake() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.parking_brake_ = false;
-  _impl_._has_bits_[0] &= ~0x00000010u;
-}
-inline bool VehicleCommand::parking_brake() const {
-  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.parking_brake)
-  return _internal_parking_brake();
-}
-inline void VehicleCommand::set_parking_brake(bool value) {
-  _internal_set_parking_brake(value);
-  _impl_._has_bits_[0] |= 0x00000010u;
-  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.parking_brake)
-}
-inline bool VehicleCommand::_internal_parking_brake() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.parking_brake_;
-}
-inline void VehicleCommand::_internal_set_parking_brake(bool value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.parking_brake_ = value;
-}
-
-// -------------------------------------------------------------------
-
 // Vector3
 
 // double x = 1;
@@ -2423,6 +3584,106 @@ inline double Vector3::_internal_z() const {
   return _impl_.z_;
 }
 inline void Vector3::_internal_set_z(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Quaternion
+
+// double w = 1;
+inline void Quaternion::clear_w() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.w_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline double Quaternion::w() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.Quaternion.w)
+  return _internal_w();
+}
+inline void Quaternion::set_w(double value) {
+  _internal_set_w(value);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.Quaternion.w)
+}
+inline double Quaternion::_internal_w() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.w_;
+}
+inline void Quaternion::_internal_set_w(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.w_ = value;
+}
+
+// double x = 2;
+inline void Quaternion::clear_x() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline double Quaternion::x() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.Quaternion.x)
+  return _internal_x();
+}
+inline void Quaternion::set_x(double value) {
+  _internal_set_x(value);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.Quaternion.x)
+}
+inline double Quaternion::_internal_x() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.x_;
+}
+inline void Quaternion::_internal_set_x(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = value;
+}
+
+// double y = 3;
+inline void Quaternion::clear_y() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline double Quaternion::y() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.Quaternion.y)
+  return _internal_y();
+}
+inline void Quaternion::set_y(double value) {
+  _internal_set_y(value);
+  _impl_._has_bits_[0] |= 0x00000004u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.Quaternion.y)
+}
+inline double Quaternion::_internal_y() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.y_;
+}
+inline void Quaternion::_internal_set_y(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = value;
+}
+
+// double z = 4;
+inline void Quaternion::clear_z() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline double Quaternion::z() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.Quaternion.z)
+  return _internal_z();
+}
+inline void Quaternion::set_z(double value) {
+  _internal_set_z(value);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.Quaternion.z)
+}
+inline double Quaternion::_internal_z() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.z_;
+}
+inline void Quaternion::_internal_set_z(double value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.z_ = value;
 }
@@ -2501,6 +3762,813 @@ inline double CargoTelemetry::_internal_capacity_kg() const {
 inline void CargoTelemetry::_internal_set_capacity_kg(double value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.capacity_kg_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WheelTelemetry
+
+// float slip_ratio = 1;
+inline void WheelTelemetry::clear_slip_ratio() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.slip_ratio_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline float WheelTelemetry::slip_ratio() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.slip_ratio)
+  return _internal_slip_ratio();
+}
+inline void WheelTelemetry::set_slip_ratio(float value) {
+  _internal_set_slip_ratio(value);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.slip_ratio)
+}
+inline float WheelTelemetry::_internal_slip_ratio() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.slip_ratio_;
+}
+inline void WheelTelemetry::_internal_set_slip_ratio(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.slip_ratio_ = value;
+}
+
+// float slip_angle_rad = 2;
+inline void WheelTelemetry::clear_slip_angle_rad() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.slip_angle_rad_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline float WheelTelemetry::slip_angle_rad() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.slip_angle_rad)
+  return _internal_slip_angle_rad();
+}
+inline void WheelTelemetry::set_slip_angle_rad(float value) {
+  _internal_set_slip_angle_rad(value);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.slip_angle_rad)
+}
+inline float WheelTelemetry::_internal_slip_angle_rad() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.slip_angle_rad_;
+}
+inline void WheelTelemetry::_internal_set_slip_angle_rad(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.slip_angle_rad_ = value;
+}
+
+// double load_n = 3;
+inline void WheelTelemetry::clear_load_n() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.load_n_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline double WheelTelemetry::load_n() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.load_n)
+  return _internal_load_n();
+}
+inline void WheelTelemetry::set_load_n(double value) {
+  _internal_set_load_n(value);
+  _impl_._has_bits_[0] |= 0x00000004u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.load_n)
+}
+inline double WheelTelemetry::_internal_load_n() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.load_n_;
+}
+inline void WheelTelemetry::_internal_set_load_n(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.load_n_ = value;
+}
+
+// float angular_velocity_rad_s = 4;
+inline void WheelTelemetry::clear_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_velocity_rad_s_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline float WheelTelemetry::angular_velocity_rad_s() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.angular_velocity_rad_s)
+  return _internal_angular_velocity_rad_s();
+}
+inline void WheelTelemetry::set_angular_velocity_rad_s(float value) {
+  _internal_set_angular_velocity_rad_s(value);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.angular_velocity_rad_s)
+}
+inline float WheelTelemetry::_internal_angular_velocity_rad_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.angular_velocity_rad_s_;
+}
+inline void WheelTelemetry::_internal_set_angular_velocity_rad_s(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_velocity_rad_s_ = value;
+}
+
+// float longitudinal_force_n = 5;
+inline void WheelTelemetry::clear_longitudinal_force_n() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.longitudinal_force_n_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline float WheelTelemetry::longitudinal_force_n() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.longitudinal_force_n)
+  return _internal_longitudinal_force_n();
+}
+inline void WheelTelemetry::set_longitudinal_force_n(float value) {
+  _internal_set_longitudinal_force_n(value);
+  _impl_._has_bits_[0] |= 0x00000010u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.longitudinal_force_n)
+}
+inline float WheelTelemetry::_internal_longitudinal_force_n() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.longitudinal_force_n_;
+}
+inline void WheelTelemetry::_internal_set_longitudinal_force_n(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.longitudinal_force_n_ = value;
+}
+
+// float lateral_force_n = 6;
+inline void WheelTelemetry::clear_lateral_force_n() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lateral_force_n_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline float WheelTelemetry::lateral_force_n() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.lateral_force_n)
+  return _internal_lateral_force_n();
+}
+inline void WheelTelemetry::set_lateral_force_n(float value) {
+  _internal_set_lateral_force_n(value);
+  _impl_._has_bits_[0] |= 0x00000020u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.lateral_force_n)
+}
+inline float WheelTelemetry::_internal_lateral_force_n() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.lateral_force_n_;
+}
+inline void WheelTelemetry::_internal_set_lateral_force_n(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lateral_force_n_ = value;
+}
+
+// float contact_friction = 7;
+inline void WheelTelemetry::clear_contact_friction() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.contact_friction_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline float WheelTelemetry::contact_friction() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.contact_friction)
+  return _internal_contact_friction();
+}
+inline void WheelTelemetry::set_contact_friction(float value) {
+  _internal_set_contact_friction(value);
+  _impl_._has_bits_[0] |= 0x00000040u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.contact_friction)
+}
+inline float WheelTelemetry::_internal_contact_friction() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.contact_friction_;
+}
+inline void WheelTelemetry::_internal_set_contact_friction(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.contact_friction_ = value;
+}
+
+// bool in_contact = 8;
+inline void WheelTelemetry::clear_in_contact() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.in_contact_ = false;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline bool WheelTelemetry::in_contact() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.WheelTelemetry.in_contact)
+  return _internal_in_contact();
+}
+inline void WheelTelemetry::set_in_contact(bool value) {
+  _internal_set_in_contact(value);
+  _impl_._has_bits_[0] |= 0x00000080u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.WheelTelemetry.in_contact)
+}
+inline bool WheelTelemetry::_internal_in_contact() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.in_contact_;
+}
+inline void WheelTelemetry::_internal_set_in_contact(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.in_contact_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ImuTelemetry
+
+// .quarryworks.v1.Vector3 specific_force_m_s2 = 1;
+inline bool ImuTelemetry::has_specific_force_m_s2() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.specific_force_m_s2_ != nullptr);
+  return value;
+}
+inline void ImuTelemetry::clear_specific_force_m_s2() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.specific_force_m_s2_ != nullptr) _impl_.specific_force_m_s2_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::quarryworks::v1::Vector3& ImuTelemetry::_internal_specific_force_m_s2() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::Vector3* p = _impl_.specific_force_m_s2_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::Vector3&>(::quarryworks::v1::_Vector3_default_instance_);
+}
+inline const ::quarryworks::v1::Vector3& ImuTelemetry::specific_force_m_s2() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ImuTelemetry.specific_force_m_s2)
+  return _internal_specific_force_m_s2();
+}
+inline void ImuTelemetry::unsafe_arena_set_allocated_specific_force_m_s2(
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.specific_force_m_s2_);
+  }
+  _impl_.specific_force_m_s2_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.ImuTelemetry.specific_force_m_s2)
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE ImuTelemetry::release_specific_force_m_s2() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::quarryworks::v1::Vector3* released = _impl_.specific_force_m_s2_;
+  _impl_.specific_force_m_s2_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE ImuTelemetry::unsafe_arena_release_specific_force_m_s2() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.ImuTelemetry.specific_force_m_s2)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::quarryworks::v1::Vector3* temp = _impl_.specific_force_m_s2_;
+  _impl_.specific_force_m_s2_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL ImuTelemetry::_internal_mutable_specific_force_m_s2() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.specific_force_m_s2_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::Vector3>(GetArena());
+    _impl_.specific_force_m_s2_ = reinterpret_cast<::quarryworks::v1::Vector3*>(p);
+  }
+  return _impl_.specific_force_m_s2_;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL ImuTelemetry::mutable_specific_force_m_s2()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::quarryworks::v1::Vector3* _msg = _internal_mutable_specific_force_m_s2();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.ImuTelemetry.specific_force_m_s2)
+  return _msg;
+}
+inline void ImuTelemetry::set_allocated_specific_force_m_s2(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.specific_force_m_s2_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.specific_force_m_s2_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.ImuTelemetry.specific_force_m_s2)
+}
+
+// .quarryworks.v1.Vector3 angular_velocity_rad_s = 2;
+inline bool ImuTelemetry::has_angular_velocity_rad_s() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.angular_velocity_rad_s_ != nullptr);
+  return value;
+}
+inline void ImuTelemetry::clear_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.angular_velocity_rad_s_ != nullptr) _impl_.angular_velocity_rad_s_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const ::quarryworks::v1::Vector3& ImuTelemetry::_internal_angular_velocity_rad_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::Vector3* p = _impl_.angular_velocity_rad_s_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::Vector3&>(::quarryworks::v1::_Vector3_default_instance_);
+}
+inline const ::quarryworks::v1::Vector3& ImuTelemetry::angular_velocity_rad_s() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ImuTelemetry.angular_velocity_rad_s)
+  return _internal_angular_velocity_rad_s();
+}
+inline void ImuTelemetry::unsafe_arena_set_allocated_angular_velocity_rad_s(
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.angular_velocity_rad_s_);
+  }
+  _impl_.angular_velocity_rad_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.ImuTelemetry.angular_velocity_rad_s)
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE ImuTelemetry::release_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::quarryworks::v1::Vector3* released = _impl_.angular_velocity_rad_s_;
+  _impl_.angular_velocity_rad_s_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE ImuTelemetry::unsafe_arena_release_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.ImuTelemetry.angular_velocity_rad_s)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::quarryworks::v1::Vector3* temp = _impl_.angular_velocity_rad_s_;
+  _impl_.angular_velocity_rad_s_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL ImuTelemetry::_internal_mutable_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.angular_velocity_rad_s_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::Vector3>(GetArena());
+    _impl_.angular_velocity_rad_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(p);
+  }
+  return _impl_.angular_velocity_rad_s_;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL ImuTelemetry::mutable_angular_velocity_rad_s()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::quarryworks::v1::Vector3* _msg = _internal_mutable_angular_velocity_rad_s();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.ImuTelemetry.angular_velocity_rad_s)
+  return _msg;
+}
+inline void ImuTelemetry::set_allocated_angular_velocity_rad_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.angular_velocity_rad_s_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.angular_velocity_rad_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.ImuTelemetry.angular_velocity_rad_s)
+}
+
+// -------------------------------------------------------------------
+
+// ExcavatorCommand
+
+// double slew = 1;
+inline void ExcavatorCommand::clear_slew() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.slew_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline double ExcavatorCommand::slew() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ExcavatorCommand.slew)
+  return _internal_slew();
+}
+inline void ExcavatorCommand::set_slew(double value) {
+  _internal_set_slew(value);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.ExcavatorCommand.slew)
+}
+inline double ExcavatorCommand::_internal_slew() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.slew_;
+}
+inline void ExcavatorCommand::_internal_set_slew(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.slew_ = value;
+}
+
+// double boom = 2;
+inline void ExcavatorCommand::clear_boom() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.boom_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline double ExcavatorCommand::boom() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ExcavatorCommand.boom)
+  return _internal_boom();
+}
+inline void ExcavatorCommand::set_boom(double value) {
+  _internal_set_boom(value);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.ExcavatorCommand.boom)
+}
+inline double ExcavatorCommand::_internal_boom() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.boom_;
+}
+inline void ExcavatorCommand::_internal_set_boom(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.boom_ = value;
+}
+
+// double stick = 3;
+inline void ExcavatorCommand::clear_stick() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.stick_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline double ExcavatorCommand::stick() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ExcavatorCommand.stick)
+  return _internal_stick();
+}
+inline void ExcavatorCommand::set_stick(double value) {
+  _internal_set_stick(value);
+  _impl_._has_bits_[0] |= 0x00000004u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.ExcavatorCommand.stick)
+}
+inline double ExcavatorCommand::_internal_stick() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.stick_;
+}
+inline void ExcavatorCommand::_internal_set_stick(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.stick_ = value;
+}
+
+// double bucket = 4;
+inline void ExcavatorCommand::clear_bucket() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bucket_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline double ExcavatorCommand::bucket() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ExcavatorCommand.bucket)
+  return _internal_bucket();
+}
+inline void ExcavatorCommand::set_bucket(double value) {
+  _internal_set_bucket(value);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.ExcavatorCommand.bucket)
+}
+inline double ExcavatorCommand::_internal_bucket() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.bucket_;
+}
+inline void ExcavatorCommand::_internal_set_bucket(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bucket_ = value;
+}
+
+// bool dig = 5;
+inline void ExcavatorCommand::clear_dig() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dig_ = false;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline bool ExcavatorCommand::dig() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ExcavatorCommand.dig)
+  return _internal_dig();
+}
+inline void ExcavatorCommand::set_dig(bool value) {
+  _internal_set_dig(value);
+  _impl_._has_bits_[0] |= 0x00000010u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.ExcavatorCommand.dig)
+}
+inline bool ExcavatorCommand::_internal_dig() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.dig_;
+}
+inline void ExcavatorCommand::_internal_set_dig(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dig_ = value;
+}
+
+// bool dump = 6;
+inline void ExcavatorCommand::clear_dump() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dump_ = false;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline bool ExcavatorCommand::dump() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.ExcavatorCommand.dump)
+  return _internal_dump();
+}
+inline void ExcavatorCommand::set_dump(bool value) {
+  _internal_set_dump(value);
+  _impl_._has_bits_[0] |= 0x00000020u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.ExcavatorCommand.dump)
+}
+inline bool ExcavatorCommand::_internal_dump() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.dump_;
+}
+inline void ExcavatorCommand::_internal_set_dump(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dump_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// VehicleCommand
+
+// string vehicle_id = 1;
+inline void VehicleCommand::clear_vehicle_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vehicle_id_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& VehicleCommand::vehicle_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.vehicle_id)
+  return _internal_vehicle_id();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void VehicleCommand::set_vehicle_id(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.vehicle_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.vehicle_id)
+}
+inline std::string* PROTOBUF_NONNULL VehicleCommand::mutable_vehicle_id()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_vehicle_id();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleCommand.vehicle_id)
+  return _s;
+}
+inline const std::string& VehicleCommand::_internal_vehicle_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.vehicle_id_.Get();
+}
+inline void VehicleCommand::_internal_set_vehicle_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.vehicle_id_.Set(value, GetArena());
+}
+inline std::string* PROTOBUF_NONNULL VehicleCommand::_internal_mutable_vehicle_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.vehicle_id_.Mutable( GetArena());
+}
+inline std::string* PROTOBUF_NULLABLE VehicleCommand::release_vehicle_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleCommand.vehicle_id)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.vehicle_id_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.vehicle_id_.Set("", GetArena());
+  }
+  return released;
+}
+inline void VehicleCommand::set_allocated_vehicle_id(std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.vehicle_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.vehicle_id_.IsDefault()) {
+    _impl_.vehicle_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleCommand.vehicle_id)
+}
+
+// double throttle = 2;
+inline void VehicleCommand::clear_throttle() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.throttle_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline double VehicleCommand::throttle() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.throttle)
+  return _internal_throttle();
+}
+inline void VehicleCommand::set_throttle(double value) {
+  _internal_set_throttle(value);
+  _impl_._has_bits_[0] |= 0x00000004u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.throttle)
+}
+inline double VehicleCommand::_internal_throttle() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.throttle_;
+}
+inline void VehicleCommand::_internal_set_throttle(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.throttle_ = value;
+}
+
+// double steering = 3;
+inline void VehicleCommand::clear_steering() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.steering_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline double VehicleCommand::steering() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.steering)
+  return _internal_steering();
+}
+inline void VehicleCommand::set_steering(double value) {
+  _internal_set_steering(value);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.steering)
+}
+inline double VehicleCommand::_internal_steering() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.steering_;
+}
+inline void VehicleCommand::_internal_set_steering(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.steering_ = value;
+}
+
+// double service_brake = 4;
+inline void VehicleCommand::clear_service_brake() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.service_brake_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline double VehicleCommand::service_brake() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.service_brake)
+  return _internal_service_brake();
+}
+inline void VehicleCommand::set_service_brake(double value) {
+  _internal_set_service_brake(value);
+  _impl_._has_bits_[0] |= 0x00000010u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.service_brake)
+}
+inline double VehicleCommand::_internal_service_brake() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.service_brake_;
+}
+inline void VehicleCommand::_internal_set_service_brake(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.service_brake_ = value;
+}
+
+// bool parking_brake = 5;
+inline void VehicleCommand::clear_parking_brake() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.parking_brake_ = false;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline bool VehicleCommand::parking_brake() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.parking_brake)
+  return _internal_parking_brake();
+}
+inline void VehicleCommand::set_parking_brake(bool value) {
+  _internal_set_parking_brake(value);
+  _impl_._has_bits_[0] |= 0x00000020u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleCommand.parking_brake)
+}
+inline bool VehicleCommand::_internal_parking_brake() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.parking_brake_;
+}
+inline void VehicleCommand::_internal_set_parking_brake(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.parking_brake_ = value;
+}
+
+// .quarryworks.v1.ExcavatorCommand excavator = 6;
+inline bool VehicleCommand::has_excavator() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.excavator_ != nullptr);
+  return value;
+}
+inline void VehicleCommand::clear_excavator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.excavator_ != nullptr) _impl_.excavator_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const ::quarryworks::v1::ExcavatorCommand& VehicleCommand::_internal_excavator() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::ExcavatorCommand* p = _impl_.excavator_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::ExcavatorCommand&>(::quarryworks::v1::_ExcavatorCommand_default_instance_);
+}
+inline const ::quarryworks::v1::ExcavatorCommand& VehicleCommand::excavator() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleCommand.excavator)
+  return _internal_excavator();
+}
+inline void VehicleCommand::unsafe_arena_set_allocated_excavator(
+    ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.excavator_);
+  }
+  _impl_.excavator_ = reinterpret_cast<::quarryworks::v1::ExcavatorCommand*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.VehicleCommand.excavator)
+}
+inline ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE VehicleCommand::release_excavator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::quarryworks::v1::ExcavatorCommand* released = _impl_.excavator_;
+  _impl_.excavator_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE VehicleCommand::unsafe_arena_release_excavator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleCommand.excavator)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::quarryworks::v1::ExcavatorCommand* temp = _impl_.excavator_;
+  _impl_.excavator_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NONNULL VehicleCommand::_internal_mutable_excavator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.excavator_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::ExcavatorCommand>(GetArena());
+    _impl_.excavator_ = reinterpret_cast<::quarryworks::v1::ExcavatorCommand*>(p);
+  }
+  return _impl_.excavator_;
+}
+inline ::quarryworks::v1::ExcavatorCommand* PROTOBUF_NONNULL VehicleCommand::mutable_excavator()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::quarryworks::v1::ExcavatorCommand* _msg = _internal_mutable_excavator();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleCommand.excavator)
+  return _msg;
+}
+inline void VehicleCommand::set_allocated_excavator(::quarryworks::v1::ExcavatorCommand* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.excavator_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.excavator_ = reinterpret_cast<::quarryworks::v1::ExcavatorCommand*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleCommand.excavator)
 }
 
 // -------------------------------------------------------------------
@@ -2674,7 +4742,7 @@ inline void VehicleTelemetry::set_allocated_location_cm(::quarryworks::v1::Vecto
 inline void VehicleTelemetry::clear_speed_kmh() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.speed_kmh_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
 }
 inline double VehicleTelemetry::speed_kmh() const {
   // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.speed_kmh)
@@ -2682,7 +4750,7 @@ inline double VehicleTelemetry::speed_kmh() const {
 }
 inline void VehicleTelemetry::set_speed_kmh(double value) {
   _internal_set_speed_kmh(value);
-  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_._has_bits_[0] |= 0x00000080u;
   // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleTelemetry.speed_kmh)
 }
 inline double VehicleTelemetry::_internal_speed_kmh() const {
@@ -2698,7 +4766,7 @@ inline void VehicleTelemetry::_internal_set_speed_kmh(double value) {
 inline void VehicleTelemetry::clear_parking_brake() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.parking_brake_ = false;
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000100u;
 }
 inline bool VehicleTelemetry::parking_brake() const {
   // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.parking_brake)
@@ -2706,7 +4774,7 @@ inline bool VehicleTelemetry::parking_brake() const {
 }
 inline void VehicleTelemetry::set_parking_brake(bool value) {
   _internal_set_parking_brake(value);
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000100u;
   // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleTelemetry.parking_brake)
 }
 inline bool VehicleTelemetry::_internal_parking_brake() const {
@@ -2816,6 +4884,544 @@ inline void VehicleTelemetry::set_allocated_cargo(::quarryworks::v1::CargoTeleme
   // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleTelemetry.cargo)
 }
 
+// .quarryworks.v1.Quaternion orientation = 6;
+inline bool VehicleTelemetry::has_orientation() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.orientation_ != nullptr);
+  return value;
+}
+inline void VehicleTelemetry::clear_orientation() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.orientation_ != nullptr) _impl_.orientation_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const ::quarryworks::v1::Quaternion& VehicleTelemetry::_internal_orientation() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::Quaternion* p = _impl_.orientation_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::Quaternion&>(::quarryworks::v1::_Quaternion_default_instance_);
+}
+inline const ::quarryworks::v1::Quaternion& VehicleTelemetry::orientation() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.orientation)
+  return _internal_orientation();
+}
+inline void VehicleTelemetry::unsafe_arena_set_allocated_orientation(
+    ::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.orientation_);
+  }
+  _impl_.orientation_ = reinterpret_cast<::quarryworks::v1::Quaternion*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.VehicleTelemetry.orientation)
+}
+inline ::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE VehicleTelemetry::release_orientation() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::quarryworks::v1::Quaternion* released = _impl_.orientation_;
+  _impl_.orientation_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE VehicleTelemetry::unsafe_arena_release_orientation() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleTelemetry.orientation)
+
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::quarryworks::v1::Quaternion* temp = _impl_.orientation_;
+  _impl_.orientation_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::Quaternion* PROTOBUF_NONNULL VehicleTelemetry::_internal_mutable_orientation() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.orientation_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::Quaternion>(GetArena());
+    _impl_.orientation_ = reinterpret_cast<::quarryworks::v1::Quaternion*>(p);
+  }
+  return _impl_.orientation_;
+}
+inline ::quarryworks::v1::Quaternion* PROTOBUF_NONNULL VehicleTelemetry::mutable_orientation()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  ::quarryworks::v1::Quaternion* _msg = _internal_mutable_orientation();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleTelemetry.orientation)
+  return _msg;
+}
+inline void VehicleTelemetry::set_allocated_orientation(::quarryworks::v1::Quaternion* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.orientation_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+
+  _impl_.orientation_ = reinterpret_cast<::quarryworks::v1::Quaternion*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleTelemetry.orientation)
+}
+
+// .quarryworks.v1.Vector3 velocity_cm_s = 7;
+inline bool VehicleTelemetry::has_velocity_cm_s() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.velocity_cm_s_ != nullptr);
+  return value;
+}
+inline void VehicleTelemetry::clear_velocity_cm_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.velocity_cm_s_ != nullptr) _impl_.velocity_cm_s_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline const ::quarryworks::v1::Vector3& VehicleTelemetry::_internal_velocity_cm_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::Vector3* p = _impl_.velocity_cm_s_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::Vector3&>(::quarryworks::v1::_Vector3_default_instance_);
+}
+inline const ::quarryworks::v1::Vector3& VehicleTelemetry::velocity_cm_s() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.velocity_cm_s)
+  return _internal_velocity_cm_s();
+}
+inline void VehicleTelemetry::unsafe_arena_set_allocated_velocity_cm_s(
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.velocity_cm_s_);
+  }
+  _impl_.velocity_cm_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.VehicleTelemetry.velocity_cm_s)
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE VehicleTelemetry::release_velocity_cm_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::quarryworks::v1::Vector3* released = _impl_.velocity_cm_s_;
+  _impl_.velocity_cm_s_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE VehicleTelemetry::unsafe_arena_release_velocity_cm_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleTelemetry.velocity_cm_s)
+
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::quarryworks::v1::Vector3* temp = _impl_.velocity_cm_s_;
+  _impl_.velocity_cm_s_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL VehicleTelemetry::_internal_mutable_velocity_cm_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.velocity_cm_s_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::Vector3>(GetArena());
+    _impl_.velocity_cm_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(p);
+  }
+  return _impl_.velocity_cm_s_;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL VehicleTelemetry::mutable_velocity_cm_s()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  ::quarryworks::v1::Vector3* _msg = _internal_mutable_velocity_cm_s();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleTelemetry.velocity_cm_s)
+  return _msg;
+}
+inline void VehicleTelemetry::set_allocated_velocity_cm_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.velocity_cm_s_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+
+  _impl_.velocity_cm_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleTelemetry.velocity_cm_s)
+}
+
+// .quarryworks.v1.Vector3 angular_velocity_rad_s = 8;
+inline bool VehicleTelemetry::has_angular_velocity_rad_s() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.angular_velocity_rad_s_ != nullptr);
+  return value;
+}
+inline void VehicleTelemetry::clear_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.angular_velocity_rad_s_ != nullptr) _impl_.angular_velocity_rad_s_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline const ::quarryworks::v1::Vector3& VehicleTelemetry::_internal_angular_velocity_rad_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::Vector3* p = _impl_.angular_velocity_rad_s_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::Vector3&>(::quarryworks::v1::_Vector3_default_instance_);
+}
+inline const ::quarryworks::v1::Vector3& VehicleTelemetry::angular_velocity_rad_s() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.angular_velocity_rad_s)
+  return _internal_angular_velocity_rad_s();
+}
+inline void VehicleTelemetry::unsafe_arena_set_allocated_angular_velocity_rad_s(
+    ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.angular_velocity_rad_s_);
+  }
+  _impl_.angular_velocity_rad_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.VehicleTelemetry.angular_velocity_rad_s)
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE VehicleTelemetry::release_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  ::quarryworks::v1::Vector3* released = _impl_.angular_velocity_rad_s_;
+  _impl_.angular_velocity_rad_s_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NULLABLE VehicleTelemetry::unsafe_arena_release_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleTelemetry.angular_velocity_rad_s)
+
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  ::quarryworks::v1::Vector3* temp = _impl_.angular_velocity_rad_s_;
+  _impl_.angular_velocity_rad_s_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL VehicleTelemetry::_internal_mutable_angular_velocity_rad_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.angular_velocity_rad_s_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::Vector3>(GetArena());
+    _impl_.angular_velocity_rad_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(p);
+  }
+  return _impl_.angular_velocity_rad_s_;
+}
+inline ::quarryworks::v1::Vector3* PROTOBUF_NONNULL VehicleTelemetry::mutable_angular_velocity_rad_s()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  ::quarryworks::v1::Vector3* _msg = _internal_mutable_angular_velocity_rad_s();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleTelemetry.angular_velocity_rad_s)
+  return _msg;
+}
+inline void VehicleTelemetry::set_allocated_angular_velocity_rad_s(::quarryworks::v1::Vector3* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.angular_velocity_rad_s_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+
+  _impl_.angular_velocity_rad_s_ = reinterpret_cast<::quarryworks::v1::Vector3*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleTelemetry.angular_velocity_rad_s)
+}
+
+// .quarryworks.v1.ImuTelemetry imu = 9;
+inline bool VehicleTelemetry::has_imu() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.imu_ != nullptr);
+  return value;
+}
+inline void VehicleTelemetry::clear_imu() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.imu_ != nullptr) _impl_.imu_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline const ::quarryworks::v1::ImuTelemetry& VehicleTelemetry::_internal_imu() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::quarryworks::v1::ImuTelemetry* p = _impl_.imu_;
+  return p != nullptr ? *p : reinterpret_cast<const ::quarryworks::v1::ImuTelemetry&>(::quarryworks::v1::_ImuTelemetry_default_instance_);
+}
+inline const ::quarryworks::v1::ImuTelemetry& VehicleTelemetry::imu() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.imu)
+  return _internal_imu();
+}
+inline void VehicleTelemetry::unsafe_arena_set_allocated_imu(
+    ::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.imu_);
+  }
+  _impl_.imu_ = reinterpret_cast<::quarryworks::v1::ImuTelemetry*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000040u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000040u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:quarryworks.v1.VehicleTelemetry.imu)
+}
+inline ::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE VehicleTelemetry::release_imu() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000040u;
+  ::quarryworks::v1::ImuTelemetry* released = _impl_.imu_;
+  _impl_.imu_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE VehicleTelemetry::unsafe_arena_release_imu() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:quarryworks.v1.VehicleTelemetry.imu)
+
+  _impl_._has_bits_[0] &= ~0x00000040u;
+  ::quarryworks::v1::ImuTelemetry* temp = _impl_.imu_;
+  _impl_.imu_ = nullptr;
+  return temp;
+}
+inline ::quarryworks::v1::ImuTelemetry* PROTOBUF_NONNULL VehicleTelemetry::_internal_mutable_imu() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.imu_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::quarryworks::v1::ImuTelemetry>(GetArena());
+    _impl_.imu_ = reinterpret_cast<::quarryworks::v1::ImuTelemetry*>(p);
+  }
+  return _impl_.imu_;
+}
+inline ::quarryworks::v1::ImuTelemetry* PROTOBUF_NONNULL VehicleTelemetry::mutable_imu()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  ::quarryworks::v1::ImuTelemetry* _msg = _internal_mutable_imu();
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleTelemetry.imu)
+  return _msg;
+}
+inline void VehicleTelemetry::set_allocated_imu(::quarryworks::v1::ImuTelemetry* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.imu_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000040u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000040u;
+  }
+
+  _impl_.imu_ = reinterpret_cast<::quarryworks::v1::ImuTelemetry*>(value);
+  // @@protoc_insertion_point(field_set_allocated:quarryworks.v1.VehicleTelemetry.imu)
+}
+
+// double engine_rpm = 10;
+inline void VehicleTelemetry::clear_engine_rpm() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.engine_rpm_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000800u;
+}
+inline double VehicleTelemetry::engine_rpm() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.engine_rpm)
+  return _internal_engine_rpm();
+}
+inline void VehicleTelemetry::set_engine_rpm(double value) {
+  _internal_set_engine_rpm(value);
+  _impl_._has_bits_[0] |= 0x00000800u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleTelemetry.engine_rpm)
+}
+inline double VehicleTelemetry::_internal_engine_rpm() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.engine_rpm_;
+}
+inline void VehicleTelemetry::_internal_set_engine_rpm(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.engine_rpm_ = value;
+}
+
+// sint32 gear = 11;
+inline void VehicleTelemetry::clear_gear() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gear_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline ::int32_t VehicleTelemetry::gear() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.gear)
+  return _internal_gear();
+}
+inline void VehicleTelemetry::set_gear(::int32_t value) {
+  _internal_set_gear(value);
+  _impl_._has_bits_[0] |= 0x00000400u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleTelemetry.gear)
+}
+inline ::int32_t VehicleTelemetry::_internal_gear() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.gear_;
+}
+inline void VehicleTelemetry::_internal_set_gear(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gear_ = value;
+}
+
+// int32 grounded_wheel_count = 12;
+inline void VehicleTelemetry::clear_grounded_wheel_count() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.grounded_wheel_count_ = 0;
+  _impl_._has_bits_[0] &= ~0x00001000u;
+}
+inline ::int32_t VehicleTelemetry::grounded_wheel_count() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.grounded_wheel_count)
+  return _internal_grounded_wheel_count();
+}
+inline void VehicleTelemetry::set_grounded_wheel_count(::int32_t value) {
+  _internal_set_grounded_wheel_count(value);
+  _impl_._has_bits_[0] |= 0x00001000u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleTelemetry.grounded_wheel_count)
+}
+inline ::int32_t VehicleTelemetry::_internal_grounded_wheel_count() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.grounded_wheel_count_;
+}
+inline void VehicleTelemetry::_internal_set_grounded_wheel_count(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.grounded_wheel_count_ = value;
+}
+
+// bool any_wheel_slipping = 13;
+inline void VehicleTelemetry::clear_any_wheel_slipping() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.any_wheel_slipping_ = false;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline bool VehicleTelemetry::any_wheel_slipping() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.any_wheel_slipping)
+  return _internal_any_wheel_slipping();
+}
+inline void VehicleTelemetry::set_any_wheel_slipping(bool value) {
+  _internal_set_any_wheel_slipping(value);
+  _impl_._has_bits_[0] |= 0x00000200u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.VehicleTelemetry.any_wheel_slipping)
+}
+inline bool VehicleTelemetry::_internal_any_wheel_slipping() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.any_wheel_slipping_;
+}
+inline void VehicleTelemetry::_internal_set_any_wheel_slipping(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.any_wheel_slipping_ = value;
+}
+
+// repeated .quarryworks.v1.WheelTelemetry wheels = 14;
+inline int VehicleTelemetry::_internal_wheels_size() const {
+  return _internal_wheels().size();
+}
+inline int VehicleTelemetry::wheels_size() const {
+  return _internal_wheels_size();
+}
+inline void VehicleTelemetry::clear_wheels() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.wheels_.Clear();
+}
+inline ::quarryworks::v1::WheelTelemetry* PROTOBUF_NONNULL VehicleTelemetry::mutable_wheels(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:quarryworks.v1.VehicleTelemetry.wheels)
+  return _internal_mutable_wheels()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>* PROTOBUF_NONNULL VehicleTelemetry::mutable_wheels()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:quarryworks.v1.VehicleTelemetry.wheels)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_wheels();
+}
+inline const ::quarryworks::v1::WheelTelemetry& VehicleTelemetry::wheels(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.VehicleTelemetry.wheels)
+  return _internal_wheels().Get(index);
+}
+inline ::quarryworks::v1::WheelTelemetry* PROTOBUF_NONNULL VehicleTelemetry::add_wheels()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::quarryworks::v1::WheelTelemetry* _add = _internal_mutable_wheels()->Add();
+  // @@protoc_insertion_point(field_add:quarryworks.v1.VehicleTelemetry.wheels)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>& VehicleTelemetry::wheels() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:quarryworks.v1.VehicleTelemetry.wheels)
+  return _internal_wheels();
+}
+inline const ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>&
+VehicleTelemetry::_internal_wheels() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.wheels_;
+}
+inline ::google::protobuf::RepeatedPtrField<::quarryworks::v1::WheelTelemetry>* PROTOBUF_NONNULL
+VehicleTelemetry::_internal_mutable_wheels() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.wheels_;
+}
+
 // -------------------------------------------------------------------
 
 // QuarryTelemetry
@@ -2916,6 +5522,30 @@ inline ::google::protobuf::RepeatedPtrField<::quarryworks::v1::VehicleTelemetry>
 QuarryTelemetry::_internal_mutable_vehicles() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.vehicles_;
+}
+
+// double simulation_time_s = 4;
+inline void QuarryTelemetry::clear_simulation_time_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.simulation_time_s_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline double QuarryTelemetry::simulation_time_s() const {
+  // @@protoc_insertion_point(field_get:quarryworks.v1.QuarryTelemetry.simulation_time_s)
+  return _internal_simulation_time_s();
+}
+inline void QuarryTelemetry::set_simulation_time_s(double value) {
+  _internal_set_simulation_time_s(value);
+  _impl_._has_bits_[0] |= 0x00000004u;
+  // @@protoc_insertion_point(field_set:quarryworks.v1.QuarryTelemetry.simulation_time_s)
+}
+inline double QuarryTelemetry::_internal_simulation_time_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.simulation_time_s_;
+}
+inline void QuarryTelemetry::_internal_set_simulation_time_s(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.simulation_time_s_ = value;
 }
 
 #ifdef __GNUC__

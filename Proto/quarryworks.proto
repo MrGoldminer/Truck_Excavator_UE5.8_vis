@@ -17,6 +17,12 @@ message VehicleConfig {
   double max_reverse_speed_cm_s = 5;
   double cargo_capacity_kg = 6;
   double work_rate_kg_s = 7;
+  // Force-driven model overrides; values <= 0 keep the built-in calibration.
+  double engine_peak_torque_nm = 8;
+  double tire_friction = 9;
+  double loose_material_friction = 10;
+  double track_yaw_rate_deg_s = 11;
+  bool legacy_kinematic = 12;
 }
 
 message QuarryConfig {
@@ -25,18 +31,17 @@ message QuarryConfig {
   VehicleConfig mining_truck = 3;
 }
 
-message VehicleCommand {
-  string vehicle_id = 1;
-  double throttle = 2;
-  double steering = 3;
-  double service_brake = 4;
-  bool parking_brake = 5;
-}
-
 message Vector3 {
   double x = 1;
   double y = 2;
   double z = 3;
+}
+
+message Quaternion {
+  double w = 1;
+  double x = 2;
+  double y = 3;
+  double z = 4;
 }
 
 message CargoTelemetry {
@@ -45,16 +50,66 @@ message CargoTelemetry {
   double capacity_kg = 3;
 }
 
+message WheelTelemetry {
+  float slip_ratio = 1;
+  float slip_angle_rad = 2;
+  double load_n = 3;
+  float angular_velocity_rad_s = 4;
+  float longitudinal_force_n = 5;
+  float lateral_force_n = 6;
+  float contact_friction = 7;
+  bool in_contact = 8;
+}
+
+message ImuTelemetry {
+  // Accelerometer specific force (gravity removed), vehicle body frame, m/s^2.
+  Vector3 specific_force_m_s2 = 1;
+  // Gyroscope angular velocity in the vehicle body frame, rad/s.
+  Vector3 angular_velocity_rad_s = 2;
+}
+
+message ExcavatorCommand {
+  // Axis commands in [-1, 1]; dig/dump hold while true.
+  double slew = 1;
+  double boom = 2;
+  double stick = 3;
+  double bucket = 4;
+  bool dig = 5;
+  bool dump = 6;
+}
+
+message VehicleCommand {
+  string vehicle_id = 1;
+  double throttle = 2;
+  double steering = 3;
+  double service_brake = 4;
+  bool parking_brake = 5;
+  // Excavator actuator commands (applied when vehicle_id is "excavator").
+  ExcavatorCommand excavator = 6;
+}
+
 message VehicleTelemetry {
   string vehicle_id = 1;
   Vector3 location_cm = 2;
   double speed_kmh = 3;
   bool parking_brake = 4;
   CargoTelemetry cargo = 5;
+  // CARLA-style ground truth extension.
+  Quaternion orientation = 6;
+  Vector3 velocity_cm_s = 7;
+  Vector3 angular_velocity_rad_s = 8;
+  ImuTelemetry imu = 9;
+  double engine_rpm = 10;
+  sint32 gear = 11;
+  int32 grounded_wheel_count = 12;
+  bool any_wheel_slipping = 13;
+  repeated WheelTelemetry wheels = 14;
 }
 
 message QuarryTelemetry {
   uint64 sequence = 1;
   double delivered_mass_kg = 2;
   repeated VehicleTelemetry vehicles = 3;
+  // Fixed-tick simulation clock for deterministic replay and sync mode.
+  double simulation_time_s = 4;
 }

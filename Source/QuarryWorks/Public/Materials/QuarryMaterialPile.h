@@ -22,6 +22,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Material")
 	EQuarryMaterialType MaterialType = EQuarryMaterialType::Sand;
 
+	/** Fraction of nominal dig rate this material allows: sand 1.0, gravel ~0.7, ore ~0.45. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Material", meta=(ClampMin="0.05", ClampMax="1.0"))
+	float MaterialHardness = 1.0f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Material", meta=(ClampMin="0.0"))
 	float RemainingMassKg = 100000.0f;
 

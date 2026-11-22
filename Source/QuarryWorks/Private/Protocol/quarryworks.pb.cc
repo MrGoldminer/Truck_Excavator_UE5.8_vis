@@ -27,6 +27,38 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace quarryworks {
 namespace v1 {
 
+inline constexpr WheelTelemetry::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        slip_ratio_{0},
+        slip_angle_rad_{0},
+        load_n_{0},
+        angular_velocity_rad_s_{0},
+        longitudinal_force_n_{0},
+        lateral_force_n_{0},
+        contact_friction_{0},
+        in_contact_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WheelTelemetry::WheelTelemetry(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(WheelTelemetry_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct WheelTelemetryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WheelTelemetryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WheelTelemetryDefaultTypeInternal() {}
+  union {
+    WheelTelemetry _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WheelTelemetryDefaultTypeInternal _WheelTelemetry_default_instance_;
+
 inline constexpr VehicleConfig::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -36,7 +68,12 @@ inline constexpr VehicleConfig::Impl_::Impl_(
         max_forward_speed_cm_s_{0},
         max_reverse_speed_cm_s_{0},
         cargo_capacity_kg_{0},
-        work_rate_kg_s_{0} {}
+        work_rate_kg_s_{0},
+        engine_peak_torque_nm_{0},
+        tire_friction_{0},
+        loose_material_friction_{0},
+        track_yaw_rate_deg_s_{0},
+        legacy_kinematic_{false} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR VehicleConfig::VehicleConfig(::_pbi::ConstantInitialized)
@@ -57,37 +94,6 @@ struct VehicleConfigDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VehicleConfigDefaultTypeInternal _VehicleConfig_default_instance_;
-
-inline constexpr VehicleCommand::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        vehicle_id_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        throttle_{0},
-        steering_{0},
-        service_brake_{0},
-        parking_brake_{false} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR VehicleCommand::VehicleCommand(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(VehicleCommand_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct VehicleCommandDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VehicleCommandDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VehicleCommandDefaultTypeInternal() {}
-  union {
-    VehicleCommand _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VehicleCommandDefaultTypeInternal _VehicleCommand_default_instance_;
 
 inline constexpr Vector3::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -116,6 +122,64 @@ struct Vector3DefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Vector3DefaultTypeInternal _Vector3_default_instance_;
 
+inline constexpr Quaternion::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        w_{0},
+        x_{0},
+        y_{0},
+        z_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Quaternion::Quaternion(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(Quaternion_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct QuaternionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QuaternionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QuaternionDefaultTypeInternal() {}
+  union {
+    Quaternion _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QuaternionDefaultTypeInternal _Quaternion_default_instance_;
+
+inline constexpr ExcavatorCommand::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        slew_{0},
+        boom_{0},
+        stick_{0},
+        bucket_{0},
+        dig_{false},
+        dump_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ExcavatorCommand::ExcavatorCommand(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(ExcavatorCommand_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ExcavatorCommandDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ExcavatorCommandDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ExcavatorCommandDefaultTypeInternal() {}
+  union {
+    ExcavatorCommand _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcavatorCommandDefaultTypeInternal _ExcavatorCommand_default_instance_;
+
 inline constexpr CargoTelemetry::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -143,36 +207,37 @@ struct CargoTelemetryDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CargoTelemetryDefaultTypeInternal _CargoTelemetry_default_instance_;
 
-inline constexpr VehicleTelemetry::Impl_::Impl_(
+inline constexpr VehicleCommand::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         vehicle_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        location_cm_{nullptr},
-        cargo_{nullptr},
-        speed_kmh_{0},
+        excavator_{nullptr},
+        throttle_{0},
+        steering_{0},
+        service_brake_{0},
         parking_brake_{false} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR VehicleTelemetry::VehicleTelemetry(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR VehicleCommand::VehicleCommand(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(VehicleTelemetry_class_data_.base()),
+    : ::google::protobuf::Message(VehicleCommand_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct VehicleTelemetryDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VehicleTelemetryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VehicleTelemetryDefaultTypeInternal() {}
+struct VehicleCommandDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VehicleCommandDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VehicleCommandDefaultTypeInternal() {}
   union {
-    VehicleTelemetry _instance;
+    VehicleCommand _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VehicleTelemetryDefaultTypeInternal _VehicleTelemetry_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VehicleCommandDefaultTypeInternal _VehicleCommand_default_instance_;
 
 inline constexpr QuarryConfig::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -201,12 +266,79 @@ struct QuarryConfigDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QuarryConfigDefaultTypeInternal _QuarryConfig_default_instance_;
 
+inline constexpr ImuTelemetry::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        specific_force_m_s2_{nullptr},
+        angular_velocity_rad_s_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ImuTelemetry::ImuTelemetry(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(ImuTelemetry_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ImuTelemetryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ImuTelemetryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ImuTelemetryDefaultTypeInternal() {}
+  union {
+    ImuTelemetry _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ImuTelemetryDefaultTypeInternal _ImuTelemetry_default_instance_;
+
+inline constexpr VehicleTelemetry::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        wheels_{},
+        vehicle_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        location_cm_{nullptr},
+        cargo_{nullptr},
+        orientation_{nullptr},
+        velocity_cm_s_{nullptr},
+        angular_velocity_rad_s_{nullptr},
+        imu_{nullptr},
+        speed_kmh_{0},
+        parking_brake_{false},
+        any_wheel_slipping_{false},
+        gear_{0},
+        engine_rpm_{0},
+        grounded_wheel_count_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VehicleTelemetry::VehicleTelemetry(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(VehicleTelemetry_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct VehicleTelemetryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VehicleTelemetryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VehicleTelemetryDefaultTypeInternal() {}
+  union {
+    VehicleTelemetry _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VehicleTelemetryDefaultTypeInternal _VehicleTelemetry_default_instance_;
+
 inline constexpr QuarryTelemetry::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         vehicles_{},
         sequence_{::uint64_t{0u}},
-        delivered_mass_kg_{0} {}
+        delivered_mass_kg_{0},
+        simulation_time_s_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR QuarryTelemetry::QuarryTelemetry(::_pbi::ConstantInitialized)
@@ -251,6 +383,11 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.max_reverse_speed_cm_s_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.cargo_capacity_kg_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.work_rate_kg_s_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.engine_peak_torque_nm_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.tire_friction_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.loose_material_friction_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.track_yaw_rate_deg_s_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleConfig, _impl_.legacy_kinematic_),
         0,
         1,
         2,
@@ -258,6 +395,11 @@ const ::uint32_t
         4,
         5,
         6,
+        7,
+        8,
+        9,
+        10,
+        11,
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryConfig, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryConfig, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -272,24 +414,6 @@ const ::uint32_t
         2,
         0,
         1,
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_._has_bits_),
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.vehicle_id_),
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.throttle_),
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.steering_),
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.service_brake_),
-        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.parking_brake_),
-        0,
-        1,
-        2,
-        3,
-        4,
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Vector3, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Vector3, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -304,6 +428,22 @@ const ::uint32_t
         0,
         1,
         2,
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Quaternion, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Quaternion, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Quaternion, _impl_.w_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Quaternion, _impl_.x_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Quaternion, _impl_.y_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::Quaternion, _impl_.z_),
+        0,
+        1,
+        2,
+        3,
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::CargoTelemetry, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::CargoTelemetry, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -318,6 +458,82 @@ const ::uint32_t
         2,
         0,
         1,
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.slip_ratio_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.slip_angle_rad_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.load_n_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.angular_velocity_rad_s_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.longitudinal_force_n_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.lateral_force_n_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.contact_friction_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::WheelTelemetry, _impl_.in_contact_),
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ImuTelemetry, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ImuTelemetry, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ImuTelemetry, _impl_.specific_force_m_s2_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ImuTelemetry, _impl_.angular_velocity_rad_s_),
+        0,
+        1,
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_.slew_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_.boom_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_.stick_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_.bucket_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_.dig_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::ExcavatorCommand, _impl_.dump_),
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.vehicle_id_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.throttle_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.steering_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.service_brake_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.parking_brake_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleCommand, _impl_.excavator_),
+        0,
+        2,
+        3,
+        4,
+        5,
+        1,
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -331,11 +547,29 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.speed_kmh_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.parking_brake_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.cargo_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.orientation_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.velocity_cm_s_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.angular_velocity_rad_s_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.imu_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.engine_rpm_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.gear_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.grounded_wheel_count_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.any_wheel_slipping_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::VehicleTelemetry, _impl_.wheels_),
         0,
         1,
+        7,
+        8,
+        2,
         3,
         4,
-        2,
+        5,
+        6,
+        11,
+        10,
+        12,
+        9,
+        ~0u,
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryTelemetry, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryTelemetry, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -347,71 +581,108 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryTelemetry, _impl_.sequence_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryTelemetry, _impl_.delivered_mass_kg_),
         PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryTelemetry, _impl_.vehicles_),
+        PROTOBUF_FIELD_OFFSET(::quarryworks::v1::QuarryTelemetry, _impl_.simulation_time_s_),
         0,
         1,
         ~0u,
+        2,
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 15, -1, sizeof(::quarryworks::v1::VehicleConfig)},
-        {22, 33, -1, sizeof(::quarryworks::v1::QuarryConfig)},
-        {36, 49, -1, sizeof(::quarryworks::v1::VehicleCommand)},
-        {54, 65, -1, sizeof(::quarryworks::v1::Vector3)},
-        {68, 79, -1, sizeof(::quarryworks::v1::CargoTelemetry)},
-        {82, 95, -1, sizeof(::quarryworks::v1::VehicleTelemetry)},
-        {100, 111, -1, sizeof(::quarryworks::v1::QuarryTelemetry)},
+        {0, 20, -1, sizeof(::quarryworks::v1::VehicleConfig)},
+        {32, 43, -1, sizeof(::quarryworks::v1::QuarryConfig)},
+        {46, 57, -1, sizeof(::quarryworks::v1::Vector3)},
+        {60, 72, -1, sizeof(::quarryworks::v1::Quaternion)},
+        {76, 87, -1, sizeof(::quarryworks::v1::CargoTelemetry)},
+        {90, 106, -1, sizeof(::quarryworks::v1::WheelTelemetry)},
+        {114, 124, -1, sizeof(::quarryworks::v1::ImuTelemetry)},
+        {126, 140, -1, sizeof(::quarryworks::v1::ExcavatorCommand)},
+        {146, 160, -1, sizeof(::quarryworks::v1::VehicleCommand)},
+        {166, 188, -1, sizeof(::quarryworks::v1::VehicleTelemetry)},
+        {202, 214, -1, sizeof(::quarryworks::v1::QuarryTelemetry)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::quarryworks::v1::_VehicleConfig_default_instance_._instance,
     &::quarryworks::v1::_QuarryConfig_default_instance_._instance,
-    &::quarryworks::v1::_VehicleCommand_default_instance_._instance,
     &::quarryworks::v1::_Vector3_default_instance_._instance,
+    &::quarryworks::v1::_Quaternion_default_instance_._instance,
     &::quarryworks::v1::_CargoTelemetry_default_instance_._instance,
+    &::quarryworks::v1::_WheelTelemetry_default_instance_._instance,
+    &::quarryworks::v1::_ImuTelemetry_default_instance_._instance,
+    &::quarryworks::v1::_ExcavatorCommand_default_instance_._instance,
+    &::quarryworks::v1::_VehicleCommand_default_instance_._instance,
     &::quarryworks::v1::_VehicleTelemetry_default_instance_._instance,
     &::quarryworks::v1::_QuarryTelemetry_default_instance_._instance,
 };
 const char descriptor_table_protodef_quarryworks_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\021quarryworks.proto\022\016quarryworks.v1\"\307\001\n\r"
+    "\n\021quarryworks.proto\022\016quarryworks.v1\"\326\002\n\r"
     "VehicleConfig\022\024\n\014base_mass_kg\030\001 \001(\001\022\026\n\016e"
     "ngine_force_n\030\002 \001(\001\022\025\n\rbrake_force_n\030\003 \001"
     "(\001\022\036\n\026max_forward_speed_cm_s\030\004 \001(\001\022\036\n\026ma"
     "x_reverse_speed_cm_s\030\005 \001(\001\022\031\n\021cargo_capa"
-    "city_kg\030\006 \001(\001\022\026\n\016work_rate_kg_s\030\007 \001(\001\"\215\001"
-    "\n\014QuarryConfig\022\026\n\016schema_version\030\001 \001(\r\0220"
-    "\n\texcavator\030\002 \001(\0132\035.quarryworks.v1.Vehic"
-    "leConfig\0223\n\014mining_truck\030\003 \001(\0132\035.quarryw"
-    "orks.v1.VehicleConfig\"v\n\016VehicleCommand\022"
-    "\022\n\nvehicle_id\030\001 \001(\t\022\020\n\010throttle\030\002 \001(\001\022\020\n"
-    "\010steering\030\003 \001(\001\022\025\n\rservice_brake\030\004 \001(\001\022\025"
-    "\n\rparking_brake\030\005 \001(\010\"*\n\007Vector3\022\t\n\001x\030\001 "
-    "\001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\"n\n\016CargoTeleme"
-    "try\022.\n\010material\030\001 \001(\0162\034.quarryworks.v1.M"
-    "aterialType\022\027\n\017current_mass_kg\030\002 \001(\001\022\023\n\013"
-    "capacity_kg\030\003 \001(\001\"\255\001\n\020VehicleTelemetry\022\022"
-    "\n\nvehicle_id\030\001 \001(\t\022,\n\013location_cm\030\002 \001(\0132"
-    "\027.quarryworks.v1.Vector3\022\021\n\tspeed_kmh\030\003 "
-    "\001(\001\022\025\n\rparking_brake\030\004 \001(\010\022-\n\005cargo\030\005 \001("
-    "\0132\036.quarryworks.v1.CargoTelemetry\"r\n\017Qua"
-    "rryTelemetry\022\020\n\010sequence\030\001 \001(\004\022\031\n\021delive"
-    "red_mass_kg\030\002 \001(\001\0222\n\010vehicles\030\003 \003(\0132 .qu"
-    "arryworks.v1.VehicleTelemetry*v\n\014Materia"
-    "lType\022\035\n\031MATERIAL_TYPE_UNSPECIFIED\020\000\022\026\n\022"
-    "MATERIAL_TYPE_SAND\020\001\022\030\n\024MATERIAL_TYPE_GR"
-    "AVEL\020\002\022\025\n\021MATERIAL_TYPE_ORE\020\003b\006proto3"
+    "city_kg\030\006 \001(\001\022\026\n\016work_rate_kg_s\030\007 \001(\001\022\035\n"
+    "\025engine_peak_torque_nm\030\010 \001(\001\022\025\n\rtire_fri"
+    "ction\030\t \001(\001\022\037\n\027loose_material_friction\030\n"
+    " \001(\001\022\034\n\024track_yaw_rate_deg_s\030\013 \001(\001\022\030\n\020le"
+    "gacy_kinematic\030\014 \001(\010\"\215\001\n\014QuarryConfig\022\026\n"
+    "\016schema_version\030\001 \001(\r\0220\n\texcavator\030\002 \001(\013"
+    "2\035.quarryworks.v1.VehicleConfig\0223\n\014minin"
+    "g_truck\030\003 \001(\0132\035.quarryworks.v1.VehicleCo"
+    "nfig\"*\n\007Vector3\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n"
+    "\001z\030\003 \001(\001\"8\n\nQuaternion\022\t\n\001w\030\001 \001(\001\022\t\n\001x\030\002"
+    " \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\"n\n\016CargoTelem"
+    "etry\022.\n\010material\030\001 \001(\0162\034.quarryworks.v1."
+    "MaterialType\022\027\n\017current_mass_kg\030\002 \001(\001\022\023\n"
+    "\013capacity_kg\030\003 \001(\001\"\321\001\n\016WheelTelemetry\022\022\n"
+    "\nslip_ratio\030\001 \001(\002\022\026\n\016slip_angle_rad\030\002 \001("
+    "\002\022\016\n\006load_n\030\003 \001(\001\022\036\n\026angular_velocity_ra"
+    "d_s\030\004 \001(\002\022\034\n\024longitudinal_force_n\030\005 \001(\002\022"
+    "\027\n\017lateral_force_n\030\006 \001(\002\022\030\n\020contact_fric"
+    "tion\030\007 \001(\002\022\022\n\nin_contact\030\010 \001(\010\"}\n\014ImuTel"
+    "emetry\0224\n\023specific_force_m_s2\030\001 \001(\0132\027.qu"
+    "arryworks.v1.Vector3\0227\n\026angular_velocity"
+    "_rad_s\030\002 \001(\0132\027.quarryworks.v1.Vector3\"h\n"
+    "\020ExcavatorCommand\022\014\n\004slew\030\001 \001(\001\022\014\n\004boom\030"
+    "\002 \001(\001\022\r\n\005stick\030\003 \001(\001\022\016\n\006bucket\030\004 \001(\001\022\013\n\003"
+    "dig\030\005 \001(\010\022\014\n\004dump\030\006 \001(\010\"\253\001\n\016VehicleComma"
+    "nd\022\022\n\nvehicle_id\030\001 \001(\t\022\020\n\010throttle\030\002 \001(\001"
+    "\022\020\n\010steering\030\003 \001(\001\022\025\n\rservice_brake\030\004 \001("
+    "\001\022\025\n\rparking_brake\030\005 \001(\010\0223\n\texcavator\030\006 "
+    "\001(\0132 .quarryworks.v1.ExcavatorCommand\"\376\003"
+    "\n\020VehicleTelemetry\022\022\n\nvehicle_id\030\001 \001(\t\022,"
+    "\n\013location_cm\030\002 \001(\0132\027.quarryworks.v1.Vec"
+    "tor3\022\021\n\tspeed_kmh\030\003 \001(\001\022\025\n\rparking_brake"
+    "\030\004 \001(\010\022-\n\005cargo\030\005 \001(\0132\036.quarryworks.v1.C"
+    "argoTelemetry\022/\n\013orientation\030\006 \001(\0132\032.qua"
+    "rryworks.v1.Quaternion\022.\n\rvelocity_cm_s\030"
+    "\007 \001(\0132\027.quarryworks.v1.Vector3\0227\n\026angula"
+    "r_velocity_rad_s\030\010 \001(\0132\027.quarryworks.v1."
+    "Vector3\022)\n\003imu\030\t \001(\0132\034.quarryworks.v1.Im"
+    "uTelemetry\022\022\n\nengine_rpm\030\n \001(\001\022\014\n\004gear\030\013"
+    " \001(\021\022\034\n\024grounded_wheel_count\030\014 \001(\005\022\032\n\022an"
+    "y_wheel_slipping\030\r \001(\010\022.\n\006wheels\030\016 \003(\0132\036"
+    ".quarryworks.v1.WheelTelemetry\"\215\001\n\017Quarr"
+    "yTelemetry\022\020\n\010sequence\030\001 \001(\004\022\031\n\021delivere"
+    "d_mass_kg\030\002 \001(\001\0222\n\010vehicles\030\003 \003(\0132 .quar"
+    "ryworks.v1.VehicleTelemetry\022\031\n\021simulatio"
+    "n_time_s\030\004 \001(\001*v\n\014MaterialType\022\035\n\031MATERI"
+    "AL_TYPE_UNSPECIFIED\020\000\022\026\n\022MATERIAL_TYPE_S"
+    "AND\020\001\022\030\n\024MATERIAL_TYPE_GRAVEL\020\002\022\025\n\021MATER"
+    "IAL_TYPE_ORE\020\003b\006proto3"
 };
 static ::absl::once_flag descriptor_table_quarryworks_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_quarryworks_2eproto = {
     false,
     false,
-    1077,
+    2142,
     descriptor_table_protodef_quarryworks_2eproto,
     "quarryworks.proto",
     &descriptor_table_quarryworks_2eproto_once,
     nullptr,
     0,
-    7,
+    11,
     schemas,
     file_default_instances,
     TableStruct_quarryworks_2eproto::offsets,
@@ -466,9 +737,9 @@ inline void VehicleConfig::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, base_mass_kg_),
            0,
-           offsetof(Impl_, work_rate_kg_s_) -
+           offsetof(Impl_, legacy_kinematic_) -
                offsetof(Impl_, base_mass_kg_) +
-               sizeof(Impl_::work_rate_kg_s_));
+               sizeof(Impl_::legacy_kinematic_));
 }
 VehicleConfig::~VehicleConfig() {
   // @@protoc_insertion_point(destructor:quarryworks.v1.VehicleConfig)
@@ -524,16 +795,16 @@ const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL VehicleConfig::G
   return VehicleConfig_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 7, 0, 0, 2>
+const ::_pbi::TcParseTable<4, 12, 0, 0, 2>
 VehicleConfig::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_._has_bits_),
     0, // no _extensions_
-    7, 56,  // max_field_number, fast_idx_mask
+    12, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967168,  // skipmap
+    4294963200,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    7,  // num_field_entries
+    12,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     VehicleConfig_class_data_.base(),
@@ -565,6 +836,24 @@ VehicleConfig::_table_ = {
     // double work_rate_kg_s = 7;
     {::_pbi::TcParser::FastF64S1,
      {57, 6, 0, PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.work_rate_kg_s_)}},
+    // double engine_peak_torque_nm = 8;
+    {::_pbi::TcParser::FastF64S1,
+     {65, 7, 0, PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.engine_peak_torque_nm_)}},
+    // double tire_friction = 9;
+    {::_pbi::TcParser::FastF64S1,
+     {73, 8, 0, PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.tire_friction_)}},
+    // double loose_material_friction = 10;
+    {::_pbi::TcParser::FastF64S1,
+     {81, 9, 0, PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.loose_material_friction_)}},
+    // double track_yaw_rate_deg_s = 11;
+    {::_pbi::TcParser::FastF64S1,
+     {89, 10, 0, PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.track_yaw_rate_deg_s_)}},
+    // bool legacy_kinematic = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(VehicleConfig, _impl_.legacy_kinematic_), 11>(),
+     {96, 11, 0, PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.legacy_kinematic_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -589,6 +878,21 @@ VehicleConfig::_table_ = {
     // double work_rate_kg_s = 7;
     {PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.work_rate_kg_s_), _Internal::kHasBitsOffset + 6, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double engine_peak_torque_nm = 8;
+    {PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.engine_peak_torque_nm_), _Internal::kHasBitsOffset + 7, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double tire_friction = 9;
+    {PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.tire_friction_), _Internal::kHasBitsOffset + 8, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double loose_material_friction = 10;
+    {PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.loose_material_friction_), _Internal::kHasBitsOffset + 9, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double track_yaw_rate_deg_s = 11;
+    {PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.track_yaw_rate_deg_s_), _Internal::kHasBitsOffset + 10, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // bool legacy_kinematic = 12;
+    {PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.legacy_kinematic_), _Internal::kHasBitsOffset + 11, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
@@ -602,10 +906,15 @@ PROTOBUF_NOINLINE void VehicleConfig::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000007fu) != 0) {
+  if ((cached_has_bits & 0x000000ffu) != 0) {
     ::memset(&_impl_.base_mass_kg_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.work_rate_kg_s_) -
-        reinterpret_cast<char*>(&_impl_.base_mass_kg_)) + sizeof(_impl_.work_rate_kg_s_));
+        reinterpret_cast<char*>(&_impl_.engine_peak_torque_nm_) -
+        reinterpret_cast<char*>(&_impl_.base_mass_kg_)) + sizeof(_impl_.engine_peak_torque_nm_));
+  }
+  if ((cached_has_bits & 0x00000f00u) != 0) {
+    ::memset(&_impl_.tire_friction_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.legacy_kinematic_) -
+        reinterpret_cast<char*>(&_impl_.tire_friction_)) + sizeof(_impl_.legacy_kinematic_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -689,6 +998,51 @@ PROTOBUF_NOINLINE void VehicleConfig::Clear() {
     }
   }
 
+  // double engine_peak_torque_nm = 8;
+  if ((this_._impl_._has_bits_[0] & 0x00000080u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_engine_peak_torque_nm()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          8, this_._internal_engine_peak_torque_nm(), target);
+    }
+  }
+
+  // double tire_friction = 9;
+  if ((this_._impl_._has_bits_[0] & 0x00000100u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_tire_friction()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          9, this_._internal_tire_friction(), target);
+    }
+  }
+
+  // double loose_material_friction = 10;
+  if ((this_._impl_._has_bits_[0] & 0x00000200u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_loose_material_friction()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          10, this_._internal_loose_material_friction(), target);
+    }
+  }
+
+  // double track_yaw_rate_deg_s = 11;
+  if ((this_._impl_._has_bits_[0] & 0x00000400u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_track_yaw_rate_deg_s()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          11, this_._internal_track_yaw_rate_deg_s(), target);
+    }
+  }
+
+  // bool legacy_kinematic = 12;
+  if ((this_._impl_._has_bits_[0] & 0x00000800u) != 0) {
+    if (this_._internal_legacy_kinematic() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          12, this_._internal_legacy_kinematic(), target);
+    }
+  }
+
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -714,7 +1068,7 @@ PROTOBUF_NOINLINE void VehicleConfig::Clear() {
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000007fu) != 0) {
+  if ((cached_has_bits & 0x000000ffu) != 0) {
     // double base_mass_kg = 1;
     if ((cached_has_bits & 0x00000001u) != 0) {
       if (::absl::bit_cast<::uint64_t>(this_._internal_base_mass_kg()) != 0) {
@@ -757,6 +1111,38 @@ PROTOBUF_NOINLINE void VehicleConfig::Clear() {
         total_size += 9;
       }
     }
+    // double engine_peak_torque_nm = 8;
+    if ((cached_has_bits & 0x00000080u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_engine_peak_torque_nm()) != 0) {
+        total_size += 9;
+      }
+    }
+  }
+  if ((cached_has_bits & 0x00000f00u) != 0) {
+    // double tire_friction = 9;
+    if ((cached_has_bits & 0x00000100u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_tire_friction()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double loose_material_friction = 10;
+    if ((cached_has_bits & 0x00000200u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_loose_material_friction()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double track_yaw_rate_deg_s = 11;
+    if ((cached_has_bits & 0x00000400u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_track_yaw_rate_deg_s()) != 0) {
+        total_size += 9;
+      }
+    }
+    // bool legacy_kinematic = 12;
+    if ((cached_has_bits & 0x00000800u) != 0) {
+      if (this_._internal_legacy_kinematic() != 0) {
+        total_size += 2;
+      }
+    }
   }
   return this_.MaybeComputeUnknownFieldsSize(total_size,
                                              &this_._impl_._cached_size_);
@@ -771,7 +1157,7 @@ void VehicleConfig::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::g
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000007fu) != 0) {
+  if ((cached_has_bits & 0x000000ffu) != 0) {
     if ((cached_has_bits & 0x00000001u) != 0) {
       if (::absl::bit_cast<::uint64_t>(from._internal_base_mass_kg()) != 0) {
         _this->_impl_.base_mass_kg_ = from._impl_.base_mass_kg_;
@@ -807,6 +1193,33 @@ void VehicleConfig::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::g
         _this->_impl_.work_rate_kg_s_ = from._impl_.work_rate_kg_s_;
       }
     }
+    if ((cached_has_bits & 0x00000080u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_engine_peak_torque_nm()) != 0) {
+        _this->_impl_.engine_peak_torque_nm_ = from._impl_.engine_peak_torque_nm_;
+      }
+    }
+  }
+  if ((cached_has_bits & 0x00000f00u) != 0) {
+    if ((cached_has_bits & 0x00000100u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_tire_friction()) != 0) {
+        _this->_impl_.tire_friction_ = from._impl_.tire_friction_;
+      }
+    }
+    if ((cached_has_bits & 0x00000200u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_loose_material_friction()) != 0) {
+        _this->_impl_.loose_material_friction_ = from._impl_.loose_material_friction_;
+      }
+    }
+    if ((cached_has_bits & 0x00000400u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_track_yaw_rate_deg_s()) != 0) {
+        _this->_impl_.track_yaw_rate_deg_s_ = from._impl_.track_yaw_rate_deg_s_;
+      }
+    }
+    if ((cached_has_bits & 0x00000800u) != 0) {
+      if (from._internal_legacy_kinematic() != 0) {
+        _this->_impl_.legacy_kinematic_ = from._impl_.legacy_kinematic_;
+      }
+    }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -825,8 +1238,8 @@ void VehicleConfig::InternalSwap(VehicleConfig* PROTOBUF_RESTRICT PROTOBUF_NONNU
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.work_rate_kg_s_)
-      + sizeof(VehicleConfig::_impl_.work_rate_kg_s_)
+      PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.legacy_kinematic_)
+      + sizeof(VehicleConfig::_impl_.legacy_kinematic_)
       - PROTOBUF_FIELD_OFFSET(VehicleConfig, _impl_.base_mass_kg_)>(
           reinterpret_cast<char*>(&_impl_.base_mass_kg_),
           reinterpret_cast<char*>(&other->_impl_.base_mass_kg_));
@@ -1176,402 +1589,6 @@ void QuarryConfig::InternalSwap(QuarryConfig* PROTOBUF_RESTRICT PROTOBUF_NONNULL
 }
 // ===================================================================
 
-class VehicleCommand::_Internal {
- public:
-  using HasBits =
-      decltype(std::declval<VehicleCommand>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_._has_bits_);
-};
-
-VehicleCommand::VehicleCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, VehicleCommand_class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:quarryworks.v1.VehicleCommand)
-}
-PROTOBUF_NDEBUG_INLINE VehicleCommand::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    const ::quarryworks::v1::VehicleCommand& from_msg)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        vehicle_id_(arena, from.vehicle_id_) {}
-
-VehicleCommand::VehicleCommand(
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const VehicleCommand& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, VehicleCommand_class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  VehicleCommand* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, throttle_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, throttle_),
-           offsetof(Impl_, parking_brake_) -
-               offsetof(Impl_, throttle_) +
-               sizeof(Impl_::parking_brake_));
-
-  // @@protoc_insertion_point(copy_constructor:quarryworks.v1.VehicleCommand)
-}
-PROTOBUF_NDEBUG_INLINE VehicleCommand::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
-      : _cached_size_{0},
-        vehicle_id_(arena) {}
-
-inline void VehicleCommand::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, throttle_),
-           0,
-           offsetof(Impl_, parking_brake_) -
-               offsetof(Impl_, throttle_) +
-               sizeof(Impl_::parking_brake_));
-}
-VehicleCommand::~VehicleCommand() {
-  // @@protoc_insertion_point(destructor:quarryworks.v1.VehicleCommand)
-  SharedDtor(*this);
-}
-inline void VehicleCommand::SharedDtor(MessageLite& self) {
-  VehicleCommand& this_ = static_cast<VehicleCommand&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.vehicle_id_.Destroy();
-  this_._impl_.~Impl_();
-}
-
-inline void* PROTOBUF_NONNULL VehicleCommand::PlacementNew_(
-    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) VehicleCommand(arena);
-}
-constexpr auto VehicleCommand::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(VehicleCommand),
-                                            alignof(VehicleCommand));
-}
-constexpr auto VehicleCommand::InternalGenerateClassData_() {
-  return ::google::protobuf::internal::ClassDataFull{
-      ::google::protobuf::internal::ClassData{
-          &_VehicleCommand_default_instance_._instance,
-          &_table_.header,
-          nullptr,  // OnDemandRegisterArenaDtor
-          nullptr,  // IsInitialized
-          &VehicleCommand::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<VehicleCommand>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-          &VehicleCommand::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<VehicleCommand>(), &VehicleCommand::ByteSizeLong,
-              &VehicleCommand::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_._cached_size_),
-          false,
-      },
-      &VehicleCommand::kDescriptorMethods,
-      &descriptor_table_quarryworks_2eproto,
-      nullptr,  // tracker
-  };
-}
-
-PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ::google::protobuf::internal::ClassDataFull
-        VehicleCommand_class_data_ =
-            VehicleCommand::InternalGenerateClassData_();
-
-const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL VehicleCommand::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&VehicleCommand_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(VehicleCommand_class_data_.tc_table);
-  return VehicleCommand_class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 48, 2>
-VehicleCommand::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_._has_bits_),
-    0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    VehicleCommand_class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::quarryworks::v1::VehicleCommand>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string vehicle_id = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.vehicle_id_)}},
-    // double throttle = 2;
-    {::_pbi::TcParser::FastF64S1,
-     {17, 1, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.throttle_)}},
-    // double steering = 3;
-    {::_pbi::TcParser::FastF64S1,
-     {25, 2, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.steering_)}},
-    // double service_brake = 4;
-    {::_pbi::TcParser::FastF64S1,
-     {33, 3, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.service_brake_)}},
-    // bool parking_brake = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(VehicleCommand, _impl_.parking_brake_), 4>(),
-     {40, 4, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.parking_brake_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string vehicle_id = 1;
-    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.vehicle_id_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // double throttle = 2;
-    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.throttle_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
-    // double steering = 3;
-    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.steering_), _Internal::kHasBitsOffset + 2, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
-    // double service_brake = 4;
-    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.service_brake_), _Internal::kHasBitsOffset + 3, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
-    // bool parking_brake = 5;
-    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.parking_brake_), _Internal::kHasBitsOffset + 4, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
-  }},
-  // no aux_entries
-  {{
-    "\35\12\0\0\0\0\0\0"
-    "quarryworks.v1.VehicleCommand"
-    "vehicle_id"
-  }},
-};
-PROTOBUF_NOINLINE void VehicleCommand::Clear() {
-// @@protoc_insertion_point(message_clear_start:quarryworks.v1.VehicleCommand)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _impl_._has_bits_[0];
-  if ((cached_has_bits & 0x00000001u) != 0) {
-    _impl_.vehicle_id_.ClearNonDefaultToEmpty();
-  }
-  if ((cached_has_bits & 0x0000001eu) != 0) {
-    ::memset(&_impl_.throttle_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.parking_brake_) -
-        reinterpret_cast<char*>(&_impl_.throttle_)) + sizeof(_impl_.parking_brake_));
-  }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL VehicleCommand::_InternalSerialize(
-    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
-    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const VehicleCommand& this_ = static_cast<const VehicleCommand&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL VehicleCommand::_InternalSerialize(
-    ::uint8_t* PROTOBUF_NONNULL target,
-    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const VehicleCommand& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(serialize_to_array_start:quarryworks.v1.VehicleCommand)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
-
-  // string vehicle_id = 1;
-  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    if (!this_._internal_vehicle_id().empty()) {
-      const std::string& _s = this_._internal_vehicle_id();
-      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "quarryworks.v1.VehicleCommand.vehicle_id");
-      target = stream->WriteStringMaybeAliased(1, _s, target);
-    }
-  }
-
-  // double throttle = 2;
-  if ((this_._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    if (::absl::bit_cast<::uint64_t>(this_._internal_throttle()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-          2, this_._internal_throttle(), target);
-    }
-  }
-
-  // double steering = 3;
-  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    if (::absl::bit_cast<::uint64_t>(this_._internal_steering()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-          3, this_._internal_steering(), target);
-    }
-  }
-
-  // double service_brake = 4;
-  if ((this_._impl_._has_bits_[0] & 0x00000008u) != 0) {
-    if (::absl::bit_cast<::uint64_t>(this_._internal_service_brake()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-          4, this_._internal_service_brake(), target);
-    }
-  }
-
-  // bool parking_brake = 5;
-  if ((this_._impl_._has_bits_[0] & 0x00000010u) != 0) {
-    if (this_._internal_parking_brake() != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteBoolToArray(
-          5, this_._internal_parking_brake(), target);
-    }
-  }
-
-  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:quarryworks.v1.VehicleCommand)
-  return target;
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t VehicleCommand::ByteSizeLong(const MessageLite& base) {
-  const VehicleCommand& this_ = static_cast<const VehicleCommand&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-::size_t VehicleCommand::ByteSizeLong() const {
-  const VehicleCommand& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:quarryworks.v1.VehicleCommand)
-  ::size_t total_size = 0;
-
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void)cached_has_bits;
-
-  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
-  cached_has_bits = this_._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000001fu) != 0) {
-    // string vehicle_id = 1;
-    if ((cached_has_bits & 0x00000001u) != 0) {
-      if (!this_._internal_vehicle_id().empty()) {
-        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                        this_._internal_vehicle_id());
-      }
-    }
-    // double throttle = 2;
-    if ((cached_has_bits & 0x00000002u) != 0) {
-      if (::absl::bit_cast<::uint64_t>(this_._internal_throttle()) != 0) {
-        total_size += 9;
-      }
-    }
-    // double steering = 3;
-    if ((cached_has_bits & 0x00000004u) != 0) {
-      if (::absl::bit_cast<::uint64_t>(this_._internal_steering()) != 0) {
-        total_size += 9;
-      }
-    }
-    // double service_brake = 4;
-    if ((cached_has_bits & 0x00000008u) != 0) {
-      if (::absl::bit_cast<::uint64_t>(this_._internal_service_brake()) != 0) {
-        total_size += 9;
-      }
-    }
-    // bool parking_brake = 5;
-    if ((cached_has_bits & 0x00000010u) != 0) {
-      if (this_._internal_parking_brake() != 0) {
-        total_size += 2;
-      }
-    }
-  }
-  return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                             &this_._impl_._cached_size_);
-}
-
-void VehicleCommand::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<VehicleCommand*>(&to_msg);
-  auto& from = static_cast<const VehicleCommand&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:quarryworks.v1.VehicleCommand)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = from._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000001fu) != 0) {
-    if ((cached_has_bits & 0x00000001u) != 0) {
-      if (!from._internal_vehicle_id().empty()) {
-        _this->_internal_set_vehicle_id(from._internal_vehicle_id());
-      } else {
-        if (_this->_impl_.vehicle_id_.IsDefault()) {
-          _this->_internal_set_vehicle_id("");
-        }
-      }
-    }
-    if ((cached_has_bits & 0x00000002u) != 0) {
-      if (::absl::bit_cast<::uint64_t>(from._internal_throttle()) != 0) {
-        _this->_impl_.throttle_ = from._impl_.throttle_;
-      }
-    }
-    if ((cached_has_bits & 0x00000004u) != 0) {
-      if (::absl::bit_cast<::uint64_t>(from._internal_steering()) != 0) {
-        _this->_impl_.steering_ = from._impl_.steering_;
-      }
-    }
-    if ((cached_has_bits & 0x00000008u) != 0) {
-      if (::absl::bit_cast<::uint64_t>(from._internal_service_brake()) != 0) {
-        _this->_impl_.service_brake_ = from._impl_.service_brake_;
-      }
-    }
-    if ((cached_has_bits & 0x00000010u) != 0) {
-      if (from._internal_parking_brake() != 0) {
-        _this->_impl_.parking_brake_ = from._impl_.parking_brake_;
-      }
-    }
-  }
-  _this->_impl_._has_bits_[0] |= cached_has_bits;
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void VehicleCommand::CopyFrom(const VehicleCommand& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:quarryworks.v1.VehicleCommand)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void VehicleCommand::InternalSwap(VehicleCommand* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
-  using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vehicle_id_, &other->_impl_.vehicle_id_, arena);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.parking_brake_)
-      + sizeof(VehicleCommand::_impl_.parking_brake_)
-      - PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.throttle_)>(
-          reinterpret_cast<char*>(&_impl_.throttle_),
-          reinterpret_cast<char*>(&other->_impl_.throttle_));
-}
-
-::google::protobuf::Metadata VehicleCommand::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
 class Vector3::_Internal {
  public:
   using HasBits =
@@ -1873,6 +1890,336 @@ void Vector3::InternalSwap(Vector3* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
 }
 
 ::google::protobuf::Metadata Vector3::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class Quaternion::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<Quaternion>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(Quaternion, _impl_._has_bits_);
+};
+
+Quaternion::Quaternion(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, Quaternion_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:quarryworks.v1.Quaternion)
+}
+Quaternion::Quaternion(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Quaternion& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, Quaternion_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE Quaternion::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void Quaternion::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, w_),
+           0,
+           offsetof(Impl_, z_) -
+               offsetof(Impl_, w_) +
+               sizeof(Impl_::z_));
+}
+Quaternion::~Quaternion() {
+  // @@protoc_insertion_point(destructor:quarryworks.v1.Quaternion)
+  SharedDtor(*this);
+}
+inline void Quaternion::SharedDtor(MessageLite& self) {
+  Quaternion& this_ = static_cast<Quaternion&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL Quaternion::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) Quaternion(arena);
+}
+constexpr auto Quaternion::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(Quaternion),
+                                            alignof(Quaternion));
+}
+constexpr auto Quaternion::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_Quaternion_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &Quaternion::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<Quaternion>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &Quaternion::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<Quaternion>(), &Quaternion::ByteSizeLong,
+              &Quaternion::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(Quaternion, _impl_._cached_size_),
+          false,
+      },
+      &Quaternion::kDescriptorMethods,
+      &descriptor_table_quarryworks_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ::google::protobuf::internal::ClassDataFull
+        Quaternion_class_data_ =
+            Quaternion::InternalGenerateClassData_();
+
+const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL Quaternion::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&Quaternion_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(Quaternion_class_data_.tc_table);
+  return Quaternion_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 0, 2>
+Quaternion::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Quaternion, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    Quaternion_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::quarryworks::v1::Quaternion>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // double z = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 3, 0, PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.z_)}},
+    // double w = 1;
+    {::_pbi::TcParser::FastF64S1,
+     {9, 0, 0, PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.w_)}},
+    // double x = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 1, 0, PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.x_)}},
+    // double y = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 2, 0, PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.y_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // double w = 1;
+    {PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.w_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double x = 2;
+    {PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.x_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double y = 3;
+    {PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.y_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double z = 4;
+    {PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.z_), _Internal::kHasBitsOffset + 3, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void Quaternion::Clear() {
+// @@protoc_insertion_point(message_clear_start:quarryworks.v1.Quaternion)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000000fu) != 0) {
+    ::memset(&_impl_.w_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.z_) -
+        reinterpret_cast<char*>(&_impl_.w_)) + sizeof(_impl_.z_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL Quaternion::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const Quaternion& this_ = static_cast<const Quaternion&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL Quaternion::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const Quaternion& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(serialize_to_array_start:quarryworks.v1.Quaternion)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // double w = 1;
+  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_w()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          1, this_._internal_w(), target);
+    }
+  }
+
+  // double x = 2;
+  if ((this_._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_x()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          2, this_._internal_x(), target);
+    }
+  }
+
+  // double y = 3;
+  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_y()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          3, this_._internal_y(), target);
+    }
+  }
+
+  // double z = 4;
+  if ((this_._impl_._has_bits_[0] & 0x00000008u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_z()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          4, this_._internal_z(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:quarryworks.v1.Quaternion)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t Quaternion::ByteSizeLong(const MessageLite& base) {
+  const Quaternion& this_ = static_cast<const Quaternion&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t Quaternion::ByteSizeLong() const {
+  const Quaternion& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:quarryworks.v1.Quaternion)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000000fu) != 0) {
+    // double w = 1;
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_w()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double x = 2;
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_x()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double y = 3;
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_y()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double z = 4;
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_z()) != 0) {
+        total_size += 9;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void Quaternion::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Quaternion*>(&to_msg);
+  auto& from = static_cast<const Quaternion&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:quarryworks.v1.Quaternion)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000000fu) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_w()) != 0) {
+        _this->_impl_.w_ = from._impl_.w_;
+      }
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_x()) != 0) {
+        _this->_impl_.x_ = from._impl_.x_;
+      }
+    }
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_y()) != 0) {
+        _this->_impl_.y_ = from._impl_.y_;
+      }
+    }
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_z()) != 0) {
+        _this->_impl_.z_ = from._impl_.z_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Quaternion::CopyFrom(const Quaternion& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:quarryworks.v1.Quaternion)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Quaternion::InternalSwap(Quaternion* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.z_)
+      + sizeof(Quaternion::_impl_.z_)
+      - PROTOBUF_FIELD_OFFSET(Quaternion, _impl_.w_)>(
+          reinterpret_cast<char*>(&_impl_.w_),
+          reinterpret_cast<char*>(&other->_impl_.w_));
+}
+
+::google::protobuf::Metadata Quaternion::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -2183,6 +2530,1569 @@ void CargoTelemetry::InternalSwap(CargoTelemetry* PROTOBUF_RESTRICT PROTOBUF_NON
 }
 // ===================================================================
 
+class WheelTelemetry::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<WheelTelemetry>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_._has_bits_);
+};
+
+WheelTelemetry::WheelTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, WheelTelemetry_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:quarryworks.v1.WheelTelemetry)
+}
+WheelTelemetry::WheelTelemetry(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const WheelTelemetry& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, WheelTelemetry_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE WheelTelemetry::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void WheelTelemetry::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, slip_ratio_),
+           0,
+           offsetof(Impl_, in_contact_) -
+               offsetof(Impl_, slip_ratio_) +
+               sizeof(Impl_::in_contact_));
+}
+WheelTelemetry::~WheelTelemetry() {
+  // @@protoc_insertion_point(destructor:quarryworks.v1.WheelTelemetry)
+  SharedDtor(*this);
+}
+inline void WheelTelemetry::SharedDtor(MessageLite& self) {
+  WheelTelemetry& this_ = static_cast<WheelTelemetry&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL WheelTelemetry::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) WheelTelemetry(arena);
+}
+constexpr auto WheelTelemetry::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(WheelTelemetry),
+                                            alignof(WheelTelemetry));
+}
+constexpr auto WheelTelemetry::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_WheelTelemetry_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &WheelTelemetry::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<WheelTelemetry>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &WheelTelemetry::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<WheelTelemetry>(), &WheelTelemetry::ByteSizeLong,
+              &WheelTelemetry::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_._cached_size_),
+          false,
+      },
+      &WheelTelemetry::kDescriptorMethods,
+      &descriptor_table_quarryworks_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ::google::protobuf::internal::ClassDataFull
+        WheelTelemetry_class_data_ =
+            WheelTelemetry::InternalGenerateClassData_();
+
+const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL WheelTelemetry::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&WheelTelemetry_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(WheelTelemetry_class_data_.tc_table);
+  return WheelTelemetry_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 8, 0, 0, 2>
+WheelTelemetry::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_._has_bits_),
+    0, // no _extensions_
+    8, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967040,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    8,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    WheelTelemetry_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::quarryworks::v1::WheelTelemetry>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bool in_contact = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(WheelTelemetry, _impl_.in_contact_), 7>(),
+     {64, 7, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.in_contact_)}},
+    // float slip_ratio = 1;
+    {::_pbi::TcParser::FastF32S1,
+     {13, 0, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.slip_ratio_)}},
+    // float slip_angle_rad = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 1, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.slip_angle_rad_)}},
+    // double load_n = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 2, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.load_n_)}},
+    // float angular_velocity_rad_s = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 3, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.angular_velocity_rad_s_)}},
+    // float longitudinal_force_n = 5;
+    {::_pbi::TcParser::FastF32S1,
+     {45, 4, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.longitudinal_force_n_)}},
+    // float lateral_force_n = 6;
+    {::_pbi::TcParser::FastF32S1,
+     {53, 5, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.lateral_force_n_)}},
+    // float contact_friction = 7;
+    {::_pbi::TcParser::FastF32S1,
+     {61, 6, 0, PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.contact_friction_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // float slip_ratio = 1;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.slip_ratio_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float slip_angle_rad = 2;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.slip_angle_rad_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // double load_n = 3;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.load_n_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // float angular_velocity_rad_s = 4;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.angular_velocity_rad_s_), _Internal::kHasBitsOffset + 3, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float longitudinal_force_n = 5;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.longitudinal_force_n_), _Internal::kHasBitsOffset + 4, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float lateral_force_n = 6;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.lateral_force_n_), _Internal::kHasBitsOffset + 5, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float contact_friction = 7;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.contact_friction_), _Internal::kHasBitsOffset + 6, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // bool in_contact = 8;
+    {PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.in_contact_), _Internal::kHasBitsOffset + 7, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void WheelTelemetry::Clear() {
+// @@protoc_insertion_point(message_clear_start:quarryworks.v1.WheelTelemetry)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if ((cached_has_bits & 0x000000ffu) != 0) {
+    ::memset(&_impl_.slip_ratio_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.in_contact_) -
+        reinterpret_cast<char*>(&_impl_.slip_ratio_)) + sizeof(_impl_.in_contact_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL WheelTelemetry::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const WheelTelemetry& this_ = static_cast<const WheelTelemetry&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL WheelTelemetry::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const WheelTelemetry& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(serialize_to_array_start:quarryworks.v1.WheelTelemetry)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // float slip_ratio = 1;
+  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_slip_ratio()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          1, this_._internal_slip_ratio(), target);
+    }
+  }
+
+  // float slip_angle_rad = 2;
+  if ((this_._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_slip_angle_rad()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          2, this_._internal_slip_angle_rad(), target);
+    }
+  }
+
+  // double load_n = 3;
+  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_load_n()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          3, this_._internal_load_n(), target);
+    }
+  }
+
+  // float angular_velocity_rad_s = 4;
+  if ((this_._impl_._has_bits_[0] & 0x00000008u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_angular_velocity_rad_s()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          4, this_._internal_angular_velocity_rad_s(), target);
+    }
+  }
+
+  // float longitudinal_force_n = 5;
+  if ((this_._impl_._has_bits_[0] & 0x00000010u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_longitudinal_force_n()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          5, this_._internal_longitudinal_force_n(), target);
+    }
+  }
+
+  // float lateral_force_n = 6;
+  if ((this_._impl_._has_bits_[0] & 0x00000020u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_lateral_force_n()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          6, this_._internal_lateral_force_n(), target);
+    }
+  }
+
+  // float contact_friction = 7;
+  if ((this_._impl_._has_bits_[0] & 0x00000040u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_contact_friction()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          7, this_._internal_contact_friction(), target);
+    }
+  }
+
+  // bool in_contact = 8;
+  if ((this_._impl_._has_bits_[0] & 0x00000080u) != 0) {
+    if (this_._internal_in_contact() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          8, this_._internal_in_contact(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:quarryworks.v1.WheelTelemetry)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t WheelTelemetry::ByteSizeLong(const MessageLite& base) {
+  const WheelTelemetry& this_ = static_cast<const WheelTelemetry&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t WheelTelemetry::ByteSizeLong() const {
+  const WheelTelemetry& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:quarryworks.v1.WheelTelemetry)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x000000ffu) != 0) {
+    // float slip_ratio = 1;
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_slip_ratio()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float slip_angle_rad = 2;
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_slip_angle_rad()) != 0) {
+        total_size += 5;
+      }
+    }
+    // double load_n = 3;
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_load_n()) != 0) {
+        total_size += 9;
+      }
+    }
+    // float angular_velocity_rad_s = 4;
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_angular_velocity_rad_s()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float longitudinal_force_n = 5;
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_longitudinal_force_n()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float lateral_force_n = 6;
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_lateral_force_n()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float contact_friction = 7;
+    if ((cached_has_bits & 0x00000040u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_contact_friction()) != 0) {
+        total_size += 5;
+      }
+    }
+    // bool in_contact = 8;
+    if ((cached_has_bits & 0x00000080u) != 0) {
+      if (this_._internal_in_contact() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void WheelTelemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<WheelTelemetry*>(&to_msg);
+  auto& from = static_cast<const WheelTelemetry&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:quarryworks.v1.WheelTelemetry)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x000000ffu) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_slip_ratio()) != 0) {
+        _this->_impl_.slip_ratio_ = from._impl_.slip_ratio_;
+      }
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_slip_angle_rad()) != 0) {
+        _this->_impl_.slip_angle_rad_ = from._impl_.slip_angle_rad_;
+      }
+    }
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_load_n()) != 0) {
+        _this->_impl_.load_n_ = from._impl_.load_n_;
+      }
+    }
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_angular_velocity_rad_s()) != 0) {
+        _this->_impl_.angular_velocity_rad_s_ = from._impl_.angular_velocity_rad_s_;
+      }
+    }
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_longitudinal_force_n()) != 0) {
+        _this->_impl_.longitudinal_force_n_ = from._impl_.longitudinal_force_n_;
+      }
+    }
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_lateral_force_n()) != 0) {
+        _this->_impl_.lateral_force_n_ = from._impl_.lateral_force_n_;
+      }
+    }
+    if ((cached_has_bits & 0x00000040u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_contact_friction()) != 0) {
+        _this->_impl_.contact_friction_ = from._impl_.contact_friction_;
+      }
+    }
+    if ((cached_has_bits & 0x00000080u) != 0) {
+      if (from._internal_in_contact() != 0) {
+        _this->_impl_.in_contact_ = from._impl_.in_contact_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void WheelTelemetry::CopyFrom(const WheelTelemetry& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:quarryworks.v1.WheelTelemetry)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void WheelTelemetry::InternalSwap(WheelTelemetry* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.in_contact_)
+      + sizeof(WheelTelemetry::_impl_.in_contact_)
+      - PROTOBUF_FIELD_OFFSET(WheelTelemetry, _impl_.slip_ratio_)>(
+          reinterpret_cast<char*>(&_impl_.slip_ratio_),
+          reinterpret_cast<char*>(&other->_impl_.slip_ratio_));
+}
+
+::google::protobuf::Metadata WheelTelemetry::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ImuTelemetry::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<ImuTelemetry>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_._has_bits_);
+};
+
+ImuTelemetry::ImuTelemetry(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ImuTelemetry_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:quarryworks.v1.ImuTelemetry)
+}
+PROTOBUF_NDEBUG_INLINE ImuTelemetry::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    const ::quarryworks::v1::ImuTelemetry& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+ImuTelemetry::ImuTelemetry(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const ImuTelemetry& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ImuTelemetry_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ImuTelemetry* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.specific_force_m_s2_ = ((cached_has_bits & 0x00000001u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.specific_force_m_s2_)
+                : nullptr;
+  _impl_.angular_velocity_rad_s_ = ((cached_has_bits & 0x00000002u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.angular_velocity_rad_s_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:quarryworks.v1.ImuTelemetry)
+}
+PROTOBUF_NDEBUG_INLINE ImuTelemetry::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void ImuTelemetry::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, specific_force_m_s2_),
+           0,
+           offsetof(Impl_, angular_velocity_rad_s_) -
+               offsetof(Impl_, specific_force_m_s2_) +
+               sizeof(Impl_::angular_velocity_rad_s_));
+}
+ImuTelemetry::~ImuTelemetry() {
+  // @@protoc_insertion_point(destructor:quarryworks.v1.ImuTelemetry)
+  SharedDtor(*this);
+}
+inline void ImuTelemetry::SharedDtor(MessageLite& self) {
+  ImuTelemetry& this_ = static_cast<ImuTelemetry&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.specific_force_m_s2_;
+  delete this_._impl_.angular_velocity_rad_s_;
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL ImuTelemetry::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) ImuTelemetry(arena);
+}
+constexpr auto ImuTelemetry::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ImuTelemetry),
+                                            alignof(ImuTelemetry));
+}
+constexpr auto ImuTelemetry::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_ImuTelemetry_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &ImuTelemetry::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<ImuTelemetry>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &ImuTelemetry::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<ImuTelemetry>(), &ImuTelemetry::ByteSizeLong,
+              &ImuTelemetry::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_._cached_size_),
+          false,
+      },
+      &ImuTelemetry::kDescriptorMethods,
+      &descriptor_table_quarryworks_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ::google::protobuf::internal::ClassDataFull
+        ImuTelemetry_class_data_ =
+            ImuTelemetry::InternalGenerateClassData_();
+
+const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL ImuTelemetry::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&ImuTelemetry_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(ImuTelemetry_class_data_.tc_table);
+  return ImuTelemetry_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2>
+ImuTelemetry::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    ImuTelemetry_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::quarryworks::v1::ImuTelemetry>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .quarryworks.v1.Vector3 angular_velocity_rad_s = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_.angular_velocity_rad_s_)}},
+    // .quarryworks.v1.Vector3 specific_force_m_s2 = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_.specific_force_m_s2_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .quarryworks.v1.Vector3 specific_force_m_s2 = 1;
+    {PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_.specific_force_m_s2_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .quarryworks.v1.Vector3 angular_velocity_rad_s = 2;
+    {PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_.angular_velocity_rad_s_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }},
+  {{
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::Vector3>()},
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::Vector3>()},
+  }},
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void ImuTelemetry::Clear() {
+// @@protoc_insertion_point(message_clear_start:quarryworks.v1.ImuTelemetry)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000003u) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      ABSL_DCHECK(_impl_.specific_force_m_s2_ != nullptr);
+      _impl_.specific_force_m_s2_->Clear();
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      ABSL_DCHECK(_impl_.angular_velocity_rad_s_ != nullptr);
+      _impl_.angular_velocity_rad_s_->Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL ImuTelemetry::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const ImuTelemetry& this_ = static_cast<const ImuTelemetry&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL ImuTelemetry::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const ImuTelemetry& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(serialize_to_array_start:quarryworks.v1.ImuTelemetry)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // .quarryworks.v1.Vector3 specific_force_m_s2 = 1;
+  if ((cached_has_bits & 0x00000001u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, *this_._impl_.specific_force_m_s2_, this_._impl_.specific_force_m_s2_->GetCachedSize(), target,
+        stream);
+  }
+
+  // .quarryworks.v1.Vector3 angular_velocity_rad_s = 2;
+  if ((cached_has_bits & 0x00000002u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, *this_._impl_.angular_velocity_rad_s_, this_._impl_.angular_velocity_rad_s_->GetCachedSize(), target,
+        stream);
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:quarryworks.v1.ImuTelemetry)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t ImuTelemetry::ByteSizeLong(const MessageLite& base) {
+  const ImuTelemetry& this_ = static_cast<const ImuTelemetry&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t ImuTelemetry::ByteSizeLong() const {
+  const ImuTelemetry& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:quarryworks.v1.ImuTelemetry)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000003u) != 0) {
+    // .quarryworks.v1.Vector3 specific_force_m_s2 = 1;
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.specific_force_m_s2_);
+    }
+    // .quarryworks.v1.Vector3 angular_velocity_rad_s = 2;
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.angular_velocity_rad_s_);
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void ImuTelemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ImuTelemetry*>(&to_msg);
+  auto& from = static_cast<const ImuTelemetry&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:quarryworks.v1.ImuTelemetry)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000003u) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      ABSL_DCHECK(from._impl_.specific_force_m_s2_ != nullptr);
+      if (_this->_impl_.specific_force_m_s2_ == nullptr) {
+        _this->_impl_.specific_force_m_s2_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.specific_force_m_s2_);
+      } else {
+        _this->_impl_.specific_force_m_s2_->MergeFrom(*from._impl_.specific_force_m_s2_);
+      }
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      ABSL_DCHECK(from._impl_.angular_velocity_rad_s_ != nullptr);
+      if (_this->_impl_.angular_velocity_rad_s_ == nullptr) {
+        _this->_impl_.angular_velocity_rad_s_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.angular_velocity_rad_s_);
+      } else {
+        _this->_impl_.angular_velocity_rad_s_->MergeFrom(*from._impl_.angular_velocity_rad_s_);
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ImuTelemetry::CopyFrom(const ImuTelemetry& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:quarryworks.v1.ImuTelemetry)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ImuTelemetry::InternalSwap(ImuTelemetry* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_.angular_velocity_rad_s_)
+      + sizeof(ImuTelemetry::_impl_.angular_velocity_rad_s_)
+      - PROTOBUF_FIELD_OFFSET(ImuTelemetry, _impl_.specific_force_m_s2_)>(
+          reinterpret_cast<char*>(&_impl_.specific_force_m_s2_),
+          reinterpret_cast<char*>(&other->_impl_.specific_force_m_s2_));
+}
+
+::google::protobuf::Metadata ImuTelemetry::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ExcavatorCommand::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<ExcavatorCommand>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_._has_bits_);
+};
+
+ExcavatorCommand::ExcavatorCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ExcavatorCommand_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:quarryworks.v1.ExcavatorCommand)
+}
+ExcavatorCommand::ExcavatorCommand(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ExcavatorCommand& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, ExcavatorCommand_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE ExcavatorCommand::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void ExcavatorCommand::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, slew_),
+           0,
+           offsetof(Impl_, dump_) -
+               offsetof(Impl_, slew_) +
+               sizeof(Impl_::dump_));
+}
+ExcavatorCommand::~ExcavatorCommand() {
+  // @@protoc_insertion_point(destructor:quarryworks.v1.ExcavatorCommand)
+  SharedDtor(*this);
+}
+inline void ExcavatorCommand::SharedDtor(MessageLite& self) {
+  ExcavatorCommand& this_ = static_cast<ExcavatorCommand&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL ExcavatorCommand::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) ExcavatorCommand(arena);
+}
+constexpr auto ExcavatorCommand::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ExcavatorCommand),
+                                            alignof(ExcavatorCommand));
+}
+constexpr auto ExcavatorCommand::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_ExcavatorCommand_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &ExcavatorCommand::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<ExcavatorCommand>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &ExcavatorCommand::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<ExcavatorCommand>(), &ExcavatorCommand::ByteSizeLong,
+              &ExcavatorCommand::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_._cached_size_),
+          false,
+      },
+      &ExcavatorCommand::kDescriptorMethods,
+      &descriptor_table_quarryworks_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ::google::protobuf::internal::ClassDataFull
+        ExcavatorCommand_class_data_ =
+            ExcavatorCommand::InternalGenerateClassData_();
+
+const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL ExcavatorCommand::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&ExcavatorCommand_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(ExcavatorCommand_class_data_.tc_table);
+  return ExcavatorCommand_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 0, 0, 2>
+ExcavatorCommand::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    ExcavatorCommand_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::quarryworks::v1::ExcavatorCommand>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // double slew = 1;
+    {::_pbi::TcParser::FastF64S1,
+     {9, 0, 0, PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.slew_)}},
+    // double boom = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 1, 0, PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.boom_)}},
+    // double stick = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 2, 0, PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.stick_)}},
+    // double bucket = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 3, 0, PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.bucket_)}},
+    // bool dig = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ExcavatorCommand, _impl_.dig_), 4>(),
+     {40, 4, 0, PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.dig_)}},
+    // bool dump = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ExcavatorCommand, _impl_.dump_), 5>(),
+     {48, 5, 0, PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.dump_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // double slew = 1;
+    {PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.slew_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double boom = 2;
+    {PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.boom_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double stick = 3;
+    {PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.stick_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double bucket = 4;
+    {PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.bucket_), _Internal::kHasBitsOffset + 3, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // bool dig = 5;
+    {PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.dig_), _Internal::kHasBitsOffset + 4, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool dump = 6;
+    {PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.dump_), _Internal::kHasBitsOffset + 5, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void ExcavatorCommand::Clear() {
+// @@protoc_insertion_point(message_clear_start:quarryworks.v1.ExcavatorCommand)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000003fu) != 0) {
+    ::memset(&_impl_.slew_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.dump_) -
+        reinterpret_cast<char*>(&_impl_.slew_)) + sizeof(_impl_.dump_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL ExcavatorCommand::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const ExcavatorCommand& this_ = static_cast<const ExcavatorCommand&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL ExcavatorCommand::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const ExcavatorCommand& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(serialize_to_array_start:quarryworks.v1.ExcavatorCommand)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // double slew = 1;
+  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_slew()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          1, this_._internal_slew(), target);
+    }
+  }
+
+  // double boom = 2;
+  if ((this_._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_boom()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          2, this_._internal_boom(), target);
+    }
+  }
+
+  // double stick = 3;
+  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_stick()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          3, this_._internal_stick(), target);
+    }
+  }
+
+  // double bucket = 4;
+  if ((this_._impl_._has_bits_[0] & 0x00000008u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_bucket()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          4, this_._internal_bucket(), target);
+    }
+  }
+
+  // bool dig = 5;
+  if ((this_._impl_._has_bits_[0] & 0x00000010u) != 0) {
+    if (this_._internal_dig() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          5, this_._internal_dig(), target);
+    }
+  }
+
+  // bool dump = 6;
+  if ((this_._impl_._has_bits_[0] & 0x00000020u) != 0) {
+    if (this_._internal_dump() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          6, this_._internal_dump(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:quarryworks.v1.ExcavatorCommand)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t ExcavatorCommand::ByteSizeLong(const MessageLite& base) {
+  const ExcavatorCommand& this_ = static_cast<const ExcavatorCommand&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t ExcavatorCommand::ByteSizeLong() const {
+  const ExcavatorCommand& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:quarryworks.v1.ExcavatorCommand)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000003fu) != 0) {
+    // double slew = 1;
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_slew()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double boom = 2;
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_boom()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double stick = 3;
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_stick()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double bucket = 4;
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_bucket()) != 0) {
+        total_size += 9;
+      }
+    }
+    // bool dig = 5;
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      if (this_._internal_dig() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool dump = 6;
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      if (this_._internal_dump() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void ExcavatorCommand::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ExcavatorCommand*>(&to_msg);
+  auto& from = static_cast<const ExcavatorCommand&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:quarryworks.v1.ExcavatorCommand)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000003fu) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_slew()) != 0) {
+        _this->_impl_.slew_ = from._impl_.slew_;
+      }
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_boom()) != 0) {
+        _this->_impl_.boom_ = from._impl_.boom_;
+      }
+    }
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_stick()) != 0) {
+        _this->_impl_.stick_ = from._impl_.stick_;
+      }
+    }
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_bucket()) != 0) {
+        _this->_impl_.bucket_ = from._impl_.bucket_;
+      }
+    }
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      if (from._internal_dig() != 0) {
+        _this->_impl_.dig_ = from._impl_.dig_;
+      }
+    }
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      if (from._internal_dump() != 0) {
+        _this->_impl_.dump_ = from._impl_.dump_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ExcavatorCommand::CopyFrom(const ExcavatorCommand& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:quarryworks.v1.ExcavatorCommand)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ExcavatorCommand::InternalSwap(ExcavatorCommand* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.dump_)
+      + sizeof(ExcavatorCommand::_impl_.dump_)
+      - PROTOBUF_FIELD_OFFSET(ExcavatorCommand, _impl_.slew_)>(
+          reinterpret_cast<char*>(&_impl_.slew_),
+          reinterpret_cast<char*>(&other->_impl_.slew_));
+}
+
+::google::protobuf::Metadata ExcavatorCommand::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class VehicleCommand::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<VehicleCommand>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_._has_bits_);
+};
+
+VehicleCommand::VehicleCommand(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, VehicleCommand_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:quarryworks.v1.VehicleCommand)
+}
+PROTOBUF_NDEBUG_INLINE VehicleCommand::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    const ::quarryworks::v1::VehicleCommand& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        vehicle_id_(arena, from.vehicle_id_) {}
+
+VehicleCommand::VehicleCommand(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const VehicleCommand& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, VehicleCommand_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  VehicleCommand* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.excavator_ = ((cached_has_bits & 0x00000002u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.excavator_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, throttle_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, throttle_),
+           offsetof(Impl_, parking_brake_) -
+               offsetof(Impl_, throttle_) +
+               sizeof(Impl_::parking_brake_));
+
+  // @@protoc_insertion_point(copy_constructor:quarryworks.v1.VehicleCommand)
+}
+PROTOBUF_NDEBUG_INLINE VehicleCommand::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        vehicle_id_(arena) {}
+
+inline void VehicleCommand::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, excavator_),
+           0,
+           offsetof(Impl_, parking_brake_) -
+               offsetof(Impl_, excavator_) +
+               sizeof(Impl_::parking_brake_));
+}
+VehicleCommand::~VehicleCommand() {
+  // @@protoc_insertion_point(destructor:quarryworks.v1.VehicleCommand)
+  SharedDtor(*this);
+}
+inline void VehicleCommand::SharedDtor(MessageLite& self) {
+  VehicleCommand& this_ = static_cast<VehicleCommand&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.vehicle_id_.Destroy();
+  delete this_._impl_.excavator_;
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL VehicleCommand::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) VehicleCommand(arena);
+}
+constexpr auto VehicleCommand::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(VehicleCommand),
+                                            alignof(VehicleCommand));
+}
+constexpr auto VehicleCommand::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_VehicleCommand_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &VehicleCommand::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<VehicleCommand>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &VehicleCommand::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<VehicleCommand>(), &VehicleCommand::ByteSizeLong,
+              &VehicleCommand::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_._cached_size_),
+          false,
+      },
+      &VehicleCommand::kDescriptorMethods,
+      &descriptor_table_quarryworks_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const ::google::protobuf::internal::ClassDataFull
+        VehicleCommand_class_data_ =
+            VehicleCommand::InternalGenerateClassData_();
+
+const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL VehicleCommand::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&VehicleCommand_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(VehicleCommand_class_data_.tc_table);
+  return VehicleCommand_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 48, 2>
+VehicleCommand::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    VehicleCommand_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::quarryworks::v1::VehicleCommand>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string vehicle_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.vehicle_id_)}},
+    // double throttle = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 2, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.throttle_)}},
+    // double steering = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 3, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.steering_)}},
+    // double service_brake = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 4, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.service_brake_)}},
+    // bool parking_brake = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(VehicleCommand, _impl_.parking_brake_), 5>(),
+     {40, 5, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.parking_brake_)}},
+    // .quarryworks.v1.ExcavatorCommand excavator = 6;
+    {::_pbi::TcParser::FastMtS1,
+     {50, 1, 0, PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.excavator_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string vehicle_id = 1;
+    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.vehicle_id_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // double throttle = 2;
+    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.throttle_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double steering = 3;
+    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.steering_), _Internal::kHasBitsOffset + 3, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // double service_brake = 4;
+    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.service_brake_), _Internal::kHasBitsOffset + 4, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // bool parking_brake = 5;
+    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.parking_brake_), _Internal::kHasBitsOffset + 5, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // .quarryworks.v1.ExcavatorCommand excavator = 6;
+    {PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.excavator_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }},
+  {{
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::ExcavatorCommand>()},
+  }},
+  {{
+    "\35\12\0\0\0\0\0\0"
+    "quarryworks.v1.VehicleCommand"
+    "vehicle_id"
+  }},
+};
+PROTOBUF_NOINLINE void VehicleCommand::Clear() {
+// @@protoc_insertion_point(message_clear_start:quarryworks.v1.VehicleCommand)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000003u) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      _impl_.vehicle_id_.ClearNonDefaultToEmpty();
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      ABSL_DCHECK(_impl_.excavator_ != nullptr);
+      _impl_.excavator_->Clear();
+    }
+  }
+  if ((cached_has_bits & 0x0000003cu) != 0) {
+    ::memset(&_impl_.throttle_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.parking_brake_) -
+        reinterpret_cast<char*>(&_impl_.throttle_)) + sizeof(_impl_.parking_brake_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL VehicleCommand::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const VehicleCommand& this_ = static_cast<const VehicleCommand&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL VehicleCommand::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const VehicleCommand& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(serialize_to_array_start:quarryworks.v1.VehicleCommand)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string vehicle_id = 1;
+  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    if (!this_._internal_vehicle_id().empty()) {
+      const std::string& _s = this_._internal_vehicle_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "quarryworks.v1.VehicleCommand.vehicle_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // double throttle = 2;
+  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_throttle()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          2, this_._internal_throttle(), target);
+    }
+  }
+
+  // double steering = 3;
+  if ((this_._impl_._has_bits_[0] & 0x00000008u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_steering()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          3, this_._internal_steering(), target);
+    }
+  }
+
+  // double service_brake = 4;
+  if ((this_._impl_._has_bits_[0] & 0x00000010u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_service_brake()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          4, this_._internal_service_brake(), target);
+    }
+  }
+
+  // bool parking_brake = 5;
+  if ((this_._impl_._has_bits_[0] & 0x00000020u) != 0) {
+    if (this_._internal_parking_brake() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          5, this_._internal_parking_brake(), target);
+    }
+  }
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // .quarryworks.v1.ExcavatorCommand excavator = 6;
+  if ((cached_has_bits & 0x00000002u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        6, *this_._impl_.excavator_, this_._impl_.excavator_->GetCachedSize(), target,
+        stream);
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:quarryworks.v1.VehicleCommand)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t VehicleCommand::ByteSizeLong(const MessageLite& base) {
+  const VehicleCommand& this_ = static_cast<const VehicleCommand&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t VehicleCommand::ByteSizeLong() const {
+  const VehicleCommand& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:quarryworks.v1.VehicleCommand)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000003fu) != 0) {
+    // string vehicle_id = 1;
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (!this_._internal_vehicle_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_vehicle_id());
+      }
+    }
+    // .quarryworks.v1.ExcavatorCommand excavator = 6;
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.excavator_);
+    }
+    // double throttle = 2;
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_throttle()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double steering = 3;
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_steering()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double service_brake = 4;
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_service_brake()) != 0) {
+        total_size += 9;
+      }
+    }
+    // bool parking_brake = 5;
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      if (this_._internal_parking_brake() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void VehicleCommand::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<VehicleCommand*>(&to_msg);
+  auto& from = static_cast<const VehicleCommand&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:quarryworks.v1.VehicleCommand)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x0000003fu) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (!from._internal_vehicle_id().empty()) {
+        _this->_internal_set_vehicle_id(from._internal_vehicle_id());
+      } else {
+        if (_this->_impl_.vehicle_id_.IsDefault()) {
+          _this->_internal_set_vehicle_id("");
+        }
+      }
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      ABSL_DCHECK(from._impl_.excavator_ != nullptr);
+      if (_this->_impl_.excavator_ == nullptr) {
+        _this->_impl_.excavator_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.excavator_);
+      } else {
+        _this->_impl_.excavator_->MergeFrom(*from._impl_.excavator_);
+      }
+    }
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_throttle()) != 0) {
+        _this->_impl_.throttle_ = from._impl_.throttle_;
+      }
+    }
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_steering()) != 0) {
+        _this->_impl_.steering_ = from._impl_.steering_;
+      }
+    }
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_service_brake()) != 0) {
+        _this->_impl_.service_brake_ = from._impl_.service_brake_;
+      }
+    }
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      if (from._internal_parking_brake() != 0) {
+        _this->_impl_.parking_brake_ = from._impl_.parking_brake_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void VehicleCommand::CopyFrom(const VehicleCommand& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:quarryworks.v1.VehicleCommand)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void VehicleCommand::InternalSwap(VehicleCommand* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vehicle_id_, &other->_impl_.vehicle_id_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.parking_brake_)
+      + sizeof(VehicleCommand::_impl_.parking_brake_)
+      - PROTOBUF_FIELD_OFFSET(VehicleCommand, _impl_.excavator_)>(
+          reinterpret_cast<char*>(&_impl_.excavator_),
+          reinterpret_cast<char*>(&other->_impl_.excavator_));
+}
+
+::google::protobuf::Metadata VehicleCommand::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class VehicleTelemetry::_Internal {
  public:
   using HasBits =
@@ -2206,6 +4116,7 @@ PROTOBUF_NDEBUG_INLINE VehicleTelemetry::Impl_::Impl_(
     const ::quarryworks::v1::VehicleTelemetry& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
+        wheels_{visibility, arena, from.wheels_},
         vehicle_id_(arena, from.vehicle_id_) {}
 
 VehicleTelemetry::VehicleTelemetry(
@@ -2228,13 +4139,25 @@ VehicleTelemetry::VehicleTelemetry(
   _impl_.cargo_ = ((cached_has_bits & 0x00000004u) != 0)
                 ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.cargo_)
                 : nullptr;
+  _impl_.orientation_ = ((cached_has_bits & 0x00000008u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.orientation_)
+                : nullptr;
+  _impl_.velocity_cm_s_ = ((cached_has_bits & 0x00000010u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.velocity_cm_s_)
+                : nullptr;
+  _impl_.angular_velocity_rad_s_ = ((cached_has_bits & 0x00000020u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.angular_velocity_rad_s_)
+                : nullptr;
+  _impl_.imu_ = ((cached_has_bits & 0x00000040u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.imu_)
+                : nullptr;
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, speed_kmh_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, speed_kmh_),
-           offsetof(Impl_, parking_brake_) -
+           offsetof(Impl_, grounded_wheel_count_) -
                offsetof(Impl_, speed_kmh_) +
-               sizeof(Impl_::parking_brake_));
+               sizeof(Impl_::grounded_wheel_count_));
 
   // @@protoc_insertion_point(copy_constructor:quarryworks.v1.VehicleTelemetry)
 }
@@ -2242,6 +4165,7 @@ PROTOBUF_NDEBUG_INLINE VehicleTelemetry::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
+        wheels_{visibility, arena},
         vehicle_id_(arena) {}
 
 inline void VehicleTelemetry::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
@@ -2249,9 +4173,9 @@ inline void VehicleTelemetry::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) 
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, location_cm_),
            0,
-           offsetof(Impl_, parking_brake_) -
+           offsetof(Impl_, grounded_wheel_count_) -
                offsetof(Impl_, location_cm_) +
-               sizeof(Impl_::parking_brake_));
+               sizeof(Impl_::grounded_wheel_count_));
 }
 VehicleTelemetry::~VehicleTelemetry() {
   // @@protoc_insertion_point(destructor:quarryworks.v1.VehicleTelemetry)
@@ -2264,6 +4188,10 @@ inline void VehicleTelemetry::SharedDtor(MessageLite& self) {
   this_._impl_.vehicle_id_.Destroy();
   delete this_._impl_.location_cm_;
   delete this_._impl_.cargo_;
+  delete this_._impl_.orientation_;
+  delete this_._impl_.velocity_cm_s_;
+  delete this_._impl_.angular_velocity_rad_s_;
+  delete this_._impl_.imu_;
   this_._impl_.~Impl_();
 }
 
@@ -2273,8 +4201,20 @@ inline void* PROTOBUF_NONNULL VehicleTelemetry::PlacementNew_(
   return ::new (mem) VehicleTelemetry(arena);
 }
 constexpr auto VehicleTelemetry::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(VehicleTelemetry),
-                                            alignof(VehicleTelemetry));
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.wheels_) +
+          decltype(VehicleTelemetry::_impl_.wheels_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(VehicleTelemetry), alignof(VehicleTelemetry), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&VehicleTelemetry::PlacementNew_,
+                                 sizeof(VehicleTelemetry),
+                                 alignof(VehicleTelemetry));
+  }
 }
 constexpr auto VehicleTelemetry::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
@@ -2310,17 +4250,17 @@ const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL VehicleTelemetry
   return VehicleTelemetry_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 2, 50, 2>
+const ::_pbi::TcParseTable<4, 14, 7, 58, 2>
 VehicleTelemetry::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_._has_bits_),
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    14, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294950912,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    2,  // num_aux_entries
+    14,  // num_field_entries
+    7,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     VehicleTelemetry_class_data_.base(),
     nullptr,  // post_loop_handler
@@ -2338,14 +4278,40 @@ VehicleTelemetry::_table_ = {
      {18, 1, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.location_cm_)}},
     // double speed_kmh = 3;
     {::_pbi::TcParser::FastF64S1,
-     {25, 3, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.speed_kmh_)}},
+     {25, 7, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.speed_kmh_)}},
     // bool parking_brake = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(VehicleTelemetry, _impl_.parking_brake_), 4>(),
-     {32, 4, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.parking_brake_)}},
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(VehicleTelemetry, _impl_.parking_brake_), 8>(),
+     {32, 8, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.parking_brake_)}},
     // .quarryworks.v1.CargoTelemetry cargo = 5;
     {::_pbi::TcParser::FastMtS1,
      {42, 2, 1, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.cargo_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .quarryworks.v1.Quaternion orientation = 6;
+    {::_pbi::TcParser::FastMtS1,
+     {50, 3, 2, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.orientation_)}},
+    // .quarryworks.v1.Vector3 velocity_cm_s = 7;
+    {::_pbi::TcParser::FastMtS1,
+     {58, 4, 3, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.velocity_cm_s_)}},
+    // .quarryworks.v1.Vector3 angular_velocity_rad_s = 8;
+    {::_pbi::TcParser::FastMtS1,
+     {66, 5, 4, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.angular_velocity_rad_s_)}},
+    // .quarryworks.v1.ImuTelemetry imu = 9;
+    {::_pbi::TcParser::FastMtS1,
+     {74, 6, 5, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.imu_)}},
+    // double engine_rpm = 10;
+    {::_pbi::TcParser::FastF64S1,
+     {81, 11, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.engine_rpm_)}},
+    // sint32 gear = 11;
+    {::_pbi::TcParser::FastZ32S1,
+     {88, 10, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.gear_)}},
+    // int32 grounded_wheel_count = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VehicleTelemetry, _impl_.grounded_wheel_count_), 12>(),
+     {96, 12, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.grounded_wheel_count_)}},
+    // bool any_wheel_slipping = 13;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(VehicleTelemetry, _impl_.any_wheel_slipping_), 9>(),
+     {104, 9, 0, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.any_wheel_slipping_)}},
+    // repeated .quarryworks.v1.WheelTelemetry wheels = 14;
+    {::_pbi::TcParser::FastMtR1,
+     {114, 63, 6, PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.wheels_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -2357,21 +4323,53 @@ VehicleTelemetry::_table_ = {
     {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.location_cm_), _Internal::kHasBitsOffset + 1, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // double speed_kmh = 3;
-    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.speed_kmh_), _Internal::kHasBitsOffset + 3, 0,
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.speed_kmh_), _Internal::kHasBitsOffset + 7, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
     // bool parking_brake = 4;
-    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.parking_brake_), _Internal::kHasBitsOffset + 4, 0,
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.parking_brake_), _Internal::kHasBitsOffset + 8, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // .quarryworks.v1.CargoTelemetry cargo = 5;
     {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.cargo_), _Internal::kHasBitsOffset + 2, 1,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .quarryworks.v1.Quaternion orientation = 6;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.orientation_), _Internal::kHasBitsOffset + 3, 2,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .quarryworks.v1.Vector3 velocity_cm_s = 7;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.velocity_cm_s_), _Internal::kHasBitsOffset + 4, 3,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .quarryworks.v1.Vector3 angular_velocity_rad_s = 8;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.angular_velocity_rad_s_), _Internal::kHasBitsOffset + 5, 4,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .quarryworks.v1.ImuTelemetry imu = 9;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.imu_), _Internal::kHasBitsOffset + 6, 5,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // double engine_rpm = 10;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.engine_rpm_), _Internal::kHasBitsOffset + 11, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    // sint32 gear = 11;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.gear_), _Internal::kHasBitsOffset + 10, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kSInt32)},
+    // int32 grounded_wheel_count = 12;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.grounded_wheel_count_), _Internal::kHasBitsOffset + 12, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // bool any_wheel_slipping = 13;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.any_wheel_slipping_), _Internal::kHasBitsOffset + 9, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // repeated .quarryworks.v1.WheelTelemetry wheels = 14;
+    {PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.wheels_), -1, 6,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
   {{
       {::_pbi::TcParser::GetTable<::quarryworks::v1::Vector3>()},
       {::_pbi::TcParser::GetTable<::quarryworks::v1::CargoTelemetry>()},
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::Quaternion>()},
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::Vector3>()},
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::Vector3>()},
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::ImuTelemetry>()},
+      {::_pbi::TcParser::GetTable<::quarryworks::v1::WheelTelemetry>()},
   }},
   {{
-    "\37\12\0\0\0\0\0\0"
+    "\37\12\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
     "quarryworks.v1.VehicleTelemetry"
     "vehicle_id"
   }},
@@ -2383,8 +4381,9 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.wheels_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
-  if ((cached_has_bits & 0x00000007u) != 0) {
+  if ((cached_has_bits & 0x0000007fu) != 0) {
     if ((cached_has_bits & 0x00000001u) != 0) {
       _impl_.vehicle_id_.ClearNonDefaultToEmpty();
     }
@@ -2396,11 +4395,28 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
       ABSL_DCHECK(_impl_.cargo_ != nullptr);
       _impl_.cargo_->Clear();
     }
+    if ((cached_has_bits & 0x00000008u) != 0) {
+      ABSL_DCHECK(_impl_.orientation_ != nullptr);
+      _impl_.orientation_->Clear();
+    }
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      ABSL_DCHECK(_impl_.velocity_cm_s_ != nullptr);
+      _impl_.velocity_cm_s_->Clear();
+    }
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      ABSL_DCHECK(_impl_.angular_velocity_rad_s_ != nullptr);
+      _impl_.angular_velocity_rad_s_->Clear();
+    }
+    if ((cached_has_bits & 0x00000040u) != 0) {
+      ABSL_DCHECK(_impl_.imu_ != nullptr);
+      _impl_.imu_->Clear();
+    }
   }
-  if ((cached_has_bits & 0x00000018u) != 0) {
-    ::memset(&_impl_.speed_kmh_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.parking_brake_) -
-        reinterpret_cast<char*>(&_impl_.speed_kmh_)) + sizeof(_impl_.parking_brake_));
+  _impl_.speed_kmh_ = 0;
+  if ((cached_has_bits & 0x00001f00u) != 0) {
+    ::memset(&_impl_.parking_brake_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.grounded_wheel_count_) -
+        reinterpret_cast<char*>(&_impl_.parking_brake_)) + sizeof(_impl_.grounded_wheel_count_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -2440,7 +4456,7 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
   }
 
   // double speed_kmh = 3;
-  if ((cached_has_bits & 0x00000008u) != 0) {
+  if ((cached_has_bits & 0x00000080u) != 0) {
     if (::absl::bit_cast<::uint64_t>(this_._internal_speed_kmh()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteDoubleToArray(
@@ -2449,7 +4465,7 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
   }
 
   // bool parking_brake = 4;
-  if ((cached_has_bits & 0x00000010u) != 0) {
+  if ((cached_has_bits & 0x00000100u) != 0) {
     if (this_._internal_parking_brake() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -2462,6 +4478,81 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
         5, *this_._impl_.cargo_, this_._impl_.cargo_->GetCachedSize(), target,
         stream);
+  }
+
+  // .quarryworks.v1.Quaternion orientation = 6;
+  if ((cached_has_bits & 0x00000008u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        6, *this_._impl_.orientation_, this_._impl_.orientation_->GetCachedSize(), target,
+        stream);
+  }
+
+  // .quarryworks.v1.Vector3 velocity_cm_s = 7;
+  if ((cached_has_bits & 0x00000010u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        7, *this_._impl_.velocity_cm_s_, this_._impl_.velocity_cm_s_->GetCachedSize(), target,
+        stream);
+  }
+
+  // .quarryworks.v1.Vector3 angular_velocity_rad_s = 8;
+  if ((cached_has_bits & 0x00000020u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        8, *this_._impl_.angular_velocity_rad_s_, this_._impl_.angular_velocity_rad_s_->GetCachedSize(), target,
+        stream);
+  }
+
+  // .quarryworks.v1.ImuTelemetry imu = 9;
+  if ((cached_has_bits & 0x00000040u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, *this_._impl_.imu_, this_._impl_.imu_->GetCachedSize(), target,
+        stream);
+  }
+
+  // double engine_rpm = 10;
+  if ((cached_has_bits & 0x00000800u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_engine_rpm()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          10, this_._internal_engine_rpm(), target);
+    }
+  }
+
+  // sint32 gear = 11;
+  if ((cached_has_bits & 0x00000400u) != 0) {
+    if (this_._internal_gear() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteSInt32ToArray(
+          11, this_._internal_gear(), target);
+    }
+  }
+
+  // int32 grounded_wheel_count = 12;
+  if ((cached_has_bits & 0x00001000u) != 0) {
+    if (this_._internal_grounded_wheel_count() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<12>(
+              stream, this_._internal_grounded_wheel_count(), target);
+    }
+  }
+
+  // bool any_wheel_slipping = 13;
+  if ((cached_has_bits & 0x00000200u) != 0) {
+    if (this_._internal_any_wheel_slipping() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          13, this_._internal_any_wheel_slipping(), target);
+    }
+  }
+
+  // repeated .quarryworks.v1.WheelTelemetry wheels = 14;
+  for (unsigned i = 0, n = static_cast<unsigned>(
+                           this_._internal_wheels_size());
+       i < n; i++) {
+    const auto& repfield = this_._internal_wheels().Get(i);
+    target =
+        ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+            14, repfield, repfield.GetCachedSize(),
+            target, stream);
   }
 
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -2488,8 +4579,17 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
   (void)cached_has_bits;
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+   {
+    // repeated .quarryworks.v1.WheelTelemetry wheels = 14;
+    {
+      total_size += 1UL * this_._internal_wheels_size();
+      for (const auto& msg : this_._internal_wheels()) {
+        total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      }
+    }
+  }
   cached_has_bits = this_._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000001fu) != 0) {
+  if ((cached_has_bits & 0x000000ffu) != 0) {
     // string vehicle_id = 1;
     if ((cached_has_bits & 0x00000001u) != 0) {
       if (!this_._internal_vehicle_id().empty()) {
@@ -2507,16 +4607,64 @@ PROTOBUF_NOINLINE void VehicleTelemetry::Clear() {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.cargo_);
     }
-    // double speed_kmh = 3;
+    // .quarryworks.v1.Quaternion orientation = 6;
     if ((cached_has_bits & 0x00000008u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.orientation_);
+    }
+    // .quarryworks.v1.Vector3 velocity_cm_s = 7;
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.velocity_cm_s_);
+    }
+    // .quarryworks.v1.Vector3 angular_velocity_rad_s = 8;
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.angular_velocity_rad_s_);
+    }
+    // .quarryworks.v1.ImuTelemetry imu = 9;
+    if ((cached_has_bits & 0x00000040u) != 0) {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.imu_);
+    }
+    // double speed_kmh = 3;
+    if ((cached_has_bits & 0x00000080u) != 0) {
       if (::absl::bit_cast<::uint64_t>(this_._internal_speed_kmh()) != 0) {
         total_size += 9;
       }
     }
+  }
+  if ((cached_has_bits & 0x00001f00u) != 0) {
     // bool parking_brake = 4;
-    if ((cached_has_bits & 0x00000010u) != 0) {
+    if ((cached_has_bits & 0x00000100u) != 0) {
       if (this_._internal_parking_brake() != 0) {
         total_size += 2;
+      }
+    }
+    // bool any_wheel_slipping = 13;
+    if ((cached_has_bits & 0x00000200u) != 0) {
+      if (this_._internal_any_wheel_slipping() != 0) {
+        total_size += 2;
+      }
+    }
+    // sint32 gear = 11;
+    if ((cached_has_bits & 0x00000400u) != 0) {
+      if (this_._internal_gear() != 0) {
+        total_size += ::_pbi::WireFormatLite::SInt32SizePlusOne(
+            this_._internal_gear());
+      }
+    }
+    // double engine_rpm = 10;
+    if ((cached_has_bits & 0x00000800u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_engine_rpm()) != 0) {
+        total_size += 9;
+      }
+    }
+    // int32 grounded_wheel_count = 12;
+    if ((cached_has_bits & 0x00001000u) != 0) {
+      if (this_._internal_grounded_wheel_count() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_grounded_wheel_count());
       }
     }
   }
@@ -2533,8 +4681,10 @@ void VehicleTelemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const 
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_wheels()->MergeFrom(
+      from._internal_wheels());
   cached_has_bits = from._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000001fu) != 0) {
+  if ((cached_has_bits & 0x000000ffu) != 0) {
     if ((cached_has_bits & 0x00000001u) != 0) {
       if (!from._internal_vehicle_id().empty()) {
         _this->_internal_set_vehicle_id(from._internal_vehicle_id());
@@ -2561,13 +4711,67 @@ void VehicleTelemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const 
       }
     }
     if ((cached_has_bits & 0x00000008u) != 0) {
+      ABSL_DCHECK(from._impl_.orientation_ != nullptr);
+      if (_this->_impl_.orientation_ == nullptr) {
+        _this->_impl_.orientation_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.orientation_);
+      } else {
+        _this->_impl_.orientation_->MergeFrom(*from._impl_.orientation_);
+      }
+    }
+    if ((cached_has_bits & 0x00000010u) != 0) {
+      ABSL_DCHECK(from._impl_.velocity_cm_s_ != nullptr);
+      if (_this->_impl_.velocity_cm_s_ == nullptr) {
+        _this->_impl_.velocity_cm_s_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.velocity_cm_s_);
+      } else {
+        _this->_impl_.velocity_cm_s_->MergeFrom(*from._impl_.velocity_cm_s_);
+      }
+    }
+    if ((cached_has_bits & 0x00000020u) != 0) {
+      ABSL_DCHECK(from._impl_.angular_velocity_rad_s_ != nullptr);
+      if (_this->_impl_.angular_velocity_rad_s_ == nullptr) {
+        _this->_impl_.angular_velocity_rad_s_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.angular_velocity_rad_s_);
+      } else {
+        _this->_impl_.angular_velocity_rad_s_->MergeFrom(*from._impl_.angular_velocity_rad_s_);
+      }
+    }
+    if ((cached_has_bits & 0x00000040u) != 0) {
+      ABSL_DCHECK(from._impl_.imu_ != nullptr);
+      if (_this->_impl_.imu_ == nullptr) {
+        _this->_impl_.imu_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.imu_);
+      } else {
+        _this->_impl_.imu_->MergeFrom(*from._impl_.imu_);
+      }
+    }
+    if ((cached_has_bits & 0x00000080u) != 0) {
       if (::absl::bit_cast<::uint64_t>(from._internal_speed_kmh()) != 0) {
         _this->_impl_.speed_kmh_ = from._impl_.speed_kmh_;
       }
     }
-    if ((cached_has_bits & 0x00000010u) != 0) {
+  }
+  if ((cached_has_bits & 0x00001f00u) != 0) {
+    if ((cached_has_bits & 0x00000100u) != 0) {
       if (from._internal_parking_brake() != 0) {
         _this->_impl_.parking_brake_ = from._impl_.parking_brake_;
+      }
+    }
+    if ((cached_has_bits & 0x00000200u) != 0) {
+      if (from._internal_any_wheel_slipping() != 0) {
+        _this->_impl_.any_wheel_slipping_ = from._impl_.any_wheel_slipping_;
+      }
+    }
+    if ((cached_has_bits & 0x00000400u) != 0) {
+      if (from._internal_gear() != 0) {
+        _this->_impl_.gear_ = from._impl_.gear_;
+      }
+    }
+    if ((cached_has_bits & 0x00000800u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_engine_rpm()) != 0) {
+        _this->_impl_.engine_rpm_ = from._impl_.engine_rpm_;
+      }
+    }
+    if ((cached_has_bits & 0x00001000u) != 0) {
+      if (from._internal_grounded_wheel_count() != 0) {
+        _this->_impl_.grounded_wheel_count_ = from._impl_.grounded_wheel_count_;
       }
     }
   }
@@ -2589,10 +4793,11 @@ void VehicleTelemetry::InternalSwap(VehicleTelemetry* PROTOBUF_RESTRICT PROTOBUF
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.wheels_.InternalSwap(&other->_impl_.wheels_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vehicle_id_, &other->_impl_.vehicle_id_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.parking_brake_)
-      + sizeof(VehicleTelemetry::_impl_.parking_brake_)
+      PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.grounded_wheel_count_)
+      + sizeof(VehicleTelemetry::_impl_.grounded_wheel_count_)
       - PROTOBUF_FIELD_OFFSET(VehicleTelemetry, _impl_.location_cm_)>(
           reinterpret_cast<char*>(&_impl_.location_cm_),
           reinterpret_cast<char*>(&other->_impl_.location_cm_));
@@ -2645,9 +4850,9 @@ QuarryTelemetry::QuarryTelemetry(
                offsetof(Impl_, sequence_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, sequence_),
-           offsetof(Impl_, delivered_mass_kg_) -
+           offsetof(Impl_, simulation_time_s_) -
                offsetof(Impl_, sequence_) +
-               sizeof(Impl_::delivered_mass_kg_));
+               sizeof(Impl_::simulation_time_s_));
 
   // @@protoc_insertion_point(copy_constructor:quarryworks.v1.QuarryTelemetry)
 }
@@ -2662,9 +4867,9 @@ inline void QuarryTelemetry::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, sequence_),
            0,
-           offsetof(Impl_, delivered_mass_kg_) -
+           offsetof(Impl_, simulation_time_s_) -
                offsetof(Impl_, sequence_) +
-               sizeof(Impl_::delivered_mass_kg_));
+               sizeof(Impl_::simulation_time_s_));
 }
 QuarryTelemetry::~QuarryTelemetry() {
   // @@protoc_insertion_point(destructor:quarryworks.v1.QuarryTelemetry)
@@ -2732,16 +4937,16 @@ const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL QuarryTelemetry:
   return QuarryTelemetry_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 0, 2>
+const ::_pbi::TcParseTable<2, 4, 1, 0, 2>
 QuarryTelemetry::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_._has_bits_),
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    4,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     QuarryTelemetry_class_data_.base(),
@@ -2751,7 +4956,9 @@ QuarryTelemetry::_table_ = {
     ::_pbi::TcParser::GetTable<::quarryworks::v1::QuarryTelemetry>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // double simulation_time_s = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 2, 0, PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.simulation_time_s_)}},
     // uint64 sequence = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QuarryTelemetry, _impl_.sequence_), 0>(),
      {8, 0, 0, PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.sequence_)}},
@@ -2773,6 +4980,9 @@ QuarryTelemetry::_table_ = {
     // repeated .quarryworks.v1.VehicleTelemetry vehicles = 3;
     {PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.vehicles_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // double simulation_time_s = 4;
+    {PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.simulation_time_s_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
   }},
   {{
       {::_pbi::TcParser::GetTable<::quarryworks::v1::VehicleTelemetry>()},
@@ -2789,10 +4999,10 @@ PROTOBUF_NOINLINE void QuarryTelemetry::Clear() {
 
   _impl_.vehicles_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
-  if ((cached_has_bits & 0x00000003u) != 0) {
+  if ((cached_has_bits & 0x00000007u) != 0) {
     ::memset(&_impl_.sequence_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.delivered_mass_kg_) -
-        reinterpret_cast<char*>(&_impl_.sequence_)) + sizeof(_impl_.delivered_mass_kg_));
+        reinterpret_cast<char*>(&_impl_.simulation_time_s_) -
+        reinterpret_cast<char*>(&_impl_.sequence_)) + sizeof(_impl_.simulation_time_s_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -2842,6 +5052,15 @@ PROTOBUF_NOINLINE void QuarryTelemetry::Clear() {
             target, stream);
   }
 
+  // double simulation_time_s = 4;
+  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_simulation_time_s()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          4, this_._internal_simulation_time_s(), target);
+    }
+  }
+
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -2876,7 +5095,7 @@ PROTOBUF_NOINLINE void QuarryTelemetry::Clear() {
     }
   }
   cached_has_bits = this_._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x00000003u) != 0) {
+  if ((cached_has_bits & 0x00000007u) != 0) {
     // uint64 sequence = 1;
     if ((cached_has_bits & 0x00000001u) != 0) {
       if (this_._internal_sequence() != 0) {
@@ -2887,6 +5106,12 @@ PROTOBUF_NOINLINE void QuarryTelemetry::Clear() {
     // double delivered_mass_kg = 2;
     if ((cached_has_bits & 0x00000002u) != 0) {
       if (::absl::bit_cast<::uint64_t>(this_._internal_delivered_mass_kg()) != 0) {
+        total_size += 9;
+      }
+    }
+    // double simulation_time_s = 4;
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_simulation_time_s()) != 0) {
         total_size += 9;
       }
     }
@@ -2906,7 +5131,7 @@ void QuarryTelemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
   _this->_internal_mutable_vehicles()->MergeFrom(
       from._internal_vehicles());
   cached_has_bits = from._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x00000003u) != 0) {
+  if ((cached_has_bits & 0x00000007u) != 0) {
     if ((cached_has_bits & 0x00000001u) != 0) {
       if (from._internal_sequence() != 0) {
         _this->_impl_.sequence_ = from._impl_.sequence_;
@@ -2915,6 +5140,11 @@ void QuarryTelemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
     if ((cached_has_bits & 0x00000002u) != 0) {
       if (::absl::bit_cast<::uint64_t>(from._internal_delivered_mass_kg()) != 0) {
         _this->_impl_.delivered_mass_kg_ = from._impl_.delivered_mass_kg_;
+      }
+    }
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_simulation_time_s()) != 0) {
+        _this->_impl_.simulation_time_s_ = from._impl_.simulation_time_s_;
       }
     }
   }
@@ -2936,8 +5166,8 @@ void QuarryTelemetry::InternalSwap(QuarryTelemetry* PROTOBUF_RESTRICT PROTOBUF_N
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.vehicles_.InternalSwap(&other->_impl_.vehicles_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.delivered_mass_kg_)
-      + sizeof(QuarryTelemetry::_impl_.delivered_mass_kg_)
+      PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.simulation_time_s_)
+      + sizeof(QuarryTelemetry::_impl_.simulation_time_s_)
       - PROTOBUF_FIELD_OFFSET(QuarryTelemetry, _impl_.sequence_)>(
           reinterpret_cast<char*>(&_impl_.sequence_),
           reinterpret_cast<char*>(&other->_impl_.sequence_));

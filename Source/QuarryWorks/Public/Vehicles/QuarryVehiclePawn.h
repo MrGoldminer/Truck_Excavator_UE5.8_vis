@@ -10,6 +10,7 @@ class UCameraComponent;
 class UEnhancedInputLocalPlayerSubsystem;
 class UInputAction;
 class UInputMappingContext;
+class UQuarryImuSensorComponent;
 class UQuarryVehicleMovementComponent;
 class USpringArmComponent;
 
@@ -21,6 +22,7 @@ class QUARRYWORKS_API AQuarryVehiclePawn : public APawn
 public:
 	AQuarryVehiclePawn();
 
+	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void UnPossessed() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
@@ -34,6 +36,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Vehicle")
 	TObjectPtr<UQuarryVehicleMovementComponent> VehicleMovement;
+
+	/** CARLA-style IMU ground-truth sensor attached to the chassis. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Vehicle")
+	TObjectPtr<UQuarryImuSensorComponent> ImuSensor;
 
 	UFUNCTION(BlueprintCallable, Category="Quarry|Driving")
 	void SetDriveInput(float Throttle, float Steering);
